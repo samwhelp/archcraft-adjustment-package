@@ -1,0 +1,40 @@
+
+##
+## * https://wiki.archlinux.org/title/Arch_User_Repository
+## * https://archlinux.org/groups/x86_64/base-devel/
+## * https://wiki.archlinux.org/title/pacman
+## * https://wiki.archlinux.org/title/PKGBUILD
+##
+
+pkgname=archcraft-adjustment-hello
+pkgver=0.1
+pkgrel=1
+pkgdesc="Archcraft Adjustment Hello Script"
+url="https://github.com/samwhelp/archcraft-adjustment-package/tree/main/demo/archcraft-adjustment-hello"
+arch=('any')
+license=('MIT')
+makedepends=()
+depends=()
+conflicts=()
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+
+prepare () {
+	cp -af ../asset/. "${srcdir}"
+}
+
+
+package () {
+
+	## Path
+	local sys_bin_dir_path="${pkgdir}/usr/bin"
+	local sys_share_dir_path="${pkgdir}/usr/share/${pkgname}"
+
+	## prepare share dir
+	mkdir -p "$sys_share_dir_path"
+
+	## install main script
+	## /usr/bin/archcraft-adjustment-hello
+	install -Dm755 "${srcdir}/bin/${pkgname}" "${sys_bin_dir_path}/${pkgname}"
+
+}

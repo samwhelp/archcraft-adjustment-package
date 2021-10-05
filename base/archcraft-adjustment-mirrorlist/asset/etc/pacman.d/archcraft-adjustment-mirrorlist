@@ -1,0 +1,4 @@
+
+
+#Server = file:///opt/archcraft/archcraft-adjustment-repository/$arch
+Server = https://samwhelp.github.io/archcraft-adjustment-repository/$arch

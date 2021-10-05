@@ -1,0 +1,42 @@
+
+##
+## * https://wiki.archlinux.org/title/Arch_User_Repository
+## * https://archlinux.org/groups/x86_64/base-devel/
+## * https://wiki.archlinux.org/title/pacman
+## * https://wiki.archlinux.org/title/PKGBUILD
+##
+
+pkgname=archcraft-adjustment-mirrorlist
+pkgver=0.1
+pkgrel=1
+pkgdesc="Archcraft Adjustment Mirrorlist"
+url="https://github.com/samwhelp/archcraft-adjustment-package/tree/main/base/archcraft-adjustment-mirrorlist"
+arch=('any')
+license=('MIT')
+makedepends=()
+depends=()
+conflicts=()
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+
+prepare () {
+	cp -af ../asset/. "${srcdir}"
+}
+
+
+package () {
+
+	## Path
+	#local sys_etc_dir_path="${pkgdir}/etc"
+	#local sys_share_dir_path="${pkgdir}/usr/share/${pkgname}"
+
+	## prepare share dir
+	#mkdir -p "$sys_etc_dir_path"
+	#mkdir -p "$sys_share_dir_path"
+
+
+	## install mirrorlist
+	## /etc/pacman.d/archcraft-adjustment-mirrorlist
+	install -Dm644 "${srcdir}/etc/pacman.d/${pkgname}" "${pkgdir}/etc/pacman.d/${pkgname}"
+
+}
