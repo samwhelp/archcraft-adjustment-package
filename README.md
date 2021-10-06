@@ -25,7 +25,7 @@
 
 | Source Package | Package |
 | --- | --- |
-| [archcraft-modeling-fcitx-chewing](core/archcraft-modeling-fcitx-chewing) | [0.1-1](https://samwhelp.github.io/archcraft-adjustment-repository/x86_64/archcraft-modeling-fcitx-chewing-0.1-1-any.pkg.tar.zst) |
+| [archcraft-modeling-fcitx-chewing](core/im/archcraft-modeling-fcitx-chewing) | [0.1-1](https://samwhelp.github.io/archcraft-adjustment-repository/x86_64/archcraft-modeling-fcitx-chewing-0.1-1-any.pkg.tar.zst) |
 
 
 
