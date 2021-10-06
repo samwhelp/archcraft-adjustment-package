@@ -111,7 +111,7 @@ mod_package_make_finish () {
 
 mod_package_make_copy_to_repository () {
 
-	local repository_dir_path="../../../archcraft-adjustment-repository/x86_64"
+	local repository_dir_path="../../../../archcraft-adjustment-repository/x86_64"
 
 	if ! [ -d "${repository_dir_path}" ]; then
 		return
