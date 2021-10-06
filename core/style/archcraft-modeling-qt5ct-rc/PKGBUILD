@@ -1,0 +1,68 @@
+
+##
+## * https://wiki.archlinux.org/title/Creating_packages
+## * https://wiki.archlinux.org/title/Arch_User_Repository
+## * https://archlinux.org/groups/x86_64/base-devel/
+## * https://wiki.archlinux.org/title/pacman
+## * https://wiki.archlinux.org/title/makepkg
+## * https://wiki.archlinux.org/title/PKGBUILD
+## * https://wiki.archlinux.org/title/Arch_package_guidelines
+##
+
+pkgname=archcraft-modeling-qt5ct-rc
+pkgver=0.1
+pkgrel=1
+pkgdesc="Archcraft Adjustment Qt5ct Rc"
+url="https://github.com/samwhelp/archcraft-adjustment-package/tree/main/core/style/archcraft-modeling-qt5ct-rc"
+arch=('any')
+license=('MIT')
+makedepends=()
+depends=()
+conflicts=()
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+
+prepare () {
+
+	return 0
+
+	cp -af ../asset/. "${srcdir}"
+}
+
+
+package () {
+
+	##
+	## Path
+	##
+
+	#local sys_etc_dir_path="${pkgdir}/etc"
+	#local sys_share_dir_path="${pkgdir}/usr/share/${pkgname}"
+	#local sys_skel_dir_path="${sys_etc_dir_path}/skel"
+
+	##
+	## Prepare Dir
+	##
+
+	#mkdir -p "$sys_etc_dir_path"
+	#mkdir -p "$sys_share_dir_path"
+
+
+	#install -dm755 "${pkgdir}/etc/skel"
+
+	# /etc/skel/.config/qt5ct-3.0
+	install -dm755 "${pkgdir}/etc/skel/.config/qt5ct"
+
+	##
+	## Main Config
+	##
+
+	##
+	## gruvbox-dark
+	##
+
+	cd "${pkgdir}/etc/skel/.config/qt5ct"
+	## /etc/skel/.config/qt5ct/qt5ct.conf -> ../.local/share/qt5ct-rc-profile/gruvbox-dark/skel/.config/qt5ct/qt5ct.conf
+	ln -sf ../../.local/share/qt5ct-rc-profile/gruvbox-dark/skel/.config/qt5ct/qt5ct.conf qt5ct.conf
+
+}
