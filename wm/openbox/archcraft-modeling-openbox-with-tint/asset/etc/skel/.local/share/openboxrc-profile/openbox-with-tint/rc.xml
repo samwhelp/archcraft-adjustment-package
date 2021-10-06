@@ -2533,20 +2533,31 @@ h l
 		<focus>yes</focus>
 	</application>
 
+<!--
+	<application class="Mousepad" type="normal">
+		<desktop>2</desktop>
+		<focus>yes</focus>
+	</application>
+//-->
+
+<!--
 	<application class="Geany" type="normal">
 		<desktop>2</desktop>
 		<focus>yes</focus>
 	</application>
+//-->
 
 	<application class="Gedit" type="normal">
 		<desktop>2</desktop>
 		<focus>yes</focus>
 	</application>
 
+<!--
 	<application class="Leafpad" type="normal">
 		<desktop>2</desktop>
 		<focus>yes</focus>
 	</application>
+//-->
 
 	<application class="kate" type="normal">
 		<desktop>2</desktop>
