@@ -45,6 +45,9 @@ package () {
 	#mkdir -p "$sys_share_dir_path"
 
 
+	#install -dm755 "${pkgdir}/etc/skel"
+
+
 	##
 	## Main Config
 	##
