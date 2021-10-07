@@ -12,7 +12,7 @@
 pkgname=archcraft-tool-openbox-rc-ctrl
 pkgver=0.1
 pkgrel=1
-pkgdesc="Archcraft Adjustment Sakura"
+pkgdesc="Archcraft Adjustment / Openbox / Rc Ctrl"
 url="https://github.com/samwhelp/archcraft-adjustment-package/tree/main/wm/openbox/archcraft-tool-openbox-rc-ctrl"
 arch=('any')
 license=('MIT')
