@@ -54,8 +54,14 @@ mod_install_bin_up () {
 	echo "install -Dm644 $THE_PLAN_DIR_PATH/menu.xml $HOME/.config/openbox/menu.xml"
 	install -Dm644 "$THE_PLAN_DIR_PATH/menu.xml" "$HOME/.config/openbox/menu.xml"
 
+	echo "install -Dm644 $THE_PLAN_DIR_PATH/environment $HOME/.config/openbox/environment"
+	install -Dm644 "$THE_PLAN_DIR_PATH/environment" "$HOME/.config/openbox/environment"
+
 	echo "install -Dm755 $THE_PLAN_DIR_PATH/autostart $HOME/.config/openbox/autostart"
 	install -Dm755 "$THE_PLAN_DIR_PATH/autostart" "$HOME/.config/openbox/autostart"
+
+	echo "install -Dm755 $THE_PLAN_DIR_PATH/up.sh $HOME/.config/openbox/up.sh"
+	install -Dm755 "$THE_PLAN_DIR_PATH/up.sh" "$HOME/.config/openbox/up.sh"
 
 	echo "install -Dm755 $THE_BIN_DIR_PATH/openbox-up $HOME/.config/openbox/bin/openbox-up"
 	install -Dm755 "$THE_BIN_DIR_PATH/openbox-up" "$HOME/.config/openbox/bin/openbox-up"
