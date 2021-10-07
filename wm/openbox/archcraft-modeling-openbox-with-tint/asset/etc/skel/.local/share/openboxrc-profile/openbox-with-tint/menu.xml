@@ -29,20 +29,23 @@
 	<item label="Web Browser" icon="/usr/share/icons/hicolor/16x16/apps/firefox.png" >
 		<action name="Execute"><execute>firefox</execute></action>
 	</item>
-	<item label="Terminal" icon="/usr/share/icons/gnome/24x24/apps/utilities-terminal.png" >
+	<item label="Terminal" icon="/usr/share/icons/Numix-Apps/48/apps/terminal.svg" >
 		<action name="Execute"><execute>sakura -m</execute></action>
 	</item>
-	<item label="Text Editor" icon="/usr/share/icons/gnome/24x24/apps/text-editor.png" >
+	<item label="Text Editor" icon="/usr/share/icons/Numix-Apps/48/apps/text-editor.svg" >
 		<action name="Execute"><execute>mousepad</execute></action>
 	</item>
 	<separator />
 	<item label="File Manager (Thunar)" icon="/usr/share/icons/Numix/24/actions/gtk-open.svg" >
 		<action name="Execute"><execute>thunar</execute></action>
 	</item>
-	<item label="Terminal (Xfce4)" icon="/usr/share/icons/gnome/24x24/apps/utilities-terminal.png" >
+	<item label="Terminal (Xfce4)" icon="/usr/share/icons/Numix-Apps/48/apps/terminal.svg" >
 		<action name="Execute"><execute>xfce4-terminal</execute></action>
 	</item>
-	<item label="Volume Control" icon="/usr/share/icons/Papirus-Dark/24x24/apps/preferences-sound.svg" >
+	<item label="Text Editor (Leafpad)" icon="/usr/share/icons/Numix-Apps/48/apps/text-editor.svg" >
+		<action name="Execute"><execute>leafpad</execute></action>
+	</item>
+	<item label="Volume Control" icon="/usr/share/icons/Numix-Apps/48/apps/preferences-sound.svg" >
 		<action name="Execute"><execute>mate-volume-control</execute></action>
 	</item>
 	<item label="FileZilla" icon="/usr/share/pixmaps/filezilla.png" >
@@ -50,23 +53,29 @@
 	</item>
 	<separator />
 	<menu id="more-app-menu" label="More" icon="/usr/share/icons/Numix/16/categories/application-community.svg">
-		<item label="tilix-quake" icon="/usr/share/icons/gnome/24x24/apps/utilities-terminal.png" >
+		<item label="tilix-quake" icon="/usr/share/icons/Numix-Apps/48/apps/terminal.svg" >
 			<action name="Execute"><execute>tilix --quake</execute></action>
 		</item>
-		<item label="gnome-terminal" icon="/usr/share/icons/gnome/24x24/apps/utilities-terminal.png">
+		<item label="gnome-terminal" icon="/usr/share/icons/Numix-Apps/48/apps/terminal.svg">
 			<action name="Execute"><execute>gnome-terminal</execute></action>
 		</item>
-		<item label="qterminal" icon="/usr/share/icons/gnome/24x24/apps/utilities-terminal.png">
+		<item label="qterminal" icon="/usr/share/icons/Numix-Apps/48/apps/terminal.svg">
 			<action name="Execute"><execute>qterminal</execute></action>
 		</item>
-		<item label="atom" icon="/usr/share/pixmaps/atom.png">
+		<item label="atom" icon="/usr/share/icons/hicolor/24x24/apps/atom.png">
 			<action name="Execute"><execute>atom</execute></action>
 		</item>
-		<item label="code" icon="/usr/share/pixmaps/code.png">
+		<item label="code" icon="/usr/share/icons/Numix-Apps/48/apps/text-editor.svg">
 			<action name="Execute"><execute>code</execute></action>
 		</item>
-		<item label="gedit" icon="/usr/share/icons/gnome/24x24/apps/text-editor.png">
+		<item label="gedit" icon="/usr/share/icons/Numix-Apps/48/apps/text-editor.svg">
 			<action name="Execute"><execute>gedit</execute></action>
+		</item>
+		<item label="leafpad" icon="/usr/share/icons/Numix-Apps/48/apps/text-editor.svg">
+			<action name="Execute"><execute>leafpad</execute></action>
+		</item>
+		<item label="geany" icon="/usr/share/icons/Numix-Apps/48/apps/text-editor.svg">
+			<action name="Execute"><execute>geany</execute></action>
 		</item>
 		<item label="nautilus" icon="/usr/share/icons/Numix/24/actions/gtk-open.svg">
 			<action name="Execute"><execute>nautilus</execute></action>
@@ -82,12 +91,6 @@
 		</item>
 		<item label="chromium-browser" icon="/usr/share/icons/hicolor/24x24/apps/chromium-browser.png">
 			<action name="Execute"><execute>chromium-browser</execute></action>
-		</item>
-		<item label="qps" icon="/usr/share/icons/hicolor/48x48/apps/qps.png">
-			<action name="Execute"><execute>qps</execute></action>
-		</item>
-		<item label="synaptic" icon="/usr/share/icons/breeze-dark/apps/48/synaptic.svg">
-			<action name="Execute"><execute>sudo synaptic</execute></action>
 		</item>
 		<item label="k3b" icon="/usr/share/icons/hicolor/48x48/apps/k3b.png">
 			<action name="Execute"><execute>k3b</execute></action>

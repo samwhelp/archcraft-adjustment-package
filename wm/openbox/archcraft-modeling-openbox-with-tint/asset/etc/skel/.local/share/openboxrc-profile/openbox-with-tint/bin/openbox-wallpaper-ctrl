@@ -50,7 +50,8 @@ mod_wallpaper_default () {
 	local default_file_path="$HOME/Pictures/Wallpaper/default.png"
 
 	if ! [ -f "$default_file_path" ]; then
-		default_file_path="/usr/share/backgrounds/keyboards.jpg"
+		#default_file_path="/usr/share/backgrounds/keyboards.jpg"
+		default_file_path="/usr/share/backgrounds/forest.jpg"
 	fi
 
 	util_error_echo "$default_file_path"
