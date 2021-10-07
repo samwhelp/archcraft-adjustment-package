@@ -1,0 +1,130 @@
+
+##
+## * https://wiki.archlinux.org/title/Creating_packages
+## * https://wiki.archlinux.org/title/Arch_User_Repository
+## * https://archlinux.org/groups/x86_64/base-devel/
+## * https://wiki.archlinux.org/title/pacman
+## * https://wiki.archlinux.org/title/makepkg
+## * https://wiki.archlinux.org/title/PKGBUILD
+## * https://wiki.archlinux.org/title/Arch_package_guidelines
+##
+
+pkgname=archcraft-appearance-gtk-theme-numix-blue
+pkgver=0.1
+pkgrel=1
+pkgdesc="Archcraft Adjustment / Appearance / Gtk Theme / NumixBlue"
+url="https://github.com/samwhelp/archcraft-adjustment-package/tree/main/theme/numix/archcraft-appearance-gtk-theme-numix-blue"
+arch=('any')
+license=('MIT')
+makedepends=()
+depends=()
+conflicts=()
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+
+##
+## ## Source
+##
+## * http://tw.archive.ubuntu.com/ubuntu/pool/universe/u/ubuntustudio-look/
+## * http://tw.archive.ubuntu.com/ubuntu/pool/universe/u/ubuntustudio-look/numix-blue-gtk-theme_20.04.1_all.deb
+## * http://tw.archive.ubuntu.com/ubuntu/pool/universe/u/ubuntustudio-look/numix-blue-gtk-theme_20.10.5_all.deb
+##
+## ## Note
+##
+## * https://samwhelp.github.io/note-about-manjaro/read/theme/source/numix.html
+## * https://github.com/samwhelp/note-about-manjaro/tree/gh-pages/_demo/project/style-xfce/style-theme/theme-numix
+##
+
+
+
+
+prepare () {
+
+	theme_asset_download_gtk_theme_numix_blue
+
+	return 0
+
+	cp -af ../asset/. "${srcdir}"
+}
+
+
+package () {
+
+
+	##
+	## Path
+	##
+
+	#echo "${pkgdir}"
+	#echo "${srcdir}"
+
+	#local sys_etc_dir_path="${pkgdir}/etc"
+	#local sys_share_dir_path="${pkgdir}/usr/share/${pkgname}"
+	#local sys_skel_dir_path="${sys_etc_dir_path}/skel"
+
+
+	##
+	## Prepare Dir
+	##
+
+	#mkdir -p "$sys_etc_dir_path"
+	#mkdir -p "$sys_share_dir_path"
+
+	install -dm755 "${pkgdir}/usr/share/themes"
+
+
+	##
+	## Main Content
+	##
+
+	## /usr/share/themes/NumixBlue
+	cp -af "${srcdir}/asset/numix-blue-gtk-theme/numix-blue-gtk-theme/usr/share/themes/NumixBlue" "${pkgdir}/usr/share/themes/NumixBlue"
+
+
+	return 0
+}
+
+
+################################################################################
+### Head: theme
+##
+
+theme_asset_download_gtk_theme_numix_blue () {
+
+	##
+	## https://github.com/samwhelp/note-about-manjaro/blob/gh-pages/_demo/project/style-xfce/style-theme/theme-numix/asset-install.sh
+	##
+
+	## pwd: "${srcdir}"
+
+
+	## create dir
+	mkdir -p 'asset/numix-blue-gtk-theme'
+
+	cd 'asset/numix-blue-gtk-theme'
+
+	## download
+
+	wget -c 'http://tw.archive.ubuntu.com/ubuntu/pool/universe/u/ubuntustudio-look/numix-blue-gtk-theme_20.04.1_all.deb'
+	#wget -c 'http://tw.archive.ubuntu.com/ubuntu/pool/universe/u/ubuntustudio-look/numix-blue-gtk-theme_20.10.5_all.deb'
+
+
+	## extract
+	## https://github.com/samwhelp/note-about-deb/tree/gh-pages/_demo/deb/concept/start
+	ar x 'numix-blue-gtk-theme_20.04.1_all.deb'
+
+	mkdir -p 'numix-blue-gtk-theme'
+
+	tar -p -C 'numix-blue-gtk-theme' -xf 'data.tar.xz'
+
+
+	## back: "${srcdir}"
+	cd ../..
+
+
+}
+
+
+##
+### Tail: theme
+################################################################################
