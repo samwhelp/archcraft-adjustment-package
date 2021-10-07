@@ -1,0 +1,1601 @@
+#!/usr/bin/env bash
+
+
+################################################################################
+### Head: Url
+##
+
+# * https://github.com/samwhelp/skel-project-plan/blob/gh-pages/demo/sh/standalone/bin/demo-ctrl
+# * https://github.com/samwhelp/note-about-fzf/tree/gh-pages/_demo/project/wallpaper-select/wallpaper-select-feh
+
+##
+### Tail: Url
+################################################################################
+
+
+################################################################################
+### Head: Init
+##
+set -e ## for Exit immediately if a command exits with a non-zero status.
+THE_BASE_DIR_PATH="$(cd -- "$(dirname -- "$0")" ; pwd)"
+THE_CMD_FILE_NAME="$(basename "$0")"
+##
+### Tail: Init
+################################################################################
+
+
+################################################################################
+### Head: Util / Debug
+##
+
+util_debug_echo () {
+	if is_debug; then
+		echo "$@" 1>&2
+	fi
+}
+
+util_error_echo () {
+	echo "$@" 1>&2
+}
+
+##
+### Head: Util / Debug
+################################################################################
+
+
+################################################################################
+### Head: Base
+##
+
+## THE_BASE_DIR_PATH="$(cd -- "$(dirname -- "$0")" ; pwd)"
+
+find_dir_path () {
+	if ! [ -d "$(dirname -- "$1")" ]; then
+		dirname -- "$1"
+		return 1
+	fi
+	echo "$(cd -- "$(dirname -- "$1")" ; pwd)"
+}
+
+## THIS_BASE_DIR_PATH="$(find_dir_path "$0")"
+
+## $ export DEBUG_WALLPAPER_SELECT=true
+is_debug () {
+	if [ "$DEBUG_WALLPAPER_SELECT" = "true" ]; then
+		return 0
+	fi
+
+	return 1
+}
+
+is_not_debug () {
+	! is_debug
+}
+
+base_var_init () {
+
+	#THE_PLAN_DIR_PATH=$(find_dir_path "$THE_BASE_DIR_PATH/../.")
+	THE_PLAN_DIR_PATH=$(find_dir_path "$THE_BASE_DIR_PATH/.")
+
+	THE_CMD_VERSION='0.1'
+
+	THE_CMD_DIR_PATH="${THE_BASE_DIR_PATH}"
+
+	if [ "none${THE_CMD_FILE_NAME}" = 'none' ]; then
+		THE_CMD_FILE_NAME="wallpaper-select-feh"
+	fi
+
+	THE_CMD_FILE_PATH="${THE_CMD_DIR_PATH}/$THE_CMD_FILE_NAME"
+
+	## https://github.com/samwhelp/play-ubuntu-20.04-plan/blob/master/project/wallpaper-select/wallpaper-select-feh/wallpaper-select-feh
+	THE_SELF_UPDATE_URL='https://raw.githubusercontent.com/samwhelp/note-about-fzf/gh-pages/_demo/project/wallpaper-select/wallpaper-select-feh/wallpaper-select-feh'
+
+
+	THE_TMP_DIR_PATH="/tmp"
+
+
+	THE_ASSET_DIR_NAME="asset"
+	THE_ASSET_DIR_PATH="$THE_PLAN_DIR_PATH/$THE_ASSET_DIR_NAME"
+
+	THE_VAR_DIR_NAME="var"
+	THE_VAR_DIR_PATH="$THE_PLAN_DIR_PATH/$THE_VAR_DIR_NAME"
+
+	THE_PROFILE_DIR_NAME=".${THE_CMD_FILE_NAME}-profile"
+	THE_PROFILE_DIR_PATH="$HOME/$THE_PROFILE_DIR_NAME"
+
+	THE_PROJECT_DIR_NAME="${THE_CMD_FILE_NAME}"
+	THE_PROJECT_DIR_PATH="$HOME/.local/share/$THE_PROJECT_DIR_NAME"
+
+	THE_CONFIG_DIR_NAME="${THE_CMD_FILE_NAME}"
+	THE_CONFIG_DIR_PATH="$HOME/.config/$THE_CONFIG_DIR_NAME"
+
+	THE_CACHE_DIR_NAME="${THE_CMD_FILE_NAME}"
+	THE_CACHE_DIR_PATH="$HOME/.cache/$THE_CACHE_DIR_NAME"
+
+
+	## ueberzug
+	THE_UEBERZUG_CTRL="/tmp/ueberzug-ctrl"
+
+	## feh
+	THE_FEH_BG_OPTION_LIST="center fill max scale tile"
+
+	## wallpaper
+	THE_WALLPAPER_DEFAULT_DIR_PATH="/usr/share/backgrounds"
+	THE_WALLPAPER_XFCE_DIR_PATH="/usr/share/backgrounds/xfce"
+	THE_WALLPAPER_FAVORITE_DIR_PATH="$HOME/Pictures/Wallpaper"
+
+	THE_WALLPAPER_DEFAULT_FILE_PATH="$THE_WALLPAPER_FAVORITE_DIR_PATH/default.png"
+	THE_WALLPAPER_FAVORITE_FILE_PATH="$THE_WALLPAPER_FAVORITE_DIR_PATH/favorite.png"
+
+
+}
+
+base_var_dump () {
+
+	is_not_debug && return 0
+
+	util_debug_echo
+	util_debug_echo "################################################################################"
+	util_debug_echo "### Head: var_dump"
+	util_debug_echo "##"
+	util_debug_echo "#"
+
+
+	util_debug_echo "THE_PLAN_DIR_PATH=$THE_PLAN_DIR_PATH"
+
+	util_debug_echo "THE_CMD_FILE_NAME=$THE_CMD_FILE_NAME"
+	util_debug_echo "THE_CMD_FILE_PATH=$THE_CMD_FILE_PATH"
+	util_debug_echo "THE_CMD_DIR_PATH=$THE_CMD_DIR_PATH"
+
+	util_debug_echo "THE_SELF_UPDATE_URL=$THE_SELF_UPDATE_URL"
+
+
+	util_debug_echo "THE_TMP_DIR_PATH=$THE_TMP_DIR_PATH"
+
+
+	util_debug_echo "THE_ASSET_DIR_NAME=$THE_ASSET_DIR_NAME"
+	util_debug_echo "THE_ASSET_DIR_PATH=$THE_ASSET_DIR_PATH"
+
+	util_debug_echo "THE_VAR_DIR_NAME=$THE_VAR_DIR_NAME"
+	util_debug_echo "THE_VAR_DIR_PATH=$THE_VAR_DIR_PATH"
+
+
+
+
+	util_debug_echo "THE_PROFILE_DIR_NAME=$THE_PROFILE_DIR_NAME"
+	util_debug_echo "THE_PROFILE_DIR_PATH=$THE_PROFILE_DIR_PATH"
+
+	util_debug_echo "THE_PROJECT_DIR_NAME=$THE_PROJECT_DIR_NAME"
+	util_debug_echo "THE_PROJECT_DIR_PATH=$THE_PROJECT_DIR_PATH"
+
+	util_debug_echo "THE_CONFIG_DIR_NAME=$THE_CONFIG_DIR_NAME"
+	util_debug_echo "THE_CONFIG_DIR_PATH=$THE_CONFIG_DIR_PATH"
+
+	util_debug_echo "THE_CACHE_DIR_NAME=$THE_CACHE_DIR_NAME"
+	util_debug_echo "THE_CACHE_DIR_PATH=$THE_CACHE_DIR_PATH"
+
+
+
+
+	## ueberzug
+	util_debug_echo "THE_UEBERZUG_CTRL=$THE_UEBERZUG_CTRL"
+
+	## feh
+	util_debug_echo "THE_FEH_BG_OPTION_LIST=$THE_FEH_BG_OPTION_LIST"
+
+	## wallpaper
+	util_debug_echo "THE_WALLPAPER_DEFAULT_DIR_PATH=$THE_WALLPAPER_DEFAULT_DIR_PATH"
+	util_debug_echo "THE_WALLPAPER_FAVORITE_DIR_PATH=$THE_WALLPAPER_FAVORITE_DIR_PATH"
+	util_debug_echo "THE_WALLPAPER_XFCE_DIR_PATH=$THE_WALLPAPER_XFCE_DIR_PATH"
+
+	util_debug_echo "THE_WALLPAPER_DEFAULT_FILE_PATH=$THE_WALLPAPER_DEFAULT_FILE_PATH"
+	util_debug_echo "THE_WALLPAPER_FAVORITE_FILE_PATH=$THE_WALLPAPER_FAVORITE_FILE_PATH"
+
+
+
+
+	util_debug_echo "#"
+	util_debug_echo "##"
+	util_debug_echo "### Tail: var_dump"
+	util_debug_echo "################################################################################"
+	util_debug_echo
+}
+
+
+base_var_init
+
+base_var_dump
+
+##
+### Tail: Base
+################################################################################
+
+
+################################################################################
+### Head: Util / Command
+##
+
+is_function_exist () {
+	if type -p "$1" > /dev/null; then
+		return 0
+	else
+		return 1
+	fi
+}
+
+# is_command_exist () {
+# 	if command -v "$1" > /dev/null; then
+# 		return 0
+# 	else
+# 		return 1
+# 	fi
+# }
+
+is_command_exist () {
+	if [ -x "$(command -v $1)" ]; then
+		return 0
+	else
+		return 1
+	fi
+}
+
+##
+### Tail: Util / Command
+################################################################################
+
+
+################################################################################
+### Head: Util / Process
+##
+
+util_stop_all ()  {
+
+	if is_command_exist 'pkill'; then
+		util_stop_all_by_pkill "$1"
+		return 0
+	fi
+
+	if is_command_exist 'killall'; then
+		util_stop_all_by_killall "$1"
+		return 0
+	fi
+
+	return 0
+}
+
+util_stop_all_by_pkill () {
+
+	if pkill "$1"; then
+		return 0
+	fi
+
+	return 0
+}
+
+util_stop_all_by_killall () {
+
+	if killall -q -9 "$1"; then
+		return 0
+	fi
+
+	return 0
+
+}
+
+##
+### Tail: Util / Process
+################################################################################
+
+
+################################################################################
+### Head: Util / SubCmd
+##
+
+sub_cmd_find_function_name () {
+	echo "sub_run_$1"
+}
+
+##
+### Tail: Util / SubCmd
+################################################################################
+
+
+################################################################################
+### Head: Util / SelfUpdate
+##
+
+util_make_bin_dir () {
+	mkdir -p "$HOME/bin"
+}
+
+util_make_tmp_dir () {
+	THE_TMP_DIR_PATH="/tmp/tmp.$$.$RANDOM"
+	mkdir "$THE_TMP_DIR_PATH"
+}
+
+util_self_update_download_to_tmp_dir () {
+
+	local tmp_file_path="${THE_TMP_DIR_PATH}/${THE_CMD_FILE_NAME}"
+
+	wget -c "$THE_SELF_UPDATE_URL" -O "$tmp_file_path"
+
+}
+
+util_self_update_install_from_tmp_dir () {
+
+	local tmp_file_path="${THE_TMP_DIR_PATH}/${THE_CMD_FILE_NAME}"
+
+	echo "install -m 755 $tmp_file_path $THE_CMD_FILE_PATH"
+	install -m 755 "$tmp_file_path" "$THE_CMD_FILE_PATH"
+
+}
+
+util_self_update_check_cmd_exists () {
+
+	if ! [ -f "$THE_CMD_FILE_PATH" ]; then ## file not exists
+		return 0
+	fi
+
+
+	echo "File is exists:" "$THE_CMD_FILE_PATH"
+	echo
+
+	echo "Try to backup:"
+	echo
+
+	local now=$(date +%Y%m%d_%s)
+	local bak_dir_path="${THE_CMD_FILE_PATH}.bak"
+	local bak_file_path="${bak_dir_path}/${THE_CMD_FILE_NAME}.bak.$now"
+
+	mkdir -p $bak_dir_path
+
+	mv -v "$THE_CMD_FILE_PATH" "${bak_file_path}"
+
+	if [ "$?" != "0" ]; then
+		echo
+		echo 'Backup Failure!'
+		exit 1
+	fi
+
+	echo
+
+	return 0
+}
+
+util_self_update_print_version () {
+	echo
+	echo "Current Version:"
+
+	"$THE_CMD_FILE_PATH" version
+}
+
+util_self_update () {
+
+	util_make_bin_dir
+
+	util_make_tmp_dir
+
+	util_self_update_download_to_tmp_dir
+
+	util_self_update_check_cmd_exists && util_self_update_install_from_tmp_dir
+
+
+	util_self_update_print_version
+
+}
+
+
+main_version () {
+	echo $THE_CMD_VERSION
+}
+
+util_self_actions () {
+	grep '^sub_run' "${THE_CMD_FILE_PATH}" | cut -d ' ' -f 1 | awk -F 'sub_run_' '{print $2}' | sort -u
+}
+
+##
+### Tail: Util / SelfUpdate
+################################################################################
+
+################################################################################
+### Head: Sys / Fzf
+##
+
+
+sys_fzf_wallpaper_preview_text () {
+
+	local file_name="$1"
+	local dir_path="$THE_CWD_PATH"
+
+	echo
+	printf "## Info\n"
+	echo
+	printf "File: %s\n" "$file_name"
+	printf "Dir: %s\n" "$dir_path"
+	printf "Path: %s\n" "$dir_path/$file_name"
+	echo
+}
+
+sys_fzf_wallpaper_preview_image_remove () {
+	util_error_echo
+	util_error_echo "## sys_fzf_wallpaper_preview_image_remove"
+
+	local thumb_id="wallpaper"
+
+	{
+		printf '{'
+		printf '"identifier": "%s",' "$thumb_id"
+		printf '"action": "remove"'
+		printf '}\n'
+
+	} > "$THE_UEBERZUG_CTRL"
+}
+
+
+sys_fzf_wallpaper_preview_image () {
+
+	local thumb_dir_path="$THE_CWD_PATH"
+	local thumb_id="wallpaper"
+	local thumb_file_name="$1"
+	local thumb_file_path="$thumb_dir_path/$thumb_file_name"
+	local thumb_x=1
+	local thumb_y=10
+	local thumb_width=15
+	local thumb_height=20
+
+
+
+	{
+		printf '{'
+
+		printf '"identifier": "%s",' "$thumb_id"
+		printf '"path": "%s",' "$thumb_file_path"
+		printf '"x": %d,' "$thumb_x"
+		printf '"y": %d,' "$thumb_y"
+		printf '"width": %d,' "$thumb_width"
+		printf '"height": %d,' "$thumb_height"
+		printf '"scaler": "fit_contain",'
+
+		printf '"action": "add"'
+		printf '}\n'
+
+	} > "$THE_UEBERZUG_CTRL"
+}
+
+
+sys_fzf_wallpaper_preview_main () {
+	sys_fzf_wallpaper_preview_text "$1"
+	sys_fzf_wallpaper_preview_image "$1"
+}
+
+
+##
+### Tail: Sys / Fzf
+################################################################################
+
+################################################################################
+### Head: Sys / Ueberzug
+##
+
+sys_ueberzug_ipc_start () {
+
+	util_error_echo
+	util_error_echo '## sys_ueberzug_ipc_start'
+
+	## THE_UEBERZUG_CTRL="/tmp/ueberzug-ctrl"
+
+	if [ -e "$THE_UEBERZUG_CTRL" ]; then
+		util_error_echo "rm -f $THE_UEBERZUG_CTRL"
+		rm -f "$THE_UEBERZUG_CTRL"
+		#return 0
+	fi
+
+	util_error_echo "mkfifo $THE_UEBERZUG_CTRL"
+	mkfifo "$THE_UEBERZUG_CTRL"
+
+	if [ -e "$THE_UEBERZUG_CTRL" ]; then
+		export THE_UEBERZUG_CTRL
+		return 0
+	else
+		return 1
+	fi
+
+}
+
+sys_ueberzug_ipc_stop () {
+	util_error_echo
+	util_error_echo '## sys_ueberzug_ipc_stop'
+
+	if [ -e "$THE_UEBERZUG_CTRL" ]; then
+		util_error_echo "rm -f $THE_UEBERZUG_CTRL"
+		rm -f "$THE_UEBERZUG_CTRL"
+		#return 0
+	fi
+}
+
+
+sys_ueberzug_app_start () {
+
+	util_error_echo
+	util_error_echo '## sys_ueberzug_app_start'
+
+	util_error_echo "ueberzug layer --silent --parser json < $THE_UEBERZUG_CTRL &"
+	ueberzug layer --silent --parser json < "$THE_UEBERZUG_CTRL" &
+
+	exec 3>"$THE_UEBERZUG_CTRL"
+}
+
+sys_ueberzug_app_stop () {
+	util_error_echo
+	util_error_echo '## sys_ueberzug_app_stop'
+	exec 3>&-
+}
+
+
+sys_ueberzug_ses_start () {
+	sys_ueberzug_ipc_start && sys_ueberzug_app_start
+}
+
+sys_ueberzug_ses_stop () {
+	sys_ueberzug_app_stop
+	sys_ueberzug_ipc_stop
+}
+
+##
+### Tail: Sys / Ueberzug
+################################################################################
+
+
+################################################################################
+### Head: Sys / Feh
+##
+
+sys_feh_find_bg_option_list () {
+
+	local list="$THE_FEH_BG_OPTION_LIST"
+
+	for allow in $list; do
+		echo "$allow"
+	done
+
+}
+
+sys_feh_find_bg_option () {
+	local option="$1"
+	local list="$THE_FEH_BG_OPTION_LIST"
+
+	for allow in $list; do
+		if [ "select_$allow" = "select_$option" ]; then
+			echo "--bg-$option"
+			return
+		fi
+	done
+
+	echo '--bg-scale'
+}
+
+
+##
+### Tail: Sys / Feh
+################################################################################
+
+
+################################################################################
+### Head: Sys / Wallpaper
+##
+
+sys_wallpaper_check_file_exist () {
+
+	local target="$1"
+
+	if [ "none$target" = "none" ]; then
+		target="$THE_WALLPAPER_DEFAULT_FILE_PATH"
+	fi
+
+	if [ -f "$target" ]; then
+		echo "$target"
+		return 0
+	fi
+
+	return 1
+
+}
+
+
+sys_wallpaper_check_dir_exist () {
+
+	local target="$1"
+
+	if [ "none$target" = "none" ]; then
+		##target="/usr/share/backgrounds"
+		##target="."
+		target=$(pwd)
+	fi
+
+	if [ -d "$target" ]; then
+		echo "$target"
+		return 0
+	fi
+
+	return 1
+
+}
+
+sys_wallpaper_check_target_dir_exist () {
+
+	local target="$1"
+
+	if [ "none$target" = "none" ]; then
+		return 1
+	fi
+
+	if [ -d "$target" ]; then
+		echo "$target"
+		return 0
+	fi
+
+	return 1
+
+}
+
+
+sys_wallpaper_init_target_dir () {
+
+	local target="$1"
+
+	if [ "none$target" = "none" ]; then
+		return 0
+	fi
+
+	if [ -f "$target" ]; then
+		return 0
+	fi
+
+	mkdir -p "$target"
+
+}
+
+
+sys_wallpaper_select_cd_dir () {
+	#echo "sys_wallpaper_select_cd_dir"
+	#echo "$@"
+
+	## wallpaper-select-feh list
+	## wallpaper-select-feh list /usr/share/backgrounds
+	local file_name=''
+
+	local choose="$1"
+	local target
+
+
+	if ! target="$(sys_wallpaper_check_target_dir_exist $choose)"; then
+		util_error_echo "## Dir Not Exist: "
+		util_error_echo
+		util_error_echo "$choose"
+		return 1
+	fi
+
+
+	cd "$target"
+
+}
+
+sys_wallpaper_select_exec_cd_dir () {
+	#echo "sys_wallpaper_select_cd_dir"
+	#echo "$@"
+
+	## wallpaper-select-feh list
+	## wallpaper-select-feh list /usr/share/backgrounds
+	local file_name=''
+
+	local choose="$1"
+	local target
+
+
+	if ! target="$(sys_wallpaper_check_target_dir_exist $choose)"; then
+		util_error_echo "## Dir Not Exist: "
+		util_error_echo
+		util_error_echo "$choose"
+		return 1
+	fi
+
+	## https://unix.stackexchange.com/questions/27139/script-to-change-current-directory-cd-pwd
+
+	cd "$target"
+
+	exec bash
+
+	##exec $SHELL
+}
+
+
+sys_wallpaper_select_list_by_dir () {
+	#echo "sys_wallpaper_select_list_by_dir"
+	#echo "$@"
+
+	## wallpaper-select-feh list
+	## wallpaper-select-feh list /usr/share/backgrounds
+	local file_name=''
+
+	local choose="$1"
+	local target
+
+
+	if ! target="$(sys_wallpaper_check_dir_exist $choose)"; then
+		util_error_echo "## Dir Not Exist: "
+		util_error_echo
+		util_error_echo "$choose"
+		return 1
+	fi
+
+	cd "$target"
+
+
+	for file_name in $(ls ./ -1); do
+	#for name in *; do
+		if [ -d "$file_name" ]; then
+			continue;
+		fi
+
+		echo $file_name;
+	done
+
+	cd "$OLDPWD"
+
+}
+
+
+##
+### Tail: Sys / Wallpaper
+################################################################################
+
+
+################################################################################
+### Head: Model mod_wallpaper_select_manjaro_prepare
+##
+
+mod_wallpaper_select_manjaro_prepare () {
+	#echo "mod_wallpaper_select_manjaro_prepare"
+	#echo "$@"
+
+	# wallpaper-select-feh manjaro_prepare
+
+	mod_wallpaper_select_manjaro_prepare_install_package
+
+}
+
+
+mod_wallpaper_select_manjaro_prepare_install_package () {
+
+	util_error_echo "pamac install feh fzf ueberzug"
+	pamac install feh fzf ueberzug
+
+}
+
+##
+## * https://discover.manjaro.org/packages/feh
+## * https://discover.manjaro.org/packages/fzf
+## * https://archlinux.org/packages/extra/x86_64/feh/
+## * https://archlinux.org/packages/community/x86_64/fzf/
+## * https://archlinux.org/packages/community/x86_64/ueberzug/
+##
+
+##
+### Tail: Model mod_wallpaper_select_manjaro_prepare
+################################################################################
+
+
+################################################################################
+### Head: Model mod_wallpaper_select_ubuntu_prepare
+##
+
+mod_wallpaper_select_ubuntu_prepare () {
+	#echo "mod_wallpaper_select_ubuntu_prepare"
+	#echo "$@"
+
+	# wallpaper-select-feh ubuntu_prepare
+
+	mod_wallpaper_select_ubuntu_prepare_install_package
+
+}
+
+
+mod_wallpaper_select_ubuntu_prepare_install_package () {
+
+	util_error_echo "Todo: mod_wallpaper_select_ubuntu_prepare_install_package"
+
+	#echo "sudo apt-get install feh fzf ueberzug"
+	#sudo apt-get install feh fzf ueberzug
+
+}
+
+##
+## * https://discover.ubuntu.org/packages/feh
+## * https://discover.ubuntu.org/packages/fzf
+## * https://archlinux.org/packages/extra/x86_64/feh/
+## * https://archlinux.org/packages/community/x86_64/fzf/
+## * https://archlinux.org/packages/community/x86_64/ueberzug/
+##
+
+##
+### Tail: Model mod_wallpaper_select_ubuntu_prepare
+################################################################################
+
+
+################################################################################
+### Head: Model mod_wallpaper_select_cd_default
+##
+
+mod_wallpaper_select_cd_default () {
+	#echo "mod_wallpaper_select_cd_default"
+	#echo "$@"
+
+	# wallpaper-select-feh cd_default
+
+	sys_wallpaper_select_exec_cd_dir "$THE_WALLPAPER_DEFAULT_DIR_PATH"
+
+}
+
+##
+### Tail: Model mod_wallpaper_select_cd_default
+################################################################################
+
+
+################################################################################
+### Head: Model mod_wallpaper_select_cd_favorite
+##
+
+mod_wallpaper_select_cd_favorite () {
+	#echo "mod_wallpaper_select_cd_favorite"
+	#echo "$@"
+
+	# wallpaper-select-feh cd_favorite
+
+	sys_wallpaper_init_target_dir "$THE_WALLPAPER_FAVORITE_DIR_PATH"
+
+	sys_wallpaper_select_exec_cd_dir "$THE_WALLPAPER_FAVORITE_DIR_PATH"
+
+}
+
+##
+### Tail: Model mod_wallpaper_select_cd_favorite
+################################################################################
+
+
+################################################################################
+### Head: Model mod_wallpaper_select_cd_xfce
+##
+
+mod_wallpaper_select_cd_xfce () {
+	#echo "mod_wallpaper_select_cd_xfce"
+	#echo "$@"
+
+	# wallpaper-select-feh cd_xfce
+
+	sys_wallpaper_select_exec_cd_dir "$THE_WALLPAPER_XFCE_DIR_PATH"
+
+}
+
+##
+### Tail: Model mod_wallpaper_select_cd_xfce
+################################################################################
+
+
+################################################################################
+### Head: Model mod_wallpaper_select_path_default
+##
+
+mod_wallpaper_select_path_default () {
+	#echo "mod_wallpaper_select_path_default"
+	#echo "$@"
+
+	# wallpaper-select-feh path_default
+
+	echo "$THE_WALLPAPER_DEFAULT_DIR_PATH"
+
+}
+
+##
+### Tail: Model mod_wallpaper_select_path_default
+################################################################################
+
+
+################################################################################
+### Head: Model mod_wallpaper_select_path_favorite
+##
+
+mod_wallpaper_select_path_favorite () {
+	#echo "mod_wallpaper_select_path_favorite"
+	#echo "$@"
+
+	# wallpaper-select-feh path_favorite
+
+	echo "$THE_WALLPAPER_FAVORITE_DIR_PATH"
+
+}
+
+##
+### Tail: Model mod_wallpaper_select_path_favorite
+################################################################################
+
+
+################################################################################
+### Head: Model mod_wallpaper_select_path_xfce
+##
+
+mod_wallpaper_select_path_xfce () {
+	#echo "mod_wallpaper_select_path_xfce"
+	#echo "$@"
+
+	# wallpaper-select-feh path_xfce
+
+	echo "$THE_WALLPAPER_XFCE_DIR_PATH"
+
+}
+
+##
+### Tail: Model mod_wallpaper_select_path_xfce
+################################################################################
+
+
+################################################################################
+### Head: Model mod_wallpaper_select_shuf
+##
+
+mod_wallpaper_select_shuf () {
+	#echo "mod_wallpaper_select_shuf"
+	#echo "$@"
+
+	##
+	# ## Example:
+	# $ wallpaper-select-feh shuf
+	# $ wallpaper-select-feh shuf /usr/share/backgrounds
+	# $ wallpaper-select-feh shuf ~/Pictures
+	##
+
+	local target_dir_path="$1"
+	local target_file_path="$(mod_wallpaper_select_shuf_file_path $target_dir_path)"
+
+	mod_wallpaper_select_set "$target_file_path"
+}
+
+##
+### Tail: Model mod_wallpaper_select_shuf
+################################################################################
+
+
+################################################################################
+### Head: Model mod_wallpaper_select_shuf_file_path
+##
+
+mod_wallpaper_select_shuf_file_path () {
+	#echo "mod_wallpaper_select_shuf_file_path"
+	#echo "$@"
+
+	##
+	# ## Example:
+	# $ wallpaper-select-feh shuf_file_path
+	# $ wallpaper-select-feh shuf_file_path /usr/share/backgrounds
+	# $ wallpaper-select-feh shuf_file_path ~/Pictures
+	##
+
+	local choose_dir_path="$1"
+	local target_dir_path
+
+	if [ "none" = "none$choose_dir_path" ]; then
+		choose_dir_path="$(pwd)"
+	fi
+
+
+	if ! target_dir_path="$(sys_wallpaper_check_dir_exist $choose_dir_path)"; then
+		util_error_echo
+		util_error_echo "## Dir Not Exist: "
+		util_error_echo
+		util_error_echo "$choose_dir_path"
+		util_error_echo
+		return 1
+	fi
+
+
+	local target_file_name="$(mod_wallpaper_select_list $target_dir_path | shuf -n 1)"
+	local target_file_path="$target_dir_path/$target_file_name"
+
+
+	echo "$target_file_path"
+
+}
+
+##
+### Tail: Model mod_wallpaper_select_shuf_file_path
+################################################################################
+
+
+################################################################################
+### Head: Model mod_wallpaper_select_shuf_favorite
+##
+
+mod_wallpaper_select_shuf_favorite () {
+	mod_wallpaper_select_shuf "$THE_WALLPAPER_FAVORITE_DIR_PATH"
+}
+
+##
+### Tail: Model mod_wallpaper_select_shuf_favorite
+################################################################################
+
+
+################################################################################
+### Head: Model fzf
+##
+
+mod_fzf () {
+	#echo "mod_fzf"
+	#echo "$@"
+
+
+	local choose_dir_path="$1"
+	local target_dir_path
+
+
+	if ! target_dir_path="$(sys_wallpaper_check_dir_exist $choose_dir_path)"; then
+		util_error_echo
+		util_error_echo "## Dir Not Exist: "
+		util_error_echo
+		util_error_echo "$choose_dir_path"
+		util_error_echo
+		return 1
+	fi
+
+
+
+	mod_fzf_ses_start "$target_dir_path"
+
+
+
+}
+
+
+mod_fzf_app_start () {
+
+	if ! is_command_exist 'fzf'; then
+
+		util_error_echo '## Need: fzf'
+		util_error_echo '# * https://github.com/junegunn/fzf'
+		util_error_echo
+		util_error_echo '## Manjaro Install:'
+		util_error_echo '# $ pamac install fzf'
+		util_error_echo
+		util_error_echo '## Ubuntu Install:'
+		util_error_echo '# $ sudo apt-get install fzf'
+		util_error_echo
+
+		return 1
+	fi
+
+
+	local choose_dir_path="$1"
+
+	local PREVIEW_SIDE="left"
+
+	#export THE_CWD_PATH="$(pwd)"
+
+
+	export THE_CWD_PATH="$choose_dir_path"
+
+
+
+	local preview_app="$0 _fzf_preview_area"
+
+	local selected="$(sys_wallpaper_select_list_by_dir "$choose_dir_path" | fzf --preview "$preview_app {}" --preview-window "$PREVIEW_SIDE:50%:noborder:wrap")"
+
+	local selected_file_path="$choose_dir_path/$selected"
+
+	util_error_echo
+	util_error_echo "## Selected: $selected"
+	util_error_echo "## Selected File Path: $selected_file_path"
+
+	sys_fzf_wallpaper_preview_image_remove
+	util_error_echo
+
+	if [ "none$selected" = "none" ]; then
+		return 1
+	fi
+
+
+
+	mod_wallpaper_select_set "$selected_file_path"
+
+
+}
+
+mod_fzf_ses_start () {
+	trap sys_ueberzug_ses_stop EXIT QUIT INT TERM
+	sys_ueberzug_ses_start "$@"
+	mod_fzf_app_start "$@"
+}
+
+##
+### Tail: Model fzf
+################################################################################
+
+
+################################################################################
+### Head: Model fzf_no_preview
+##
+
+mod_fzf_no_preview () {
+	#echo "mod_fzf_no_preview"
+	#echo "$@"
+
+	if ! is_command_exist 'fzf'; then
+
+		util_error_echo '## Need: fzf'
+		util_error_echo '# * https://github.com/junegunn/fzf'
+		util_error_echo
+		util_error_echo '## Manjaro Install:'
+		util_error_echo '# $ pamac install fzf'
+		util_error_echo
+		util_error_echo '## Ubuntu Install:'
+		util_error_echo '# $ sudo apt-get install fzf'
+		util_error_echo
+
+		return 1
+	fi
+
+
+
+
+	local selected="$(sys_wallpaper_select_list_by_dir . | fzf)"
+
+	util_error_echo
+	util_error_echo "## Selected: $selected"
+	util_error_echo
+
+	if [ "none$selected" = "none" ]; then
+		return 1
+	fi
+
+	mod_wallpaper_select_set "$selected"
+
+}
+
+##
+### Tail: Model fzf_no_preview
+################################################################################
+
+
+################################################################################
+### Head: Model mod_wallpaper_select__fzf_preview_area
+##
+
+mod_wallpaper_select__fzf_preview_area () {
+	#echo "mod_wallpaper_select__fzf_preview_area"
+	#echo "$@"
+
+	# wallpaper-select-feh _fzf_preview_area
+
+	sys_fzf_wallpaper_preview_main "$@"
+
+}
+
+##
+### Tail: Model mod_wallpaper_select__fzf_preview_area
+################################################################################
+
+
+################################################################################
+### Head: Model mod_wallpaper_select_default
+##
+
+mod_wallpaper_select_default () {
+	mod_wallpaper_select_set "$THE_WALLPAPER_DEFAULT_FILE_PATH"
+}
+
+##
+### Tail: Model mod_wallpaper_select_default
+################################################################################
+
+
+################################################################################
+### Head: Model mod_wallpaper_select_list
+##
+
+
+
+mod_wallpaper_select_list () {
+	#echo "mod_wallpaper_select_list"
+	#echo "$@"
+
+
+	##
+	# ## Example:
+	# $ wallpaper-select-feh list
+	# $ wallpaper-select-feh list /usr/share/backgrounds
+	# $ wallpaper-select-feh list ~/Pictures
+	##
+
+
+	local target_file_name=''
+
+	local choose_dir_path="$1"
+	local target_dir_path
+
+
+	if ! target_dir_path="$(sys_wallpaper_check_dir_exist $choose_dir_path)"; then
+		util_error_echo
+		util_error_echo "## Dir Not Exist: "
+		util_error_echo
+		util_error_echo "$choose_dir_path"
+		util_error_echo
+		return 1
+	fi
+
+	cd "$target_dir_path"
+
+
+	for target_file_name in $(ls ./ -1); do
+	#for target_file_name in *; do
+		if [ -d "$target_file_name" ]; then
+			continue;
+		fi
+
+		echo $target_file_name;
+	done
+
+	cd "$OLDPWD"
+
+}
+
+##
+### Tail: Model mod_wallpaper_select_list
+################################################################################
+
+
+################################################################################
+### Head: Model mod_wallpaper_select_get
+##
+
+mod_wallpaper_select_get () {
+	#echo "mod_wallpaper_select_get"
+	#echo "$@"
+
+	# wallpaper-select-feh get
+
+	if ! [ -e "$HOME/.fehbg" ]; then
+		return 0
+	fi
+
+	grep '^feh' "$HOME/.fehbg" | awk '{print $4}' | awk -F "'" '{print $2}'
+
+}
+
+##
+### Tail: Model mod_wallpaper_select_get
+################################################################################
+
+
+################################################################################
+### Head: Model mod_wallpaper_select_set
+##
+
+mod_wallpaper_select_set () {
+	#echo "mod_wallpaper_select_set"
+	#echo "$@"
+
+
+	##
+	# ## Example:
+	# $ wallpaper-select-feh set "/usr/share/backgrounds/xfce/palm-wave.jpg"
+	# $ wallpaper-select-feh set "/usr/share/backgrounds/xfce/palm-wave.jpg" scale
+	##
+
+
+	local choose="$1"
+	local option="$2"
+	local target
+
+
+	if ! target="$(sys_wallpaper_check_file_exist $choose)"; then
+		util_error_echo
+		util_error_echo "## File Not Exist: "
+		util_error_echo
+		util_error_echo "$choose"
+		util_error_echo
+		return 1
+	fi
+
+	option="$(sys_feh_find_bg_option $option)"
+
+	## feh --bg-scale "/usr/share/backgrounds/xfce/palm-wave.jpg"
+
+	util_error_echo "## mod_wallpaper_select_set"
+	util_error_echo "feh $option $target"
+	feh "$option" "$target"
+
+}
+
+
+##
+### Tail: Model mod_wallpaper_select_set
+################################################################################
+
+
+################################################################################
+### Head: SubCmd
+##
+
+sub_run_help () {
+	main_usage "$@"
+}
+
+sub_run_version () {
+	main_version "$@"
+}
+
+sub_run_self_update () {
+	util_self_update "$@"
+}
+
+sub_run_self_actions () {
+	util_self_actions "$@"
+}
+
+
+
+sub_run_manjaro_prepare () {
+	#echo "sub_run_manjaro_prepare"
+	mod_wallpaper_select_manjaro_prepare "$@"
+}
+
+
+sub_run_ubuntu_prepare () {
+	#echo "sub_run_ubuntu_prepare"
+	mod_wallpaper_select_ubuntu_prepare "$@"
+}
+
+
+sub_run_cd_default () {
+	#echo "sub_run_cd_default"
+	mod_wallpaper_select_cd_default "$@"
+}
+
+
+sub_run_cd_favorite () {
+	#echo "sub_run_cd_favorite"
+	mod_wallpaper_select_cd_favorite "$@"
+}
+
+
+sub_run_cd_xfce () {
+	#echo "sub_run_cd_xfce"
+	mod_wallpaper_select_cd_xfce "$@"
+}
+
+
+sub_run_path_default () {
+	#echo "sub_run_path_default"
+	mod_wallpaper_select_path_default "$@"
+}
+
+
+sub_run_path_favorite () {
+	#echo "sub_run_path_favorite"
+	mod_wallpaper_select_path_favorite "$@"
+}
+
+
+sub_run_path_xfce () {
+	#echo "sub_run_path_xfce"
+	mod_wallpaper_select_path_xfce "$@"
+}
+
+
+sub_run_shuf () {
+	#echo "sub_run_shuf"
+	mod_wallpaper_select_shuf "$@"
+}
+
+
+sub_run_shuf_file_path () {
+	#echo "sub_run_shuf_file_path"
+	mod_wallpaper_select_shuf_file_path "$@"
+}
+
+
+sub_run_shuf_favorite () {
+	#echo "sub_run_shuf_favorite"
+	mod_wallpaper_select_shuf_favorite "$@"
+}
+
+
+sub_run_fzf () {
+	#echo "sub_run_fzf"
+	mod_fzf "$@"
+}
+
+
+sub_run_fzf_no_preview () {
+	#echo "sub_run_fzf_no_preview"
+	mod_fzf_no_preview "$@"
+}
+
+
+sub_run__fzf_preview_area () {
+	#echo "sub_run__fzf_preview_area"
+	mod_wallpaper_select__fzf_preview_area "$@"
+}
+
+
+sub_run_default () {
+	#echo "sub_run_default"
+	mod_wallpaper_select_default
+}
+
+
+sub_run_list () {
+	#echo "sub_run_list"
+	mod_wallpaper_select_list "$@"
+}
+
+
+sub_run_get () {
+	#echo "sub_run_get"
+	mod_wallpaper_select_get "$@"
+}
+
+
+sub_run_set () {
+	#echo "sub_run_set"
+	mod_wallpaper_select_set "$@"
+}
+
+##
+### Tail: SubCmd
+################################################################################
+
+
+################################################################################
+### Head: Main
+##
+
+main_usage () {
+	##local cmd_name="$0"
+	local cmd_name="$THE_CMD_FILE_NAME"
+
+cat << EOF
+Usage:
+	$ $cmd_name [action]
+
+Example:
+
+	## help
+
+		$ $cmd_name
+		$ $cmd_name help
+
+	## version
+
+		$ $cmd_name version
+
+	## self_update
+
+		$ $cmd_name self_update
+
+	## self_actions
+
+		$ $cmd_name self_actions
+
+	## prepare
+
+		$ $cmd_name manjaro_prepare
+
+		$ $cmd_name ubuntu_prepare
+
+	## cd
+
+		$ $cmd_name cd_default
+
+		$ $cmd_name cd_favorite
+
+		$ $cmd_name cd_xfce
+
+	## path
+
+		$ $cmd_name path_default
+
+		$ $cmd_name path_favorite
+
+		$ $cmd_name path_xfce
+
+	## shuf
+
+		$ $cmd_name shuf
+		$ $cmd_name shuf /usr/share/backgrounds
+		$ $cmd_name shuf /usr/share/backgrounds/xfce
+		$ $cmd_name shuf ~/Pictures
+		$ $cmd_name shuf ~/Pictures/Wallpaper/
+
+		$ $cmd_name shuf_file_path
+		$ $cmd_name shuf_file_path /usr/share/backgrounds
+		$ $cmd_name shuf_file_path /usr/share/backgrounds/xfce
+		$ $cmd_name shuf_file_path ~/Pictures
+		$ $cmd_name shuf_file_path ~/Pictures/Wallpaper/
+
+		$ $cmd_name shuf_favorite
+
+	## fzf
+
+		$ $cmd_name fzf
+		$ $cmd_name fzf /usr/share/backgrounds
+		$ $cmd_name fzf /usr/share/backgrounds/xfce
+		$ $cmd_name fzf ~/Pictures
+		$ $cmd_name fzf ~/Pictures/Wallpaper/
+
+		$ $cmd_name fzf_no_preview
+
+		$ $cmd_name _fzf_preview_area
+
+	## wallpaper_select
+
+		$ $cmd_name list
+		$ $cmd_name list /usr/share/backgrounds
+		$ $cmd_name list /usr/share/backgrounds/xfce
+		$ $cmd_name list ~/Pictures
+		$ $cmd_name list ~/Pictures/Wallpaper/
+
+		$ $cmd_name set "/usr/share/backgrounds/xfce/palm-wave.jpg"
+		$ $cmd_name set "/usr/share/backgrounds/xfce/palm-wave.jpg" scale
+
+		$ $cmd_name default
+
+		$ $cmd_name get
+
+
+Debug:
+	$ export DEBUG_WALLPAPER_SELECT=true
+
+EOF
+
+}
+
+main_check_args_size () {
+	if [ $1 -le 0 ]; then
+		shift
+		main_run_default_sub_cmd "$@"
+		exit 1
+	fi
+}
+
+main_run_default_sub_cmd () {
+	main_usage "$@"
+}
+
+main_run_sub_cmd () {
+
+	local sub_cmd="$1"
+
+	shift
+
+	local function_name=$(sub_cmd_find_function_name "$sub_cmd")
+
+	## if ! command -v $function_name > /dev/null; then
+	if ! type -p $function_name > /dev/null; then
+		util_debug_echo "[Debug] sub_cmd_function_not_exist: sub_cmd=$sub_cmd; function_name=$function_name"
+
+		echo
+		main_run_default_sub_cmd "$@"
+		return 1
+	fi
+
+	"$function_name" "$@" ## run sub cmd function
+
+
+}
+
+## Start
+main_check_args_size $# "$@"
+
+main_run_sub_cmd "$@"
+
+##
+### Tail: Main
+################################################################################
