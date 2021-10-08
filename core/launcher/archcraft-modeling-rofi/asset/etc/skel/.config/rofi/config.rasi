@@ -1,6 +1,6 @@
 configuration {
   show-icons:         true;
-  icon-theme:         "Numix";
+  icon-theme:         "Zafiro";
   terminal:           "rofi-sensible-terminal";
   cycle:              false;
   hide-scrollbar:     true;
