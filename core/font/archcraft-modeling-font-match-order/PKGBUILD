@@ -1,0 +1,70 @@
+
+##
+## * https://wiki.archlinux.org/title/Creating_packages
+## * https://wiki.archlinux.org/title/Arch_User_Repository
+## * https://archlinux.org/groups/x86_64/base-devel/
+## * https://wiki.archlinux.org/title/pacman
+## * https://wiki.archlinux.org/title/makepkg
+## * https://wiki.archlinux.org/title/PKGBUILD
+## * https://wiki.archlinux.org/title/Arch_package_guidelines
+##
+
+pkgname=archcraft-modeling-font-match-order
+pkgver=0.1
+pkgrel=1
+pkgdesc="Archcraft Adjustment / Font / Match Order"
+url="https://github.com/samwhelp/archcraft-adjustment-package/tree/main/core/font/archcraft-modeling-font-match-order"
+arch=('any')
+license=('MIT')
+makedepends=()
+depends=()
+conflicts=()
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+
+prepare () {
+	cp -af ../asset/. "${srcdir}"
+}
+
+
+package () {
+
+	##
+	## Path
+	##
+
+	local sys_etc_dir_path="${pkgdir}/etc"
+	local sys_share_dir_path="${pkgdir}/usr/share/${pkgname}"
+	local sys_skel_dir_path="${sys_etc_dir_path}/skel"
+
+	##
+	## Prepare Dir
+	##
+
+	#mkdir -p "$sys_etc_dir_path"
+	#mkdir -p "$sys_share_dir_path"
+
+
+	#install -dm755 "${pkgdir}/etc/skel"
+
+
+	##
+	## Main Config
+	##
+
+	## user home
+	## /etc/skel/.config/fontconfig/conf.d/50-font-match-order.conf
+	install -Dm644 "${srcdir}/etc/skel/.config/fontconfig/conf.d/50-font-match-order.conf" "${pkgdir}/etc/skel/.config/fontconfig/conf.d/50-font-match-order.conf"
+
+
+	## system dir
+	## /etc/fonts/local.conf
+	#install -Dm644 "${srcdir}/etc/fonts/local.conf" "${pkgdir}/etc/fonts/local.conf"
+
+
+	## system dir
+	## /etc/fonts/local.conf
+	install -Dm644 "${srcdir}/etc/fonts/conf.d/51-font-match-order.conf" "${pkgdir}/etc/fonts/conf.d/51-font-match-order.conf"
+
+
+}
