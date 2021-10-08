@@ -6,6 +6,8 @@
 ##
 
 ## * https://github.com/samwhelp/skel-project-plan/blob/gh-pages/demo/sh/project/bin/install.sh
+## * /usr/lib/openbox/openbox-xdg-autostart
+## * /usr/lib/openbox/openbox-autostart
 
 ##
 ### Tail: Note
@@ -44,7 +46,13 @@ __main__ () {
 
 	is_command_exist 'openbox-up-panel' && openbox-up-panel &
 
-	is_command_exist 'openbox-up-applet' && openbox-up-applet &
+
+	##
+	## `sudo pacman -Sy --needed python-pyxdg` 
+	## install `python-pyxdg` to support `/usr/lib/openbox/openbox-xdg-autostart`
+	## use xdg-autostart instead of exec `openbox-up-applet `
+	##
+	#is_command_exist 'openbox-up-applet' && openbox-up-applet &
 
 
 }
