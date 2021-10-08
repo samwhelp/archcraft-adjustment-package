@@ -51,8 +51,12 @@
 	<item label="FileZilla" icon="/usr/share/pixmaps/filezilla.png" >
 		<action name="Execute"><execute>filezilla</execute></action>
 	</item>
+	<item label="fcitx" icon="/usr/share/icons/hicolor/scalable/apps/fcitx.svg">
+		<action name="Execute"><execute>fcitx</execute></action>
+	</item>
 	<separator />
 	<menu id="more-app-menu" label="More" icon="/usr/share/icons/Numix/16/categories/application-community.svg">
+<!--
 		<item label="tilix-quake" icon="/usr/share/icons/Numix-Apps/48/apps/terminal.svg" >
 			<action name="Execute"><execute>tilix --quake</execute></action>
 		</item>
@@ -62,21 +66,25 @@
 		<item label="qterminal" icon="/usr/share/icons/Numix-Apps/48/apps/terminal.svg">
 			<action name="Execute"><execute>qterminal</execute></action>
 		</item>
+//-->
 		<item label="atom" icon="/usr/share/icons/hicolor/24x24/apps/atom.png">
 			<action name="Execute"><execute>atom</execute></action>
 		</item>
+<!--
 		<item label="code" icon="/usr/share/icons/Numix-Apps/48/apps/text-editor.svg">
 			<action name="Execute"><execute>code</execute></action>
 		</item>
 		<item label="gedit" icon="/usr/share/icons/Numix-Apps/48/apps/text-editor.svg">
 			<action name="Execute"><execute>gedit</execute></action>
 		</item>
+//-->
 		<item label="leafpad" icon="/usr/share/icons/Numix-Apps/48/apps/text-editor.svg">
 			<action name="Execute"><execute>leafpad</execute></action>
 		</item>
 		<item label="geany" icon="/usr/share/icons/Numix-Apps/48/apps/text-editor.svg">
 			<action name="Execute"><execute>geany</execute></action>
 		</item>
+<!--
 		<item label="nautilus" icon="/usr/share/icons/Numix/24/actions/gtk-open.svg">
 			<action name="Execute"><execute>nautilus</execute></action>
 		</item>
@@ -95,9 +103,7 @@
 		<item label="k3b" icon="/usr/share/icons/hicolor/48x48/apps/k3b.png">
 			<action name="Execute"><execute>k3b</execute></action>
 		</item>
-		<item label="fcitx" icon="/usr/share/icons/hicolor/scalable/apps/fcitx.svg">
-			<action name="Execute"><execute>fcitx</execute></action>
-		</item>
+//-->
 	</menu>
 	<!-- This requires the presence of the 'openbox-menu' package to work -->
 	<!--
@@ -118,13 +124,22 @@
 			<action name="Execute"><execute>rofi -show run</execute></action>
 		</item>
 	</menu>
-	<menu id="openbox-menu" label="Openbox" icon="/usr/share/icons/Numix/24/categories/applications-system.svg">
+	<menu id="settings-menu" label="Settings" icon="/usr/share/icons/Numix/24/categories/applications-system.svg">
 		<item label="Appearance" icon="/usr/share/icons/Numix/24/categories/preferences-system.svg">
 			<action name="Execute"><execute>xfce4-appearance-settings</execute></action>
 		</item>
 		<item label="ObConf" icon="/usr/share/icons/Numix/24/categories/preferences-system.svg">
 			<action name="Execute"><execute>obconf</execute></action>
 		</item>
+		<item label="Notifications Config" icon="/usr/share/icons/Numix/24/categories/preferences-system.svg">
+			<action name="Execute"><execute>xfce4-notifyd-config</execute></action>
+		</item>
+		<item label="Power Manager" icon="/usr/share/icons/Numix/24/categories/preferences-system.svg">
+			<action name="Execute"><execute>xfce4-power-manager-settings</execute></action>
+		</item>
+	</menu>
+	<menu id="openbox-menu" label="Openbox" icon="/usr/share/icons/Numix/24/categories/applications-system.svg">
+
 		<item label="Reconfigure" icon="/usr/share/icons/Numix/24/actions/configure.svg">
 			<action name="Reconfigure" />
 		</item>
