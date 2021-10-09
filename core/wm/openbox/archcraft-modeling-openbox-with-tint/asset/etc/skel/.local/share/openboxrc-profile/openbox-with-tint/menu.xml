@@ -108,7 +108,7 @@
 	<separator />
 	<menu id="applications-menu" label="Applications" execute="/usr/bin/obamenu" icon="/usr/share/icons/Numix/24/categories/applications-utilities.svg" />
 	//-->
-	<menu execute="obmenu-generator" id="app-menu" label="Applications" icon="/usr/share/icons/Numix/24/categories/applications-utilities.svg" />
+	<menu execute="obmenu-generator -i" id="app-menu" label="Applications" icon="/usr/share/icons/Numix/24/categories/applications-utilities.svg" />
 	<separator />
 	<!--
 	<menu id="fcitx-menu" label="Fcitx" icon="/usr/share/icons/hicolor/scalable/apps/fcitx.svg">
