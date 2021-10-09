@@ -19,6 +19,7 @@ conflicts=()
 provides=("${pkgname}")
 options=(!strip !emptydirs)
 
+
 prepare () {
 	cp -af ../asset/. "${srcdir}"
 }
@@ -26,43 +27,10 @@ prepare () {
 
 package () {
 
-	## Path
-	local sys_etc_dir_path="${pkgdir}/etc"
-	local sys_share_dir_path="${pkgdir}/usr/share/${pkgname}"
-	local sys_skel_dir_path="${sys_etc_dir_path}/skel"
-
-	## Prepare Dir
-	#mkdir -p "$sys_etc_dir_path"
-	#mkdir -p "$sys_share_dir_path"
-
-
+	##
 	## Main Config
-	## /usr/share/archcraft-modeling-fcitx-chewing/asset/.pam_environment
-	#install -Dm644 "${srcdir}/usr/share/${pkgname}/asset/.pam_environment" "${pkgdir}/usr/share/${pkgname}/asset/.pam_environment"
+	##
 
-	## /etc/skel/.pam_environment
-	install -Dm644 "${srcdir}/etc/skel/.pam_environment" "${pkgdir}/etc/skel/.pam_environment"
-
-	## /etc/skel/.config/fcitx/profile
-	install -Dm644 "${srcdir}/etc/skel/.config/fcitx/profile" "${pkgdir}/etc/skel/.config/fcitx/profile"
-
-	## /etc/skel/.config/fcitx/addon/fcitx-kimpanel-ui.conf
-	install -Dm644 "${srcdir}/etc/skel/.config/fcitx/addon/fcitx-kimpanel-ui.conf" "${pkgdir}/etc/skel/.config/fcitx/addon/fcitx-kimpanel-ui.conf"
-
-	## /etc/skel/.config/fcitx/addon/fcitx-quickphrase.conf
-	install -Dm644 "${srcdir}/etc/skel/.config/fcitx/addon/fcitx-quickphrase.conf" "${pkgdir}/etc/skel/.config/fcitx/addon/fcitx-quickphrase.conf"
-
-	## /etc/skel/.config/fcitx/addon/fcitx-spell.conf
-	install -Dm644 "${srcdir}/etc/skel/.config/fcitx/addon/fcitx-spell.conf" "${pkgdir}/etc/skel/.config/fcitx/addon/fcitx-spell.conf"
-
-	## /etc/skel/.config/fcitx/conf/fcitx-chewing.config
-	install -Dm644 "${srcdir}/etc/skel/.config/fcitx/conf/fcitx-chewing.config" "${pkgdir}/etc/skel/.config/fcitx/conf/fcitx-chewing.config"
-
-	## /etc/skel/.config/fcitx/conf/fcitx-classic-ui.config
-	install -Dm644 "${srcdir}/etc/skel/.config/fcitx/conf/fcitx-classic-ui.config" "${pkgdir}/etc/skel/.config/fcitx/conf/fcitx-classic-ui.config"
-
-	## /etc/skel/.config/fcitx/conf/fcitx-quickphrase.config
-	install -Dm644 "${srcdir}/etc/skel/.config/fcitx/conf/fcitx-quickphrase.config" "${pkgdir}/etc/skel/.config/fcitx/conf/fcitx-quickphrase.config"
-
+	cp -af "${srcdir}/etc" "${pkgdir}"
 
 }
