@@ -33,9 +33,9 @@ package () {
 	## Path
 	##
 
-	local sys_etc_dir_path="${pkgdir}/etc"
-	local sys_share_dir_path="${pkgdir}/usr/share/${pkgname}"
-	local sys_skel_dir_path="${sys_etc_dir_path}/skel"
+	#local sys_etc_dir_path="${pkgdir}/etc"
+	#local sys_share_dir_path="${pkgdir}/usr/share/${pkgname}"
+	#local sys_skel_dir_path="${sys_etc_dir_path}/skel"
 
 	##
 	## Prepare Dir
@@ -53,8 +53,10 @@ package () {
 	##
 
 	## /etc/skel/.config/sakura/sakura.conf
-	install -Dm644 "${srcdir}/etc/skel/.config/sakura/sakura.conf" "${pkgdir}/etc/skel/.config/sakura/sakura.conf"
+	#install -Dm644 "${srcdir}/etc/skel/.config/sakura/sakura.conf" "${pkgdir}/etc/skel/.config/sakura/sakura.conf"
 
-
+	#cp -af "${srcdir}/etc" "${pkgdir}"
+	cp -af "${srcdir}/." "${pkgdir}"
+	
 
 }
