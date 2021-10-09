@@ -1,0 +1,16 @@
+[Desktop Entry]
+Name=Set Wallpaper By feh
+GenericName=Set Wallpaper
+GenericName[de]=Set Wallpaper
+Comment=Set Wallpaper By feh
+Comment[zh_CN]=設定桌面圖片
+Comment[zh_TW]=設定桌面圖片
+TryExec=opset-wallpaper-feh
+Exec=opset-wallpaper-feh %F
+Terminal=false
+Type=Application
+Keywords=Graphics;wallpaper;
+Icon=preferences-desktop-wallpaper
+Categories=Graphics;2DGraphics;Viewer;
+StartupNotify=false
+MimeType=image/bmp;image/gif;image/jpeg;image/jpg;image/pjpeg;image/png;image/tiff;image/webp;image/x-bmp;image/x-pcx;image/x-png;image/x-portable-anymap;image/x-portable-bitmap;image/x-portable-graymap;image/x-portable-pixmap;image/x-tga;image/x-xbitmap;
