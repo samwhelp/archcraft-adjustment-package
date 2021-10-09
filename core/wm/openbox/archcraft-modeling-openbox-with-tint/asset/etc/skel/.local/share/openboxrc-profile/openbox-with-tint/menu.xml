@@ -51,9 +51,6 @@
 	<item label="FileZilla" icon="/usr/share/pixmaps/filezilla.png" >
 		<action name="Execute"><execute>filezilla</execute></action>
 	</item>
-	<item label="fcitx" icon="/usr/share/icons/hicolor/scalable/apps/fcitx.svg">
-		<action name="Execute"><execute>fcitx</execute></action>
-	</item>
 	<separator />
 	<menu id="more-app-menu" label="More" icon="/usr/share/icons/Numix/16/categories/application-community.svg">
 <!--
@@ -113,6 +110,19 @@
 	//-->
 	<menu execute="obmenu-generator" id="app-menu" label="Applications" icon="/usr/share/icons/Numix/24/categories/applications-utilities.svg" />
 	<separator />
+	<!--
+	<menu id="fcitx-menu" label="Fcitx" icon="/usr/share/icons/hicolor/scalable/apps/fcitx.svg">
+		<item label="Fcitx" icon="/usr/share/icons/hicolor/scalable/apps/fcitx.svg">
+			<action name="Execute"><execute>fcitx</execute></action>
+		</item>	
+		<item label="Start Fcitx" icon="/usr/share/icons/hicolor/scalable/apps/fcitx.svg">
+			<action name="Execute"><execute>fcitx-autostart</execute></action>
+		</item>
+		<item label="Restart Fcitx" icon="/usr/share/icons/hicolor/scalable/apps/fcitx.svg">
+			<action name="Execute"><execute>fcitx-restart</execute></action>
+		</item>
+	</menu>
+	//-->
 	<menu id="rofi-menu" label="Rofi" icon="/usr/share/icons/Numix/24/categories/applications-utilities.svg">
 		<item label="Rofi Show Drun" icon="/usr/share/icons/Numix/24/places/start-here.svg">
 			<action name="Execute"><execute>rofi -show drun -show-icons</execute></action>
@@ -137,13 +147,16 @@
 		<item label="Power Manager" icon="/usr/share/icons/Numix/24/categories/preferences-system.svg">
 			<action name="Execute"><execute>xfce4-power-manager-settings</execute></action>
 		</item>
+		<item label="Display Settings" icon="/usr/share/icons/Numix/24/categories/preferences-system.svg">
+			<action name="Execute"><execute>xfce4-display-settings</execute></action>
+		</item>
 	</menu>
-	<menu id="openbox-menu" label="Openbox" icon="/usr/share/icons/Numix/24/categories/applications-system.svg">
+	<menu id="openbox-menu" label="System" icon="/usr/share/icons/Numix/24/categories/applications-system.svg">
 
-		<item label="Reconfigure" icon="/usr/share/icons/Numix/24/actions/configure.svg">
+		<item label="Reconfigure (Openbox)" icon="/usr/share/icons/Numix/24/actions/configure.svg">
 			<action name="Reconfigure" />
 		</item>
-		<item label="Restart" icon="/usr/share/icons/Numix/24/actions/system-restart.svg">
+		<item label="Restart (Openbox)" icon="/usr/share/icons/Numix/24/actions/system-restart.svg">
 			<action name="Restart" />
 		</item>
 		<!--
@@ -154,10 +167,16 @@
 		<item label="Suspend" icon="/usr/share/icons/Numix/24/actions/system-suspend.svg">
 			<action name="Execute"><execute>systemctl suspend</execute></action>
 		</item>
+		<item label="Reboot" icon="/usr/share/icons/Numix/24/actions/system-reboot.svg">
+			<action name="Execute"><execute>systemctl reboot</execute></action>
+		</item>
+		<item label="Shutdown" icon="/usr/share/icons/Numix/24/actions/system-shutdown.svg">
+			<action name="Execute"><execute>systemctl halt</execute></action>
+		</item>
+		<!--
 		<item label="Shutdown" icon="/usr/share/icons/Numix/24/actions/system-shutdown.svg">
 			<action name="Execute"><execute>shutdown now</execute></action>
 		</item>
-		<!--
 		<item label="PowerOff" icon="/usr/share/icons/Numix/24/actions/system-shutdown.svg">
 			<action name="Execute"><execute>pkexec poweroff</execute></action>
 		</item>
