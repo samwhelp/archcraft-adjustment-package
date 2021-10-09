@@ -150,6 +150,9 @@
 		<item label="Display Settings" icon="/usr/share/icons/Numix/24/categories/preferences-system.svg">
 			<action name="Execute"><execute>xfce4-display-settings</execute></action>
 		</item>
+		<item label="Mouse Settings" icon="/usr/share/icons/Numix/24/categories/preferences-system.svg">
+			<action name="Execute"><execute>xfce4-mouse-settings</execute></action>
+		</item>
 	</menu>
 	<menu id="openbox-menu" label="System" icon="/usr/share/icons/Numix/24/categories/applications-system.svg">
 
