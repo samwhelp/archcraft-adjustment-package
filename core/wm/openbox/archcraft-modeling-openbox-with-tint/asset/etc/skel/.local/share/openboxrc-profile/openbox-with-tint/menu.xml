@@ -141,7 +141,7 @@
 		<item label="ObConf" icon="/usr/share/icons/Numix/24/categories/preferences-system.svg">
 			<action name="Execute"><execute>obconf</execute></action>
 		</item>
-		<item label="Notifications Config" icon="/usr/share/icons/Numix/24/categories/preferences-system.svg">
+		<item label="Notifications Settings" icon="/usr/share/icons/Numix/24/categories/preferences-system.svg">
 			<action name="Execute"><execute>xfce4-notifyd-config</execute></action>
 		</item>
 		<item label="Power Manager" icon="/usr/share/icons/Numix/24/categories/preferences-system.svg">
