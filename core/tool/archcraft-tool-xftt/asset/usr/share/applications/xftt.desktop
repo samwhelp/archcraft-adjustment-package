@@ -1,0 +1,16 @@
+[Desktop Entry]
+Name=Xftt
+GenericName=Xftt (xfce4-terminal)
+GenericName[de]=Xftt (xfce4-terminal)
+Comment=Xftt (open xfce4-terminal to new tab)
+Comment[zh_CN]=在「xfce4-terminal」開啟新的「Tab」，並且切換到「該資料夾路徑」
+Comment[zh_TW]=在「xfce4-terminal」開啟新的「Tab」，並且切換到「該資料夾路徑」
+TryExec=xftt
+Exec=xftt %F
+Terminal=false
+Type=Application
+Keywords=Text;editor;Terminal;
+Icon=terminal
+Categories=Utility;TextEditor;GTK;System;TerminalEmulator;
+StartupNotify=false
+MimeType=text/english;text/plain;text/x-makefile;text/x-c++hdr;text/x-c++src;text/x-chdr;text/x-csrc;text/x-java;text/x-moc;text/x-pascal;text/x-tcl;text/x-tex;application/x-shellscript;text/x-c;text/x-c++;

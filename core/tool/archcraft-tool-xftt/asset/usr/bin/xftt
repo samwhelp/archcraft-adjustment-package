@@ -1,0 +1,82 @@
+#!/usr/bin/env bash
+
+
+##
+## * $ man 3 dirname
+## * $ man 1 dirname
+## * $ man 3 basename
+## * $ man 1 basenaem
+## * https://en.wikipedia.org/wiki/Dirname
+## * https://en.wikipedia.org/wiki/Basename
+## * https://zh.wikipedia.org/zh-tw/Dirname
+## * https://zh.wikipedia.org/zh-tw/Basename
+##
+
+
+util_error_echo () {
+	echo "$@" 1>&2
+}
+
+xftt_main () {
+
+
+	local target_path="$1"
+	local file_path
+	local file_name
+	local dir_path
+	local work_dir_path
+
+
+
+	if [ "none$target_path" = 'none' ]; then
+		target_path="$(pwd)"
+	fi
+
+	if ! [ -e "$target_path" ]; then
+
+		util_error_echo
+		util_error_echo "## File Not Exist:"
+		util_error_echo
+		util_error_echo "$target_path"
+		util_error_echo
+
+		return 1
+	fi
+
+
+	file_path="$(realpath -s "$target_path")"
+
+
+	file_name="$(basename "$file_path")"
+	dir_path="$(dirname "$file_path")"
+
+	if [ -d "$file_path" ]; then
+		work_dir_path="$file_path"
+	else
+		work_dir_path="$dir_path"
+	fi
+
+
+	util_error_echo
+	util_error_echo "## Path:"
+	util_error_echo
+	util_error_echo "target_path=$target_path"
+	util_error_echo "file_path=$file_path"
+	util_error_echo "file_name=$file_name"
+	util_error_echo "dir_path=$dir_path"
+	util_error_echo "work_dir_path=$work_dir_path"
+	util_error_echo
+
+
+	util_error_echo
+	util_error_echo "## Command:"
+	util_error_echo
+	util_error_echo "exec xfce4-terminal --tab --command=\"$editor $file_path\" --title=\"$file_path\" --working-directory=\"$work_dir_path\" --default-working-directory=\"$work_dir_path\" &"
+	util_error_echo
+
+	##xfce4-terminal --tab --command="$editor $file_path" --title="$file_path" --working-directory="$work_dir_path" --default-working-directory="$work_dir_path"
+	exec xfce4-terminal --tab --title="$work_dir_path" --working-directory="$work_dir_path" --default-working-directory="$work_dir_path" &
+
+}
+
+xftt_main "$@"
