@@ -23,33 +23,19 @@ provides=("${pkgname}")
 options=(!strip !emptydirs)
 
 prepare () {
+
 	cp -af ../asset/. "${srcdir}"
+
 }
 
 
 package () {
 
 	##
-	## Path
-	##
-
-	#local sys_etc_dir_path="${pkgdir}/etc"
-	#local sys_share_dir_path="${pkgdir}/usr/share/${pkgname}"
-	#local sys_skel_dir_path="${sys_etc_dir_path}/skel"
-
-	##
-	## Prepare Dir
-	##
-
-	#mkdir -p "$sys_etc_dir_path"
-	#mkdir -p "$sys_share_dir_path"
-
-
-	##
 	## Main Config
 	##
 
-	cp "${srcdir}/etc" "${pkgdir}/" -a
+	cp -af "${srcdir}/etc" "${pkgdir}"
 
 	rm "${pkgdir}/etc/skel/.local/share/openboxrc-profile/openbox-with-tint/bin/maintain-install.sh"
 
