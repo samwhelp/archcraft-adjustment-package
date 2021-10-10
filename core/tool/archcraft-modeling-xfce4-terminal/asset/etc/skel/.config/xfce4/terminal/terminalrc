@@ -1,9 +1,9 @@
 [Configuration]
-ColorForeground=#ababb2b2bfbf
-ColorBackground=#1e1e21212828
-ColorCursor=#ababb2b2bfbf
+ColorForeground=#cccccc
+ColorBackground=#000000
+ColorCursor=#cccccc
 ColorBoldUseDefault=FALSE
-ColorPalette=#323236363d3d;#e0e06b6b7474;#9898c3c37979;#e5e5c0c07a7a;#6262aeaeefef;#c7c77878dddd;#5555b6b6c2c2;#ababb2b2bfbf;#505054545b5b;#eaea75757e7e;#a2a2cdcd8383;#efefcaca8484;#6c6cb8b8f9f9;#d2d28282e7e7;#5f5fc0c0cccc;#b5b5bcbcc9c9
+ColorPalette=#000000;#cc0000;#4e9a06;#c4a000;#3465a4;#75507b;#06989a;#d3d7cf;#555753;#ef2929;#8ae234;#fce94f;#739fcf;#ad7fa8;#34e2e2;#eeeeec
 MiscAlwaysShowTabs=FALSE
 MiscBordersDefault=TRUE
 MiscToolbarDefault=FALSE
@@ -16,3 +16,4 @@ BackgroundMode=TERMINAL_BACKGROUND_TRANSPARENT
 DropdownKeepOpenDefault=TRUE
 DropdownAlwaysShowTabs=FALSE
 DropdownWidth=90
+
