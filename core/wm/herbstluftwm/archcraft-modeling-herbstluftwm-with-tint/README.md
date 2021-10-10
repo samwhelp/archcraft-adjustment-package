@@ -2,6 +2,16 @@
 # archcraft-modeling-herbstluftwm-with-tint
 
 
+## Project
+
+* [herbstluftwm-config-main](https://github.com/samwhelp/note-about-herbstluftwm/tree/gh-pages/_demo/config/herbstluftwm-config/main/config/herbstluftwm)
+
+
+## Package
+
+* [archcraft-modeling-herbstluftwm-with-tintlpaper-feh](https://github.com/samwhelp/archcraft-adjustment-package/tree/main/core/wm/herbstluftwm/archcraft-modeling-herbstluftwm-with-tint)
+
+
 ## Reference
 
 * https://wiki.archlinux.org/title/Creating_packages
