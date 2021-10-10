@@ -1,5 +1,5 @@
 
-# archcraft-tool-openbox-rc-ctrl
+# archcraft-tool-openboxrc-ctrl
 
 
 ## Reference

@@ -53,7 +53,7 @@ reinstall:
 
 
 uninstall:
-	sudo pacman -R archcraft-tool-openbox-rc-ctrl
+	sudo pacman -R archcraft-tool-openboxrc-ctrl
 .PHONY: uninstall
 
 clean:
@@ -65,5 +65,5 @@ clean:
 
 
 list:
-	pacman -Ql archcraft-tool-openbox-rc-ctrl -q
+	pacman -Ql archcraft-tool-openboxrc-ctrl -q
 .PHONY: list

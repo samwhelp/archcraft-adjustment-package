@@ -9,11 +9,11 @@
 ## * https://wiki.archlinux.org/title/Arch_package_guidelines
 ##
 
-pkgname=archcraft-tool-openbox-rc-ctrl
+pkgname=archcraft-tool-openboxrc-ctrl
 pkgver=0.1
 pkgrel=1
 pkgdesc="Archcraft Adjustment / Openbox / Rc Ctrl"
-url="https://github.com/samwhelp/archcraft-adjustment-package/tree/main/core/wm/openbox/archcraft-tool-openbox-rc-ctrl"
+url="https://github.com/samwhelp/archcraft-adjustment-package/tree/main/core/wm/openbox/archcraft-tool-openboxrc-ctrl"
 arch=('any')
 license=('MIT')
 makedepends=()
