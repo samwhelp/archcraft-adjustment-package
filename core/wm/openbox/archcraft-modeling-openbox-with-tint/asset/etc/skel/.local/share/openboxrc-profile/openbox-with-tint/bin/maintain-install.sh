@@ -233,12 +233,26 @@ mod_install_share_style_profile_main () {
 	echo "install -Dm644 $THE_SHARE_DIR_PATH/style-profile/main/picom/picom.conf $HOME/.config/openbox/share/style-profile/main/picom/picom.conf"
 	install -Dm644 "$THE_SHARE_DIR_PATH/style-profile/main/picom/picom.conf" "$HOME/.config/openbox/share/style-profile/main/picom/picom.conf"
 
-	echo "install -Dm644 $THE_SHARE_DIR_PATH/style-profile/main/tint2/tint2rc $HOME/.config/openbox/share/style-profile/main/tint2/tint2rc"
-	install -Dm644 "$THE_SHARE_DIR_PATH/style-profile/main/tint2/tint2rc" "$HOME/.config/openbox/share/style-profile/main/tint2/tint2rc"
-
 	echo "install -Dm644 $THE_SHARE_DIR_PATH/style-profile/main/xsettingsd/xsettingsd.conf $HOME/.config/openbox/share/style-profile/main/xsettingsd/xsettingsd.conf"
 	install -Dm644 "$THE_SHARE_DIR_PATH/style-profile/main/xsettingsd/xsettingsd.conf" "$HOME/.config/openbox/share/style-profile/main/xsettingsd/xsettingsd.conf"
 
+
+
+
+	#echo "install -Dm644 $THE_SHARE_DIR_PATH/style-profile/main/tint2/tint2rc $HOME/.config/openbox/share/style-profile/main/tint2/tint2rc"
+	#install -Dm644 "$THE_SHARE_DIR_PATH/style-profile/main/tint2/tint2rc" "$HOME/.config/openbox/share/style-profile/main/tint2/tint2rc"
+
+	echo "install -Dm644 $THE_SHARE_DIR_PATH/style-profile/main/tint2/top_panel/tint2rc $HOME/.config/openbox/share/style-profile/main/tint2/top_panel/tint2rc"
+	install -Dm644 "$THE_SHARE_DIR_PATH/style-profile/main/tint2/top_panel/tint2rc" "$HOME/.config/openbox/share/style-profile/main/tint2/top_panel/tint2rc"
+
+	echo "install -Dm644 $THE_SHARE_DIR_PATH/style-profile/main/tint2/bottom_panel/tint2rc $HOME/.config/openbox/share/style-profile/main/tint2/bottom_panel/tint2rc"
+	install -Dm644 "$THE_SHARE_DIR_PATH/style-profile/main/tint2/bottom_panel/tint2rc" "$HOME/.config/openbox/share/style-profile/main/tint2/bottom_panel/tint2rc"
+
+	echo "install -Dm644 $THE_SHARE_DIR_PATH/style-profile/main/tint2/top_bottom_panel/tint2rc_top $HOME/.config/openbox/share/style-profile/main/tint2/top_bottom_panel/tint2rc_top"
+	install -Dm644 "$THE_SHARE_DIR_PATH/style-profile/main/tint2/top_bottom_panel/tint2rc_top" "$HOME/.config/openbox/share/style-profile/main/tint2/top_bottom_panel/tint2rc_top"
+
+	echo "install -Dm644 $THE_SHARE_DIR_PATH/style-profile/main/tint2/top_bottom_panel/tint2rc_bottom $HOME/.config/openbox/share/style-profile/main/tint2/top_bottom_panel/tint2rc_bottom"
+	install -Dm644 "$THE_SHARE_DIR_PATH/style-profile/main/tint2/top_bottom_panel/tint2rc_bottom" "$HOME/.config/openbox/share/style-profile/main/tint2/top_bottom_panel/tint2rc_bottom"
 
 }
 

@@ -77,17 +77,17 @@ border_color_pressed = #000000 100
 
 #-------------------------------------
 # Panel
-panel_items = LTSC
-panel_size = 85% 34
+#panel_items = LTSC
+panel_items = LFSC
+#panel_size = 85% 34
+panel_size = 45% 34
 panel_margin = 5 5
 panel_padding = 2 2 2
 panel_background_id = 1
 wm_menu = 1
 panel_dock = 0
-panel_position = top center horizontal
-#panel_position = bottom center horizontal
-#panel_position = center left vertical
-#panel_position = center right vertical
+panel_position = bottom center horizontal
+#panel_position = top center horizontal
 panel_layer = top
 panel_monitor = all
 panel_shrink = 0

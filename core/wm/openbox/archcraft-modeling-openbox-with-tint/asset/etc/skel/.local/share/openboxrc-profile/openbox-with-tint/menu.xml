@@ -35,18 +35,18 @@
 	<item label="Text Editor" icon="/usr/share/icons/Numix-Apps/48/apps/text-editor.svg" >
 		<action name="Execute"><execute>mousepad</execute></action>
 	</item>
-	<separator />
-	<item label="File Manager (Thunar)" icon="/usr/share/icons/Numix/24/actions/gtk-open.svg" >
-		<action name="Execute"><execute>thunar</execute></action>
-	</item>
-	<item label="Terminal (Xfce4)" icon="/usr/share/icons/Numix-Apps/48/apps/terminal.svg" >
-		<action name="Execute"><execute>xfce4-terminal</execute></action>
-	</item>
-	<item label="Text Editor (Leafpad)" icon="/usr/share/icons/Numix-Apps/48/apps/text-editor.svg" >
-		<action name="Execute"><execute>leafpad</execute></action>
-	</item>
 	<item label="Volume Control" icon="/usr/share/icons/Numix-Apps/48/apps/preferences-sound.svg" >
 		<action name="Execute"><execute>mate-volume-control</execute></action>
+	</item>
+	<separator />
+	<item label="Thunar" icon="/usr/share/icons/Numix/24/actions/gtk-open.svg" >
+		<action name="Execute"><execute>thunar</execute></action>
+	</item>
+	<item label="Xfce4 Terminal" icon="/usr/share/icons/Numix-Apps/48/apps/terminal.svg" >
+		<action name="Execute"><execute>xfce4-terminal</execute></action>
+	</item>
+	<item label="Leafpad" icon="/usr/share/icons/Numix-Apps/48/apps/text-editor.svg" >
+		<action name="Execute"><execute>leafpad</execute></action>
 	</item>
 	<item label="FileZilla" icon="/usr/share/pixmaps/filezilla.png" >
 		<action name="Execute"><execute>filezilla</execute></action>
@@ -114,7 +114,7 @@
 	<menu id="fcitx-menu" label="Fcitx" icon="/usr/share/icons/hicolor/scalable/apps/fcitx.svg">
 		<item label="Fcitx" icon="/usr/share/icons/hicolor/scalable/apps/fcitx.svg">
 			<action name="Execute"><execute>fcitx</execute></action>
-		</item>	
+		</item>
 		<item label="Start Fcitx" icon="/usr/share/icons/hicolor/scalable/apps/fcitx.svg">
 			<action name="Execute"><execute>fcitx-autostart</execute></action>
 		</item>
