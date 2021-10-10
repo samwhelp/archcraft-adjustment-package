@@ -48,6 +48,9 @@
 	<item label="Leafpad" icon="/usr/share/icons/Numix-Apps/48/apps/text-editor.svg" >
 		<action name="Execute"><execute>leafpad</execute></action>
 	</item>
+	<item label="geany" icon="/usr/share/icons/Numix-Apps/48/apps/text-editor.svg">
+		<action name="Execute"><execute>geany</execute></action>
+	</item>
 	<item label="FileZilla" icon="/usr/share/pixmaps/filezilla.png" >
 		<action name="Execute"><execute>filezilla</execute></action>
 	</item>
@@ -67,21 +70,20 @@
 		<item label="atom" icon="/usr/share/icons/hicolor/24x24/apps/atom.png">
 			<action name="Execute"><execute>atom</execute></action>
 		</item>
-<!--
-		<item label="code" icon="/usr/share/icons/Numix-Apps/48/apps/text-editor.svg">
+
+		<item label="code" icon="/usr/share/pixmaps/com.visualstudio.code.oss.png">
 			<action name="Execute"><execute>code</execute></action>
 		</item>
+<!--
 		<item label="gedit" icon="/usr/share/icons/Numix-Apps/48/apps/text-editor.svg">
 			<action name="Execute"><execute>gedit</execute></action>
 		</item>
-//-->
 		<item label="leafpad" icon="/usr/share/icons/Numix-Apps/48/apps/text-editor.svg">
 			<action name="Execute"><execute>leafpad</execute></action>
 		</item>
 		<item label="geany" icon="/usr/share/icons/Numix-Apps/48/apps/text-editor.svg">
 			<action name="Execute"><execute>geany</execute></action>
 		</item>
-<!--
 		<item label="nautilus" icon="/usr/share/icons/Numix/24/actions/gtk-open.svg">
 			<action name="Execute"><execute>nautilus</execute></action>
 		</item>
