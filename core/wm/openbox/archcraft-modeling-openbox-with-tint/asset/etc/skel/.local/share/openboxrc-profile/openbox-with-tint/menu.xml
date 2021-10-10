@@ -10,14 +10,14 @@
 <!-- http://openbox.org/wiki/Help:Menus //-->
 
 <menu id="root-menu" title="Menu" label="Openbox 3">
-	<!--
+<!--
 	<item label="Terminal emulator">
 		<action name="Execute"><execute>x-terminal-emulator</execute></action>
 	</item>
 	<item label="Web browser">
 		<action name="Execute"><execute>x-www-browser</execute></action>
 	</item>
-	//-->
+//-->
 
 	<item label="Rofi Show Drun" icon="/usr/share/icons/Numix/24/places/start-here.svg">
 		<action name="Execute"><execute>rofi -show drun -show-icons</execute></action>
@@ -105,14 +105,14 @@
 //-->
 	</menu>
 	<!-- This requires the presence of the 'openbox-menu' package to work -->
-	<!--
+<!--
 	<menu id="/Debian" />
 	<separator />
 	<menu id="applications-menu" label="Applications" execute="/usr/bin/obamenu" icon="/usr/share/icons/Numix/24/categories/applications-utilities.svg" />
-	//-->
+//-->
 	<menu execute="obmenu-generator -i" id="app-menu" label="Applications" icon="/usr/share/icons/Numix/24/categories/applications-utilities.svg" />
 	<separator />
-	<!--
+<!--
 	<menu id="fcitx-menu" label="Fcitx" icon="/usr/share/icons/hicolor/scalable/apps/fcitx.svg">
 		<item label="Fcitx" icon="/usr/share/icons/hicolor/scalable/apps/fcitx.svg">
 			<action name="Execute"><execute>fcitx</execute></action>
@@ -124,7 +124,7 @@
 			<action name="Execute"><execute>fcitx-restart</execute></action>
 		</item>
 	</menu>
-	//-->
+//-->
 	<menu id="rofi-menu" label="Rofi" icon="/usr/share/icons/Numix/24/categories/applications-utilities.svg">
 		<item label="Rofi Show Drun" icon="/usr/share/icons/Numix/24/places/start-here.svg">
 			<action name="Execute"><execute>rofi -show drun -show-icons</execute></action>
@@ -167,28 +167,30 @@
 		<item label="Restart (Openbox)" icon="/usr/share/icons/Numix/24/actions/system-restart.svg">
 			<action name="Restart" />
 		</item>
-		<!--
+<!--
 		<item label="Switch user" icon="/usr/share/icons/Numix/22/actions/system-users.svg">
 			<action name="Execute"><execute>dm-tool switch-to-greeter</execute></action>
 		</item>
-		//-->
+//-->
 		<item label="Suspend" icon="/usr/share/icons/Numix/24/actions/system-suspend.svg">
 			<action name="Execute"><execute>systemctl suspend</execute></action>
 		</item>
 		<item label="Reboot" icon="/usr/share/icons/Numix/24/actions/system-reboot.svg">
 			<action name="Execute"><execute>systemctl reboot</execute></action>
 		</item>
+<!--
 		<item label="Shutdown" icon="/usr/share/icons/Numix/24/actions/system-shutdown.svg">
 			<action name="Execute"><execute>systemctl halt</execute></action>
 		</item>
-		<!--
+//-->
 		<item label="Shutdown" icon="/usr/share/icons/Numix/24/actions/system-shutdown.svg">
 			<action name="Execute"><execute>shutdown now</execute></action>
 		</item>
+<!--
 		<item label="PowerOff" icon="/usr/share/icons/Numix/24/actions/system-shutdown.svg">
 			<action name="Execute"><execute>pkexec poweroff</execute></action>
 		</item>
-		//-->
+//-->
 		<!-- $ find /usr/share/icons/Numix/ | grep logout //-->
 		<item label="Logout" icon="/usr/share/icons/Numix/24/actions/system-logout.svg">
 			<action name="Exit"/>
