@@ -81,8 +81,8 @@ main_xdg_autostart () {
 
 
 	main_app_upstart_with_xdg_autostart
-	#main_try_xdg_autostart				## no needed run this line. on openbox, `/usr/lib/openbox/openbox-xdg-autostart` would be launched by `/usr/lib/openbox/openbox-autostart`
-		
+	main_try_xdg_autostart					## no needed run this line. on openbox, `/usr/lib/openbox/openbox-xdg-autostart` would be launched by `/usr/lib/openbox/openbox-autostart`
+
 
 }
 
