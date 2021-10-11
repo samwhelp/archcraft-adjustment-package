@@ -22,6 +22,22 @@ sys_wallpaper_find_default_file_path () {
 		return 0
 	fi
 
+	if [ -f "/usr/share/backgrounds/xfce/palm-wave.jpg" ]; then
+		echo "/usr/share/backgrounds/xfce/palm-wave.jpg"
+		return 0
+	fi
+
+	if [ -f "/usr/share/backgrounds/Manhattan_Sunset_by_Giacomo_Ferroni.jpg" ]; then
+		echo "/usr/share/backgrounds/Manhattan_Sunset_by_Giacomo_Ferroni.jpg"
+		return 0
+	fi
+
+	if [ -f "/usr/share/backgrounds/Manhattan_Sunset_by_Giacomo_Ferroni.jpg" ]; then
+		echo "/usr/share/backgrounds/Manhattan_Sunset_by_Giacomo_Ferroni.jpg"
+		return 0
+	fi
+
+
 	echo "/usr/share/backgrounds/default.jpg"
 	return 0
 
