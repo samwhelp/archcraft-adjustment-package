@@ -96,7 +96,7 @@ main_app_upstart () {
 
 main_app_autostart () {
 
-	#local use_xdg_autostart="true"
+	local use_xdg_autostart="true"
 
 	if [ "is_${use_xdg_autostart}" = "is_true" ]; then
 		main_xdg_autostart
