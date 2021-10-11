@@ -2,6 +2,11 @@
 # archcraft-modeling-mate-volume-control-status-icon-xdg-autostart
 
 
+## Link
+
+* https://github.com/samwhelp/note-about-archcraft/tree/gh-pages/_demo/adjustment/env/volume-control/mate-volume-control-status-icon
+
+
 ## Reference
 
 * https://wiki.archlinux.org/title/Creating_packages

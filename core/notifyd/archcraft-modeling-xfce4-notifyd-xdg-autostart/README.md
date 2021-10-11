@@ -2,6 +2,11 @@
 # archcraft-modeling-xfce4-notifyd-xdg-autostart
 
 
+## Link
+
+* https://github.com/samwhelp/note-about-archcraft/tree/gh-pages/_demo/adjustment/env/notifyd/xfce4-notifyd
+
+
 ## Reference
 
 * https://wiki.archlinux.org/title/Creating_packages
