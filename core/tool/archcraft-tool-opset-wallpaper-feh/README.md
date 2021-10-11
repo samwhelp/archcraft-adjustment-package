@@ -1,5 +1,5 @@
 
-# archcraft--opset-wallpaper-feh
+# archcraft-tool-opset-wallpaper-feh
 
 
 ## Project

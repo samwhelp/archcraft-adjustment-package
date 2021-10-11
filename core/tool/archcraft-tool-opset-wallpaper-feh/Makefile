@@ -53,7 +53,7 @@ reinstall:
 
 
 uninstall:
-	sudo pacman -R archcraft--opset-wallpaper-feh
+	sudo pacman -R archcraft-tool-opset-wallpaper-feh
 .PHONY: uninstall
 
 clean:
@@ -65,5 +65,5 @@ clean:
 
 
 list:
-	pacman -Ql archcraft--opset-wallpaper-feh -q
+	pacman -Ql archcraft-tool-opset-wallpaper-feh -q
 .PHONY: list

@@ -53,7 +53,7 @@ reinstall:
 
 
 uninstall:
-	sudo pacman -R archcraft--xftt
+	sudo pacman -R archcraft-tool-xftt
 .PHONY: uninstall
 
 clean:
@@ -65,5 +65,5 @@ clean:
 
 
 list:
-	pacman -Ql archcraft--xftt -q
+	pacman -Ql archcraft-tool-xftt -q
 .PHONY: list

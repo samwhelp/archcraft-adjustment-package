@@ -1,5 +1,5 @@
 
-# archcraft--xftt
+# archcraft-tool-xftt
 
 
 ## Reference
