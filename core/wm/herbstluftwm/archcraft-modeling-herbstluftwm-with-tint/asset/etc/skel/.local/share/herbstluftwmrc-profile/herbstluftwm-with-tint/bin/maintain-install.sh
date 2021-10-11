@@ -85,6 +85,9 @@ mod_install_bin_ctrl () {
 	echo "install -Dm755 $THE_BIN_DIR_PATH/hlwm-profile-ctrl $HOME/.config/herbstluftwm/bin/hlwm-profile-ctrl"
 	install -Dm755 "$THE_BIN_DIR_PATH/hlwm-profile-ctrl" "$HOME/.config/herbstluftwm/bin/hlwm-profile-ctrl"
 
+	echo "install -Dm755 $THE_BIN_DIR_PATH/hlwm-system-ctrl $HOME/.config/herbstluftwm/bin/hlwm-system-ctrl"
+	install -Dm755 "$THE_BIN_DIR_PATH/hlwm-system-ctrl" "$HOME/.config/herbstluftwm/bin/hlwm-system-ctrl"
+
 }
 
 mod_install_ext () {
