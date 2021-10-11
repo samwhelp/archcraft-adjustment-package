@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=System-Shutdown
+GenericName=System Shutdown
+GenericName[de]=System Shutdown
+Comment=Shutdown computer
+Comment[zh_CN]=系統關機
+Comment[zh_TW]=系統關機
+Exec=shutdown now
+Terminal=false
+Type=Application
+Keywords=shutdown;system;halt;stop;utility;
+Icon=system-shutdown
+Categories=System;Utility;
+StartupNotify=false

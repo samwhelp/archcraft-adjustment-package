@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=System-Reboot
+GenericName=System Reboot
+GenericName[de]=System Reboot
+Comment=Reboot computer
+Comment[zh_CN]=系統重開機
+Comment[zh_TW]=系統重開機
+Exec=system reboot
+Terminal=false
+Type=Application
+Keywords=reboot;system;restart;utility;
+Icon=system-reboot
+Categories=System;Utility;
+StartupNotify=false
