@@ -14,7 +14,7 @@
 ## * /etc/xdg/autostart
 ## * ~/.config/autostart
 ##
-## `sudo pacman -Sy --needed python-pyxdg` 
+## `sudo pacman -Sy --needed python-pyxdg`
 ## install `python-pyxdg` to support `/usr/lib/openbox/openbox-xdg-autostart`
 ## use xdg-autostart instead of exec `openbox-up-applet `
 ##
@@ -38,13 +38,46 @@ source "$THE_BASE_DIR_PATH/init.sh"
 
 
 ################################################################################
-### Head: Main
+### Head: Start
 ##
 
-__main__ () {
+main_openbox_xdg_autostart () {
+	##
+	## * /usr/lib/openbox/openbox-autostart
+	## * /usr/lib/openbox/openbox-xdg-autostart
+	##
 
-	PATH="$HOME/.config/openbox/bin:$PATH"
-	#echo $PATH > /tmp/log.txt
+	if ! [ -f "/usr/lib/openbox/openbox-xdg-autostart" ]; then
+		return 0
+	fi
+
+	/usr/lib/openbox/openbox-xdg-autostart
+}
+
+main_xdg_autostart () {
+
+	if [ -f "/usr/lib/openbox/openbox-xdg-autostart" ]; then
+		##main_openbox_xdg_autostart ## no needed run this line. on openbox, `/usr/lib/openbox/openbox-xdg-autostart` would be launched by `/usr/lib/openbox/openbox-autostart`
+		main_app_upstart_with_xdg_autostart
+	else
+		main_app_upstart
+	fi
+
+}
+
+main_app_upstart_with_xdg_autostart () {
+
+	is_command_exist 'openbox-up-xsettings' && openbox-up-xsettings &
+
+	is_command_exist 'openbox-up-wallpaper' && openbox-up-wallpaper &
+
+	is_command_exist 'openbox-up-compositor' && openbox-up-compositor &
+
+	is_command_exist 'openbox-up-panel' && openbox-up-panel &
+
+}
+
+main_app_upstart () {
 
 	#is_command_exist 'openbox-up-keybind' && openbox-up-keybind &
 
@@ -56,8 +89,38 @@ __main__ () {
 
 	is_command_exist 'openbox-up-panel' && openbox-up-panel &
 
-	#is_command_exist 'openbox-up-applet' && openbox-up-applet &
+	is_command_exist 'openbox-up-applet' && openbox-up-applet &
 
+}
+
+
+main_app_autostart () {
+
+	#local use_xdg_autostart="true"
+
+	if [ "is_${use_xdg_autostart}" = "is_true" ]; then
+		main_xdg_autostart
+	else
+		main_app_upstart
+	fi
+
+}
+
+##
+### Tail: Start
+################################################################################
+
+
+################################################################################
+### Head: Main
+##
+
+__main__ () {
+
+	PATH="$HOME/.config/openbox/bin:$PATH"
+	#echo $PATH > /tmp/log.txt
+
+	main_app_autostart
 
 }
 

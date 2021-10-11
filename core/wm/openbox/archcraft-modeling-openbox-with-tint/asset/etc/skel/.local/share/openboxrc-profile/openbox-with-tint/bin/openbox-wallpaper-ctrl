@@ -42,41 +42,30 @@ cmd_var_init () {
 ##
 
 mod_wallpaper_default () {
-	#util_error_echo "mod_wallpaper_default"
-	#echo "$@"
 
-	#is_command_exist 'wallpaper-select-feh' && wallpaper-select-feh default
-
-	local default_file_path="$HOME/Pictures/Wallpaper/default.png"
-
-	if ! [ -f "$default_file_path" ]; then
-		#default_file_path="/usr/share/backgrounds/keyboards.jpg"
-		default_file_path="/usr/share/backgrounds/forest.jpg"
+	if ! is_command_exist 'wallpaper-select-feh'; then
+		util_error_echo 'Needed: wallpaper-select-feh'
+		return 0
 	fi
 
-	util_error_echo "$default_file_path"
-	is_command_exist 'wallpaper-select-feh' && wallpaper-select-feh set "$default_file_path"
+	local wallpaper_file_path="$(sys_wallpaper_find_default_file_path)"
 
+	wallpaper-select-feh set "$wallpaper_file_path"
+
+	##wallpaper-select-feh default
 
 }
 
 mod_wallpaper_shuf () {
-	#echo "mod_wallpaper_shuf"
-	#echo "$@"
 
-	local shuf_dir_path="$HOME/Pictures/Wallpaper"
-	if [ -d "$shuf_dir_path" ]; then
-		util_error_echo "cd $shuf_dir_path"
-		cd "$shuf_dir_path"
-	else
-		shuf_dir_path="/usr/share/backgrounds"
-		util_error_echo "cd $shuf_dir_path"
-		cd "$shuf_dir_path"
+	if ! is_command_exist 'wallpaper-select-feh'; then
+		util_error_echo 'Needed: wallpaper-select-feh'
+		return 0
 	fi
 
+	local shuf_dir_path="$(sys_wallpaper_find_shuf_dir_path)"
 
-
-	is_command_exist 'wallpaper-select-feh' && wallpaper-select-feh shuf
+	wallpaper-select-feh shuf "$shuf_dir_path"
 
 }
 
@@ -188,10 +177,9 @@ main_run_sub_cmd () {
 
 	shift
 
-	local function_name=$(sub_cmd_find_function_name "$sub_cmd")
+	local function_name="$(sub_cmd_find_function_name "$sub_cmd")"
 
-	## if ! command -v $function_name > /dev/null; then
-	if ! type -p $function_name > /dev/null; then
+	if ! is_function_exist "$function_name" ; then
 		util_debug_echo "[Debug] sub_cmd_function_not_exist: sub_cmd=$sub_cmd; function_name=$function_name"
 
 		echo

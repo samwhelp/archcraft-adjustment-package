@@ -104,6 +104,9 @@ mod_install_ext () {
 	echo "install -Dm644 $THE_EXT_DIR_PATH/util.sh $HOME/.config/openbox/ext/util.sh"
 	install -Dm644 "$THE_EXT_DIR_PATH/util.sh" "$HOME/.config/openbox/ext/util.sh"
 
+	echo "install -Dm644 $THE_EXT_DIR_PATH/wallpaper.sh $HOME/.config/openbox/ext/wallpaper.sh"
+	install -Dm644 "$THE_EXT_DIR_PATH/wallpaper.sh" "$HOME/.config/openbox/ext/wallpaper.sh"
+
 	echo "install -Dm644 $THE_EXT_DIR_PATH/openbox.sh $HOME/.config/openbox/ext/openbox.sh"
 	install -Dm644 "$THE_EXT_DIR_PATH/openbox.sh" "$HOME/.config/openbox/ext/openbox.sh"
 

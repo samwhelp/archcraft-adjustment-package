@@ -28,8 +28,8 @@ base_var_dump
 
 ## extra function
 source "$THE_EXT_DIR_PATH/util.sh"
+source "$THE_EXT_DIR_PATH/wallpaper.sh"
 source "$THE_EXT_DIR_PATH/openbox.sh"
-
 
 ##
 ### Tail: Func / Init
