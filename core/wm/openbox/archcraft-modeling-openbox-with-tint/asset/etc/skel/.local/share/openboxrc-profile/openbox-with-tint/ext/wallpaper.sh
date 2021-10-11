@@ -60,7 +60,7 @@ sys_wallpaper_find_shuf_dir_path () {
 	fi
 
 	if [ -d "$HOME/Pictures/Wallpaper" ]; then
-		echo "$HOME/Pictures/Wallpaper"
+		echo "$HOME/Pictures"
 		return 0
 	fi
 
