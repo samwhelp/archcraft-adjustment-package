@@ -45,8 +45,8 @@ main_openbox_xdg_autostart () {
 main_xdg_autostart () {
 
 	if [ -f "/usr/lib/openbox/openbox-xdg-autostart" ]; then
-		##main_openbox_xdg_autostart ## no needed run this line. on openbox, `/usr/lib/openbox/openbox-xdg-autostart` would be launched by `/usr/lib/openbox/openbox-autostart`
 		main_app_upstart_with_xdg_autostart
+		main_openbox_xdg_autostart ## no needed run this line. on openbox, `/usr/lib/openbox/openbox-xdg-autostart` would be launched by `/usr/lib/openbox/openbox-autostart`
 	else
 		main_app_upstart
 	fi
@@ -62,6 +62,8 @@ main_app_upstart_with_xdg_autostart () {
 	is_command_exist 'hlwm-up-compositor' && hlwm-up-compositor &
 
 	is_command_exist 'hlwm-up-panel' && hlwm-up-panel &
+
+	is_command_exist 'hlwm-up-applet' && hlwm-up-applet &
 
 }
 
