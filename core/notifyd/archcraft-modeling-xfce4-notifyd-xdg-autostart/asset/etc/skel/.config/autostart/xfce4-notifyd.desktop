@@ -3,4 +3,4 @@ Type=Application
 Name=Xfce Notification Daemon
 Exec=/usr/lib/xfce4/notifyd/xfce4-notifyd
 Icon=org.xfce.notification
-OnlyShowIn=XFCE;OPENBOX;
+OnlyShowIn=XFCE;OPENBOX;BSPWM;I3WM;HERBSTLUFTWM;AWESOMEWM;SPECTRWM;LEFTWM;CWM;BERRYWM;WINDOWCHEF;XMONAD;QTILE;
