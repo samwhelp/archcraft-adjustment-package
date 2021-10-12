@@ -80,9 +80,13 @@ main_app_upstart_with_xdg_autostart () {
 
 	is_command_exist 'hlwm-up-compositor' && hlwm-up-compositor &
 
+	is_command_exist 'hlwm-up-applet' && hlwm-up-applet &
+
+	sleep 2
+
 	is_command_exist 'hlwm-up-panel' && hlwm-up-panel &
 
-	is_command_exist 'hlwm-up-applet' && hlwm-up-applet &
+
 
 }
 
