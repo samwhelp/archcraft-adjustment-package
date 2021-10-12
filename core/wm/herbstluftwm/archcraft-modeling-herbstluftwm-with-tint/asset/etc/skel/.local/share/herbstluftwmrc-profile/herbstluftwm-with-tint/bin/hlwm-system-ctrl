@@ -43,20 +43,20 @@ cmd_var_init () {
 
 mod_system_shutdown () {
 
-	if ! is_command_exist 'shutdowm'; then
+	if ! is_command_exist 'shutdown'; then
 		return 0
 	fi
 
-	shutdowm now
+	shutdown now
 }
 
 mod_system_reboot () {
 
-	if ! is_command_exist 'systemctrl'; then
+	if ! is_command_exist 'systemctl'; then
 		return 0
 	fi
 
-	systemctrl reboot
+	systemctl reboot
 }
 
 
