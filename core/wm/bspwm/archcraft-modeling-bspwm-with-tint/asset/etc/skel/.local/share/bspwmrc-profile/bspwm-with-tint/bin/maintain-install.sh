@@ -85,6 +85,13 @@ mod_install_bin_ctrl () {
 	echo "install -Dm755 $THE_BIN_DIR_PATH/bspwm-profile-ctrl $HOME/.config/bspwm/bin/bspwm-profile-ctrl"
 	install -Dm755 "$THE_BIN_DIR_PATH/bspwm-profile-ctrl" "$HOME/.config/bspwm/bin/bspwm-profile-ctrl"
 
+	echo "install -Dm755 $THE_BIN_DIR_PATH/bspwm-system-ctrl $HOME/.config/bspwm/bin/bspwm-system-ctrl"
+	install -Dm755 "$THE_BIN_DIR_PATH/bspwm-system-ctrl" "$HOME/.config/bspwm/bin/bspwm-system-ctrl"
+
+	echo "install -Dm755 $THE_BIN_DIR_PATH/bspwm-focus-ctrl $HOME/.config/bspwm/bin/bspwm-focus-ctrl"
+	install -Dm755 "$THE_BIN_DIR_PATH/bspwm-focus-ctrl" "$HOME/.config/bspwm/bin/bspwm-focus-ctrl"
+
+
 }
 
 mod_install_ext () {

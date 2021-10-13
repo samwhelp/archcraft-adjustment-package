@@ -25,7 +25,7 @@ cmd_var_init () {
 	THE_CMD_DIR_PATH="$THE_BIN_DIR_PATH"
 
 	if [ "none$THE_CMD_FILE_NAME" = 'none' ]; then
-		THE_CMD_FILE_NAME="bspwm-wallpaper-ctrl"
+		THE_CMD_FILE_NAME="bspwm-system-ctrl"
 	fi
 
 	THE_CMD_FILE_PATH="$THE_CMD_DIR_PATH/$THE_CMD_FILE_NAME"
@@ -38,57 +38,68 @@ cmd_var_init () {
 
 
 ################################################################################
-### Head: Model / Wallpaper
+### Head: Model / system
 ##
 
-mod_wallpaper_default () {
+mod_system_shutdown () {
 
-	if ! is_command_exist 'wallpaper-select-feh'; then
-		util_error_echo 'Needed: wallpaper-select-feh'
+	if ! is_command_exist 'shutdown'; then
 		return 0
 	fi
 
-	local wallpaper_file_path="$(sys_wallpaper_find_default_file_path)"
-
-	wallpaper-select-feh set "$wallpaper_file_path"
-
-	##wallpaper-select-feh default
-
+	shutdown now
 }
 
-mod_wallpaper_shuf () {
+mod_system_reboot () {
 
-	if ! is_command_exist 'wallpaper-select-feh'; then
-		util_error_echo 'Needed: wallpaper-select-feh'
+	if ! is_command_exist 'systemctl'; then
 		return 0
 	fi
 
-	local shuf_dir_path="$(sys_wallpaper_find_shuf_dir_path)"
-
-	wallpaper-select-feh shuf "$shuf_dir_path"
-
+	systemctl reboot
 }
 
 
+mod_system_logout () {
+
+	#killall -9 bspwm
+
+	bspc quit
+}
+
+mod_system_restart () {
+	pkill -USR1 -x sxhkd
+	bspc wm -r
+}
+
+mod_system_reconfigure () {
+	pkill -USR1 -x sxhkd
+	bspc wm -r
+}
+
 ##
-### Tail: Model / Wallpaper
+### Tail: Model / system
 ################################################################################
 
 
 ################################################################################
-### Head: SubCmd / Wallpaper
+### Head: SubCmd / system
 ##
 
-sub_run_default () {
-	mod_wallpaper_default "$@"
+sub_run_shutdown () {
+	mod_system_shutdown "$@"
 }
 
-sub_run_shuf () {
-	mod_wallpaper_shuf "$@"
+sub_run_reboot () {
+	mod_system_reboot "$@"
+}
+
+sub_run_logout () {
+	mod_system_logout "$@"
 }
 
 ##
-### Tail: SubCmd / Wallpaper
+### Tail: SubCmd / system
 ################################################################################
 
 
@@ -137,7 +148,7 @@ sub_cmd_find_function_name () {
 
 main_usage () {
 	##local cmd_name="$0"
-	local cmd_name="bspwm-wallpaper-ctrl"
+	local cmd_name="bspwm-system-ctrl"
 
 cat << EOF
 Usage:
@@ -148,9 +159,10 @@ Example:
 	$ $cmd_name
 	$ $cmd_name help
 
-	$ $cmd_name default
+	$ $cmd_name shutdowm
+	$ $cmd_name reboot
+	$ $cmd_name logout
 
-	$ $cmd_name shuf
 
 Debug:
 	$ export DEBUG_BSPWM=true
@@ -180,6 +192,7 @@ main_run_sub_cmd () {
 	local function_name="$(sub_cmd_find_function_name "$sub_cmd")"
 
 	if ! is_function_exist "$function_name" ; then
+
 		util_debug_echo "[Debug] sub_cmd_function_not_exist: sub_cmd=$sub_cmd; function_name=$function_name"
 
 		echo
