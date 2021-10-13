@@ -38,16 +38,16 @@ app_feh_start () {
 
 sys_feh_wallpaper_default () {
 
-	local wallpaper_file_path
+	if ! is_command_exist 'feh'; then
+		util_error_echo 'Needed: feh'
+		return 0
+	fi
 
-	#wallpaper_file_path="$HOME/Pictures/Wallpaper/default.jpg"
-	#wallpaper_file_path="/usr/share/backgrounds/keyboards.jpg"
-	wallpaper_file_path="/usr/share/backgrounds/forest.jpg"
+	local wallpaper_file_path="$(sys_wallpaper_find_default_file_path)"
 
+	#util_stop_all 'feh'
 
-	util_stop_all 'feh'
-
-	is_command_exist 'feh' && feh --bg-scale "$wallpaper_file_path" &
+	feh --bg-scale "$wallpaper_file_path" &
 
 }
 

@@ -102,7 +102,7 @@ sub_run_raise_or_run () {
 
 mod_focus_the_sakura () {
 
-	mod_raise_or_run "sakura" "sakura -m"
+	mod_raise_or_run "sakura" "sakura"
 
 }
 
@@ -133,7 +133,7 @@ sub_run_the_sakura () {
 
 mod_focus_the_xfce4_terminal () {
 
-	mod_raise_or_run "xfce4-terminal" "xfce4-terminal --maximize"
+	mod_raise_or_run "xfce4-terminal" "xfce4-terminal"
 
 }
 
@@ -400,6 +400,7 @@ main_run_sub_cmd () {
 	local function_name="$(sub_cmd_find_function_name "$sub_cmd")"
 
 	if ! is_function_exist "$function_name" ; then
+
 		util_debug_echo "[Debug] sub_cmd_function_not_exist: sub_cmd=$sub_cmd; function_name=$function_name"
 
 		echo

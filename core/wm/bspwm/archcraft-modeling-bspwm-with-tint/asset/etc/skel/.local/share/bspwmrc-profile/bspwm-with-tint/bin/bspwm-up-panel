@@ -31,14 +31,18 @@ source "$THE_BASE_DIR_PATH/init.sh"
 
 app_polybar_start () {
 
+	if ! is_command_exist 'polybar'; then
+		return 0
+	fi
+
 	util_stop_all 'polybar'
 
 	if [ -f "$THE_STYLE_POLYBAR_CONFIG_FILE_PATH" ]; then
-		is_command_exist 'polybar' && polybar top -c "$THE_STYLE_POLYBAR_CONFIG_FILE_PATH" &
+		polybar top -c "$THE_STYLE_POLYBAR_CONFIG_FILE_PATH" &
 		return
 	fi
 
-	is_command_exist 'polybar' && polybar top &
+	polybar top &
 
 }
 
@@ -76,7 +80,7 @@ app_tint2_start () {
 app_tint2_start_default () {
 
 	if ! is_command_exist 'tint2'; then
-		return 0;
+		return 0
 	fi
 
 	util_stop_all 'tint2'
@@ -104,7 +108,7 @@ app_tint2_start_default () {
 app_tint2_start_top_panel () {
 
 	if ! is_command_exist 'tint2'; then
-		return 0;
+		return 0
 	fi
 
 	util_stop_all 'tint2'
@@ -135,7 +139,7 @@ app_tint2_start_top_panel () {
 app_tint2_start_bottom_panel () {
 
 	if ! is_command_exist 'tint2'; then
-		return 0;
+		return 0
 	fi
 
 	util_stop_all 'tint2'
@@ -166,12 +170,11 @@ app_tint2_start_bottom_panel () {
 app_tint2_start_top_bottom_panel () {
 
 	if ! is_command_exist 'tint2'; then
-		return 0;
+		return 0
 	fi
 
 	util_stop_all 'tint2'
 
-	echo 'yes'
 
 	local tint2rc_top_config_file_path="$THE_STYLE_DIR_PATH/tint2/top_bottom_panel/tint2rc_top"
 	local tint2rc_bottom_config_file_path="$THE_STYLE_DIR_PATH/tint2/top_bottom_panel/tint2rc_bottom"

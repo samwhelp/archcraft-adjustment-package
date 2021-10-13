@@ -105,8 +105,14 @@ mod_install_ext () {
 	echo "install -Dm644 $THE_EXT_DIR_PATH/util.sh $HOME/.config/bspwm/ext/util.sh"
 	install -Dm644 "$THE_EXT_DIR_PATH/util.sh" "$HOME/.config/bspwm/ext/util.sh"
 
+	echo "install -Dm644 $THE_EXT_DIR_PATH/wallpaper.sh $HOME/.config/bspwm/ext/wallpaper.sh"
+	install -Dm644 "$THE_EXT_DIR_PATH/wallpaper.sh" "$HOME/.config/bspwm/ext/wallpaper.sh"
+
 	echo "install -Dm644 $THE_EXT_DIR_PATH/bspwm.sh $HOME/.config/bspwm/ext/bspwm.sh"
 	install -Dm644 "$THE_EXT_DIR_PATH/bspwm.sh" "$HOME/.config/bspwm/ext/bspwm.sh"
+
+
+
 
 }
 
@@ -126,6 +132,8 @@ mod_install_sys_ext () {
 
 	echo "install -Dm644 $THE_SYS_EXT_DIR_PATH/bspwm.sh $HOME/.config/bspwm/sys/ext/bspwm.sh"
 	install -Dm644 "$THE_SYS_EXT_DIR_PATH/bspwm.sh" "$HOME/.config/bspwm/sys/ext/bspwm.sh"
+
+
 
 }
 
