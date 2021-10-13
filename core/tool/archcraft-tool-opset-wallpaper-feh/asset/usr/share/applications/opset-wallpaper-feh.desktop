@@ -1,15 +1,15 @@
 [Desktop Entry]
-Name=Set Wallpaper By feh
+Name=Set As Wallpaper By feh
 GenericName=Set Wallpaper
 GenericName[de]=Set Wallpaper
-Comment=Set Wallpaper By feh
-Comment[zh_CN]=設定桌面圖片
-Comment[zh_TW]=設定桌面圖片
+Comment=Set As Wallpaper By feh
+Comment[zh_CN]=將此圖設定為桌面圖片
+Comment[zh_TW]=將此圖設定為桌面圖片
 TryExec=opset-wallpaper-feh
 Exec=opset-wallpaper-feh %F
 Terminal=false
 Type=Application
-Keywords=Graphics;wallpaper;
+Keywords=Graphics;Wallpaper;
 Icon=preferences-desktop-wallpaper
 Categories=Graphics;2DGraphics;Viewer;
 StartupNotify=false
