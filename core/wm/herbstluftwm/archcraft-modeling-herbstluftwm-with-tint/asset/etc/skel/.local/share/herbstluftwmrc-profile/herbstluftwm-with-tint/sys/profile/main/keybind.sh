@@ -102,11 +102,21 @@ main_keybind_application_terminal () {
 	# app / terminal
 	hc keybind Mod1-Return spawn "${TERMINAL:-sakura}" # use your $TERMINAL with xterm as fallback
 	hc keybind Mod1-Shift-a spawn sakura
-	hc keybind Mod1-Control-a spawn xfce4-terminal
-	hc keybind Mod1-Shift-t spawn xterm
-	hc keybind Mod1-Control-t spawn urxvt
+	hc keybind Mod1-Control-a spawn hlwm-focus-ctrl the_sakura
+	hc keybind Mod1-Shift-t spawn xfce4-terminal
+	hc keybind Mod1-Control-t spawn hlwm-focus-ctrl the_xfce4_terminal
 
+	#hc keybind Mod1-Shift-y spawn xfce4-terminal --drop-down
 }
+
+# main_keybind_application_terminal_old () {
+# 	# app / terminal
+# 	hc keybind Mod1-Return spawn "${TERMINAL:-sakura}" # use your $TERMINAL with xterm as fallback
+# 	hc keybind Mod1-Shift-a spawn sakura
+# 	hc keybind Mod1-Control-a spawn xfce4-terminal
+# 	hc keybind Mod1-Shift-t spawn xterm
+# 	hc keybind Mod1-Control-t spawn urxvt
+# }
 
 ##
 ### Tail: Main / Keybind / Application / Terminal
@@ -137,11 +147,20 @@ main_keybind_application_rofi () {
 
 main_keybind_application_favorite () {
 
-	# app / favorite
+	# app / favorite / launch
 	hc keybind Mod1-Shift-f spawn pcmanfm-qt
 	hc keybind Mod1-Shift-g spawn thunar
 	hc keybind Mod1-Shift-b spawn firefox
 	hc keybind Mod1-Shift-e spawn mousepad
+
+	# app / favorite / focus
+	hc keybind Mod1-Control-f spawn hlwm-focus-ctrl the_xfce4_pcmanfm-qt
+	hc keybind Mod1-Control-g spawn hlwm-focus-ctrl the_thunar
+	hc keybind Mod1-Control-b spawn hlwm-focus-ctrl the_firefox
+	hc keybind Mod1-Control-e spawn hlwm-focus-ctrl the_atom
+	hc keybind Mod1-Control-r spawn hlwm-focus-ctrl the_mousepad
+
+
 
 }
 

@@ -88,6 +88,10 @@ mod_install_bin_ctrl () {
 	echo "install -Dm755 $THE_BIN_DIR_PATH/hlwm-system-ctrl $HOME/.config/herbstluftwm/bin/hlwm-system-ctrl"
 	install -Dm755 "$THE_BIN_DIR_PATH/hlwm-system-ctrl" "$HOME/.config/herbstluftwm/bin/hlwm-system-ctrl"
 
+	echo "install -Dm755 $THE_BIN_DIR_PATH/hlwm-focus-ctrl $HOME/.config/herbstluftwm/bin/hlwm-focus-ctrl"
+	install -Dm755 "$THE_BIN_DIR_PATH/hlwm-focus-ctrl" "$HOME/.config/herbstluftwm/bin/hlwm-focus-ctrl"
+
+
 }
 
 mod_install_ext () {
