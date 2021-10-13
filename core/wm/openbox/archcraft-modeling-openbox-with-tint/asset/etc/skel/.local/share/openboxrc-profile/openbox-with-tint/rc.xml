@@ -1008,6 +1008,7 @@ h l
 		<action name="Close"/>
 	</keybind>
 
+<!--
 	<keybind key="A-F4">
 		<action name="Close"/>
 	</keybind>
@@ -1015,7 +1016,7 @@ h l
 	<keybind key="A-S-q">
 		<action name="Close"/>
 	</keybind>
-
+//-->
 
 
 	<keybind key="W-x">
