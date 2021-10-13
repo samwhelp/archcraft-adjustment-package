@@ -154,7 +154,7 @@ main_keybind_application_favorite () {
 	hc keybind Mod1-Shift-e spawn mousepad
 
 	# app / favorite / focus
-	hc keybind Mod1-Control-f spawn hlwm-focus-ctrl the_xfce4_pcmanfm-qt
+	hc keybind Mod1-Control-f spawn hlwm-focus-ctrl the_pcmanfm_qt
 	hc keybind Mod1-Control-g spawn hlwm-focus-ctrl the_thunar
 	hc keybind Mod1-Control-b spawn hlwm-focus-ctrl the_firefox
 	hc keybind Mod1-Control-e spawn hlwm-focus-ctrl the_atom
