@@ -91,6 +91,10 @@ mod_install_bin_ctrl () {
 	echo "install -Dm755 $THE_BIN_DIR_PATH/openbox-profile-ctrl $HOME/.config/openbox/bin/openbox-profile-ctrl"
 	install -Dm755 "$THE_BIN_DIR_PATH/openbox-profile-ctrl" "$HOME/.config/openbox/bin/openbox-profile-ctrl"
 
+	echo "install -Dm755 $THE_BIN_DIR_PATH/openbox-focus-ctrl $HOME/.config/openbox/bin/openbox-focus-ctrl"
+	install -Dm755 "$THE_BIN_DIR_PATH/openbox-focus-ctrl" "$HOME/.config/openbox/bin/openbox-focus-ctrl"
+
+
 }
 
 mod_install_ext () {
