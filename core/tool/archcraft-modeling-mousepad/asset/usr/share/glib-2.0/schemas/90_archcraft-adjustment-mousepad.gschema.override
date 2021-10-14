@@ -1,0 +1,35 @@
+[org.xfce.mousepad.preferences.file]
+add-last-end-of-line=true
+
+[org.xfce.mousepad.preferences.view]
+auto-indent=true
+color-scheme='oblivion'
+font-name='Monospace 16'
+highlight-current-line=true
+match-braces=true
+show-line-endings=false
+show-line-numbers=true
+show-right-margin=true
+show-whitespace=true
+smart-backspace=false
+smart-home-end='after'
+tab-width=uint32 4
+use-default-monospace-font=false
+word-wrap=true
+
+[org.xfce.mousepad.preferences.window]
+always-show-tabs=true
+cycle-tabs=true
+old-style-menu=true
+statusbar-visible=true
+toolbar-style='icons'
+toolbar-visible=true
+
+[org.xfce.mousepad.state.search]
+highlight-all=true
+
+[org.xfce.mousepad.state.window]
+fullscreen=false
+height=uint32 628
+maximized=false
+width=uint32 668
