@@ -102,9 +102,9 @@ main_keybind_application_terminal () {
 	# app / terminal
 	hc keybind Mod1-Return spawn "${TERMINAL:-sakura}" # use your $TERMINAL with xterm as fallback
 	hc keybind Mod1-Shift-a spawn sakura
-	hc keybind Mod1-Control-a spawn hlwm-focus-ctrl the_sakura
+	hc keybind Mod1-Control-a spawn ~/.config/herbstluftwm/bin/hlwm-focus-ctrl the_sakura
 	hc keybind Mod1-Shift-t spawn xfce4-terminal
-	hc keybind Mod1-Control-t spawn hlwm-focus-ctrl the_xfce4_terminal
+	hc keybind Mod1-Control-t spawn ~/.config/herbstluftwm/bin/hlwm-focus-ctrl the_xfce4_terminal
 
 	#hc keybind Mod1-Shift-y spawn xfce4-terminal --drop-down
 }
@@ -154,11 +154,11 @@ main_keybind_application_favorite () {
 	hc keybind Mod1-Shift-e spawn mousepad
 
 	# app / favorite / focus
-	hc keybind Mod1-Control-f spawn hlwm-focus-ctrl the_pcmanfm_qt
-	hc keybind Mod1-Control-g spawn hlwm-focus-ctrl the_thunar
-	hc keybind Mod1-Control-b spawn hlwm-focus-ctrl the_firefox
-	hc keybind Mod1-Control-e spawn hlwm-focus-ctrl the_atom
-	hc keybind Mod1-Control-r spawn hlwm-focus-ctrl the_mousepad
+	hc keybind Mod1-Control-f spawn ~/.config/herbstluftwm/bin/hlwm-focus-ctrl the_pcmanfm_qt
+	hc keybind Mod1-Control-g spawn ~/.config/herbstluftwm/bin/hlwm-focus-ctrl the_thunar
+	hc keybind Mod1-Control-b spawn ~/.config/herbstluftwm/bin/hlwm-focus-ctrl the_firefox
+	hc keybind Mod1-Control-e spawn ~/.config/herbstluftwm/bin/hlwm-focus-ctrl the_atom
+	hc keybind Mod1-Control-r spawn ~/.config/herbstluftwm/bin/hlwm-focus-ctrl the_mousepad
 
 
 
