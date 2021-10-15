@@ -1,0 +1,1601 @@
+#!/usr/bin/env bash
+
+
+################################################################################
+### Head: Url
+##
+
+# * https://github.com/samwhelp/skel-project-plan/blob/gh-pages/demo/sh/standalone/bin/demo-ctrl
+# * https://www.freedesktop.org/wiki/Specifications/XSettingsRegistry/
+
+##
+### Tail: Url
+################################################################################
+
+
+################################################################################
+### Head: Init
+##
+set -e ## for Exit immediately if a command exits with a non-zero status.
+THE_BASE_DIR_PATH="$(cd -- "$(dirname -- "$0")" ; pwd)"
+THE_CMD_FILE_NAME="$(basename "$0")"
+##
+### Tail: Init
+################################################################################
+
+
+################################################################################
+### Head: Util / Debug
+##
+
+util_debug_echo () {
+	if is_debug; then
+		echo "$@" 1>&2
+	fi
+}
+
+util_error_echo () {
+	echo "$@" 1>&2
+}
+
+##
+### Head: Util / Debug
+################################################################################
+
+
+################################################################################
+### Head: Base
+##
+
+## THE_BASE_DIR_PATH="$(cd -- "$(dirname -- "$0")" ; pwd)"
+
+find_dir_path () {
+	if ! [ -d "$(dirname -- "$1")" ]; then
+		dirname -- "$1"
+		return 1
+	fi
+	echo "$(cd -- "$(dirname -- "$1")" ; pwd)"
+}
+
+## THIS_BASE_DIR_PATH="$(find_dir_path "$0")"
+
+## $ export DEBUG_GRUBRC_THEME_CTRL=true
+is_debug () {
+	if [ "$DEBUG_GRUBRC_THEME_CTRL" = "true" ]; then
+		return 0
+	fi
+
+	return 1
+}
+
+is_not_debug () {
+	! is_debug
+}
+
+base_var_init () {
+
+	#THE_PLAN_DIR_PATH=$(find_dir_path "$THE_BASE_DIR_PATH/../.")
+	THE_PLAN_DIR_PATH="$(find_dir_path "$THE_BASE_DIR_PATH/.")"
+
+	THE_CMD_VERSION='0.1'
+
+	THE_CMD_DIR_PATH="${THE_BASE_DIR_PATH}"
+
+	if [ "none${THE_CMD_FILE_NAME}" = 'none' ]; then
+		THE_CMD_FILE_NAME="grubrc-theme-ctrl"
+	fi
+
+	THE_CMD_FILE_PATH="${THE_CMD_DIR_PATH}/$THE_CMD_FILE_NAME"
+
+	## https://github.com/samwhelp/play-ubuntu-20.04-plan/blob/master/project/grubrc-profile/grubrc-theme-ctrl/grubrc-theme-ctrl
+	THE_SELF_UPDATE_URL='https://raw.githubusercontent.com/samwhelp/note-about-grub/gh-pages/_demo/project/grubrc-profile/grubrc-theme-ctrl/grubrc-theme-ctrl'
+
+
+	THE_TMP_DIR_PATH="/tmp"
+
+
+	THE_ASSET_DIR_NAME="asset"
+	THE_ASSET_DIR_PATH="$THE_PLAN_DIR_PATH/$THE_ASSET_DIR_NAME"
+
+	THE_VAR_DIR_NAME="var"
+	THE_VAR_DIR_PATH="$THE_PLAN_DIR_PATH/$THE_VAR_DIR_NAME"
+
+	THE_PROFILE_DIR_NAME=".${THE_CMD_FILE_NAME}-profile"
+	THE_PROFILE_DIR_PATH="$HOME/$THE_PROFILE_DIR_NAME"
+
+	THE_PROJECT_DIR_NAME="${THE_CMD_FILE_NAME}"
+	THE_PROJECT_DIR_PATH="$HOME/.local/share/$THE_PROJECT_DIR_NAME"
+
+	THE_CONFIG_DIR_NAME="${THE_CMD_FILE_NAME}"
+	THE_CONFIG_DIR_PATH="$HOME/.config/$THE_CONFIG_DIR_NAME"
+
+	THE_CACHE_DIR_NAME="${THE_CMD_FILE_NAME}"
+	THE_CACHE_DIR_PATH="$HOME/.cache/$THE_CACHE_DIR_NAME"
+
+
+	## grub
+	THE_GRUBRC_DIR_NAME="grub"
+	THE_GRUBRC_DIR_PATH="/boot/$THE_GRUBRC_DIR_NAME" ## /boot/grub
+
+	THE_GRUBRC_THEME_CONFIG_FILE_NAME="theme.txt"
+
+	THE_GRUBRC_THEMES_DIR_NAME="themes"
+	THE_GRUBRC_THEMES_DIR_PATH="$THE_GRUBRC_DIR_PATH/$THE_GRUBRC_THEMES_DIR_NAME" ## /boot/grub/themes
+
+	THE_GRUBRC_MASTER_CONFIG_FILE_NAME="grub"
+	THE_GRUBRC_MASTER_CONFIG_FILE_PATH="/etc/default/$THE_GRUBRC_MASTER_CONFIG_FILE_NAME" ## /etc/default/grub
+	THE_GRUBRC_MASTER_CONFIG_TEMP_FILE_PATH="/tmp/$THE_GRUBRC_MASTER_CONFIG_FILE_NAME" ## /tmp/grub
+
+	THE_GRUBRC_MASTER_CONFIG_BASE_BACKUP_DIR_PATH="$HOME/.backup" ## ~/.backup
+	THE_GRUBRC_MASTER_CONFIG_BACKUP_DIR_PATH="$THE_GRUBRC_MASTER_CONFIG_BASE_BACKUP_DIR_PATH" ## ~/.backup
+	THE_GRUBRC_MASTER_CONFIG_BACKUP_FILE_PATH="$THE_GRUBRC_MASTER_CONFIG_BACKUP_DIR_PATH/$THE_GRUBRC_MASTER_CONFIG_FILE_NAME" ## ~/.backup/grub
+
+	THE_GRUBRC_REPO_TEMP_BASE_DIR_NAME="grub.bak"
+	THE_GRUBRC_REPO_TEMP_BASE_DIR_PATH="/tmp/$THE_GRUBRC_REPO_TEMP_BASE_DIR_NAME" ## /tmp/grub.bak
+
+
+}
+
+base_var_dump () {
+
+	is_not_debug && return 0
+
+	util_debug_echo
+	util_debug_echo "################################################################################"
+	util_debug_echo "### Head: var_dump"
+	util_debug_echo "##"
+	util_debug_echo "#"
+
+
+	util_debug_echo "THE_PLAN_DIR_PATH=$THE_PLAN_DIR_PATH"
+
+	util_debug_echo "THE_CMD_FILE_NAME=$THE_CMD_FILE_NAME"
+	util_debug_echo "THE_CMD_FILE_PATH=$THE_CMD_FILE_PATH"
+	util_debug_echo "THE_CMD_DIR_PATH=$THE_CMD_DIR_PATH"
+
+	util_debug_echo "THE_SELF_UPDATE_URL=$THE_SELF_UPDATE_URL"
+
+
+	util_debug_echo "THE_TMP_DIR_PATH=$THE_TMP_DIR_PATH"
+
+
+	util_debug_echo "THE_ASSET_DIR_NAME=$THE_ASSET_DIR_NAME"
+	util_debug_echo "THE_ASSET_DIR_PATH=$THE_ASSET_DIR_PATH"
+
+	util_debug_echo "THE_VAR_DIR_NAME=$THE_VAR_DIR_NAME"
+	util_debug_echo "THE_VAR_DIR_PATH=$THE_VAR_DIR_PATH"
+
+
+
+
+	util_debug_echo "THE_PROFILE_DIR_NAME=$THE_PROFILE_DIR_NAME"
+	util_debug_echo "THE_PROFILE_DIR_PATH=$THE_PROFILE_DIR_PATH"
+
+	util_debug_echo "THE_PROJECT_DIR_NAME=$THE_PROJECT_DIR_NAME"
+	util_debug_echo "THE_PROJECT_DIR_PATH=$THE_PROJECT_DIR_PATH"
+
+	util_debug_echo "THE_CONFIG_DIR_NAME=$THE_CONFIG_DIR_NAME"
+	util_debug_echo "THE_CONFIG_DIR_PATH=$THE_CONFIG_DIR_PATH"
+
+	util_debug_echo "THE_CACHE_DIR_NAME=$THE_CACHE_DIR_NAME"
+	util_debug_echo "THE_CACHE_DIR_PATH=$THE_CACHE_DIR_PATH"
+
+
+
+	## grub
+	util_debug_echo "THE_GRUBRC_DIR_NAME=$THE_GRUBRC_DIR_NAME"
+	util_debug_echo "THE_GRUBRC_DIR_PATH=$THE_GRUBRC_DIR_PATH"
+
+	util_debug_echo "THE_GRUBRC_THEME_CONFIG_FILE_NAME=$THE_GRUBRC_THEME_CONFIG_FILE_NAME"
+
+	util_debug_echo "THE_GRUBRC_THEMES_DIR_NAME=$THE_GRUBRC_THEMES_DIR_NAME"
+	util_debug_echo "THE_GRUBRC_THEMES_DIR_PATH=$THE_GRUBRC_THEMES_DIR_PATH"
+
+
+	util_debug_echo "THE_GRUBRC_MASTER_CONFIG_FILE_NAME=$THE_GRUBRC_MASTER_CONFIG_FILE_NAME"
+	util_debug_echo "THE_GRUBRC_MASTER_CONFIG_FILE_PATH=$THE_GRUBRC_MASTER_CONFIG_FILE_PATH"
+	util_debug_echo "THE_GRUBRC_MASTER_CONFIG_TEMP_FILE_PATH=$THE_GRUBRC_MASTER_CONFIG_TEMP_FILE_PATH"
+
+
+	util_debug_echo "THE_GRUBRC_MASTER_CONFIG_BASE_BACKUP_DIR_PATH=$THE_GRUBRC_MASTER_CONFIG_BASE_BACKUP_DIR_PATH"
+	util_debug_echo "THE_GRUBRC_MASTER_CONFIG_BACKUP_DIR_PATH=$THE_GRUBRC_MASTER_CONFIG_BACKUP_DIR_PATH"
+	util_debug_echo "THE_GRUBRC_MASTER_CONFIG_BACKUP_FILE_PATH=$THE_GRUBRC_MASTER_CONFIG_BACKUP_FILE_PATH"
+
+
+	util_debug_echo "THE_GRUBRC_REPO_TEMP_BASE_DIR_NAME=$THE_GRUBRC_REPO_TEMP_BASE_DIR_NAME"
+	util_debug_echo "THE_GRUBRC_REPO_TEMP_BASE_DIR_PATH=$THE_GRUBRC_REPO_TEMP_BASE_DIR_PATH"
+
+
+
+	util_debug_echo "#"
+	util_debug_echo "##"
+	util_debug_echo "### Tail: var_dump"
+	util_debug_echo "################################################################################"
+	util_debug_echo
+}
+
+
+base_var_init
+
+base_var_dump
+
+##
+### Tail: Base
+################################################################################
+
+
+################################################################################
+### Head: Util / Command
+##
+
+is_function_exist () {
+	if type -p "$1" > /dev/null; then
+		return 0
+	else
+		return 1
+	fi
+}
+
+# is_command_exist () {
+# 	if command -v "$1" > /dev/null; then
+# 		return 0
+# 	else
+# 		return 1
+# 	fi
+# }
+
+is_command_exist () {
+	if [ -x "$(command -v $1)" ]; then
+		return 0
+	else
+		return 1
+	fi
+}
+
+##
+### Tail: Util / Command
+################################################################################
+
+
+################################################################################
+### Head: Util / Process
+##
+
+util_stop_all ()  {
+
+	if is_command_exist 'pkill'; then
+		util_stop_all_by_pkill "$1"
+		return 0
+	fi
+
+	if is_command_exist 'killall'; then
+		util_stop_all_by_killall "$1"
+		return 0
+	fi
+
+	return 0
+}
+
+util_stop_all_by_pkill () {
+
+	if pkill "$1"; then
+		return 0
+	fi
+
+	return 0
+}
+
+util_stop_all_by_killall () {
+
+	if killall -q -9 "$1"; then
+		return 0
+	fi
+
+	return 0
+
+}
+
+##
+### Tail: Util / Process
+################################################################################
+
+
+################################################################################
+### Head: Util / SubCmd
+##
+
+sub_cmd_find_function_name () {
+	echo "sub_run_$1"
+}
+
+##
+### Tail: Util / SubCmd
+################################################################################
+
+
+################################################################################
+### Head: Util / Self_Update
+##
+
+util_make_bin_dir () {
+	mkdir -p "$HOME/bin"
+}
+
+util_make_tmp_dir () {
+	THE_TMP_DIR_PATH="/tmp/tmp.$$.$RANDOM"
+	mkdir "$THE_TMP_DIR_PATH"
+}
+
+util_self_update_download_to_tmp_dir () {
+
+	local tmp_file_path="${THE_TMP_DIR_PATH}/${THE_CMD_FILE_NAME}"
+
+	wget -c "$THE_SELF_UPDATE_URL" -O "$tmp_file_path"
+
+}
+
+util_self_update_install_from_tmp_dir () {
+
+	local tmp_file_path="${THE_TMP_DIR_PATH}/${THE_CMD_FILE_NAME}"
+
+	echo "install -m 755 $tmp_file_path $THE_CMD_FILE_PATH"
+	install -m 755 "$tmp_file_path" "$THE_CMD_FILE_PATH"
+
+}
+
+util_self_update_check_cmd_exists () {
+
+	if ! [ -f "$THE_CMD_FILE_PATH" ]; then ## file not exists
+		return 0
+	fi
+
+
+	echo "File is exists:" "$THE_CMD_FILE_PATH"
+	echo
+
+	echo "Try to backup:"
+	echo
+
+	local now="$(date +%Y%m%d_%s)"
+	local bak_dir_path="${THE_CMD_FILE_PATH}.bak"
+	local bak_file_path="${bak_dir_path}/${THE_CMD_FILE_NAME}.bak.$now"
+
+	mkdir -p $bak_dir_path
+
+	mv -v "$THE_CMD_FILE_PATH" "${bak_file_path}"
+
+	if [ "$?" != "0" ]; then
+		echo
+		echo 'Backup Failure!'
+		exit 1
+	fi
+
+	echo
+
+	return 0
+}
+
+util_self_update_print_version () {
+	echo
+	echo "Current Version:"
+
+	"$THE_CMD_FILE_PATH" version
+}
+
+util_self_update () {
+
+	util_make_bin_dir
+
+	util_make_tmp_dir
+
+	util_self_update_download_to_tmp_dir
+
+	util_self_update_check_cmd_exists && util_self_update_install_from_tmp_dir
+
+
+	util_self_update_print_version
+
+}
+
+
+main_version () {
+	echo $THE_CMD_VERSION
+}
+
+util_self_actions () {
+	grep '^sub_run' "${THE_CMD_FILE_PATH}" | cut -d ' ' -f 1 | awk -F 'sub_run_' '{print $2}' | sort -u
+}
+
+##
+### Tail: Util / Self_Update
+################################################################################
+
+
+################################################################################
+### Head: Sys
+##
+
+is_grubrc_theme_dir () {
+	local dir_path="$1"
+	local grubrc_theme_file_path="$dir_path/$THE_GRUBRC_THEME_CONFIG_FILE_NAME" ## /boot/grub/themes/demo/theme.txt
+
+	if ! [ -f "$grubrc_theme_file_path" ]; then ## check /boot/grub/themes/demo/theme.txt
+		return 1
+	fi
+
+	return 0
+}
+
+is_not_grubrc_theme_dir () {
+	local dir_path="$1"
+	local grubrc_theme_file_path="$dir_path/$THE_GRUBRC_THEME_CONFIG_FILE_NAME" ## /boot/grub/themes/demo/theme.txt
+
+	if [ -f "$grubrc_theme_file_path" ]; then ## check /boot/grub/themes/demo/theme.txt
+		return 1
+	fi
+
+	return 0
+}
+
+grubrc_theme_find_dir_path_by_name () {
+	local name="$1"
+	echo "$THE_GRUBRC_THEMES_DIR_PATH/$name"
+}
+
+
+grubrc_theme_repo_clone () {
+
+	## $ grubrc-theme-ctrl install poly_dark https://github.com/shvchk/poly-dark.git
+
+	local name="$1"
+	local repo_url="$2"
+
+	if [ "none$name" = "none" ]; then
+		util_error_echo
+		util_error_echo "## Need name: "
+		util_error_echo
+		return 1
+	fi
+
+	if [ "none$repo_url" = "none" ]; then
+		util_error_echo
+		util_error_echo "## Need repo_url: "
+		util_error_echo
+		return 1
+	fi
+
+	local target_theme_path="$THE_GRUBRC_THEMES_DIR_PATH/$name"
+
+	if [ -d "$target_theme_path" ]; then
+		util_error_echo "## Theme is Exist: $target_theme_path"
+		return 1
+	fi
+
+
+	local now="$(date +%Y%m%d_%s)"
+	local temp_dir_path="$THE_GRUBRC_REPO_TEMP_BASE_DIR_PATH/${THE_GRUBRC_REPO_TEMP_BASE_DIR_NAME}.${now}"
+
+	util_error_echo "sudo mkdir -p $THE_GRUBRC_THEMES_DIR_PATH"
+	sudo mkdir -p "$THE_GRUBRC_THEMES_DIR_PATH"
+
+	util_error_echo "mkdir -p $temp_dir_path"
+	mkdir -p "$temp_dir_path"
+
+	util_error_echo "cd $temp_dir_path"
+	cd "$temp_dir_path"
+
+	util_error_echo "git clone --recursive $repo_url $name"
+	git clone --recursive "$repo_url" "$name" ## git clone --recursive https://github.com/shvchk/poly-dark.git poly_dark
+
+	util_error_echo "sudo cp -a $name $target_theme_path"
+	sudo cp -a "$name" "$target_theme_path"
+
+	util_error_echo "cd $OLDPWD"
+	cd "$OLDPWD"
+
+}
+
+grubrc_theme_repo_clone_to_tmp () {
+
+	## $ grubrc-theme-ctrl install poly_dark https://github.com/shvchk/poly-dark.git
+
+	local name="$1"
+	local repo_url="$2"
+
+	if [ "none$name" = "none" ]; then
+		util_error_echo
+		util_error_echo "## Need name: "
+		util_error_echo
+		return 1
+	fi
+
+	if [ "none$repo_url" = "none" ]; then
+		util_error_echo
+		util_error_echo "## Need repo_url: "
+		util_error_echo
+		return 1
+	fi
+
+	local now="$(date +%Y%m%d_%s)"
+	local temp_dir_path="$THE_GRUBRC_REPO_TEMP_BASE_DIR_PATH/${THE_GRUBRC_REPO_TEMP_BASE_DIR_NAME}.${now}"
+
+	util_error_echo "mkdir -p $temp_dir_path"
+	mkdir -p "$temp_dir_path"
+
+	util_error_echo "cd $temp_dir_path"
+	cd "$temp_dir_path"
+
+	util_error_echo "git clone --recursive $repo_url $name"
+	git clone --recursive "$repo_url" "$name" ## git clone --recursive https://github.com/shvchk/poly-dark.git poly_dark
+
+	#util_error_echo "cd $OLDPWD"
+	#cd "$OLDPWD"
+
+}
+
+grubrc_theme_repo_copy_from_tmp () {
+
+	local name="$1"
+
+	if [ "none$name" = "none" ]; then
+		util_error_echo
+		util_error_echo "## Need name: "
+		util_error_echo
+		return 1
+	fi
+
+
+	local target_theme_path="$THE_GRUBRC_THEMES_DIR_PATH/$name"
+
+	if [ -d "$target_theme_path" ]; then
+		util_error_echo "## Theme is Exist: $target_theme_path"
+		return 1
+	fi
+
+	util_error_echo "sudo mkdir -p $THE_GRUBRC_THEMES_DIR_PATH"
+	sudo mkdir -p "$THE_GRUBRC_THEMES_DIR_PATH"
+
+	util_error_echo "sudo cp -a $name $target_theme_path"
+	sudo cp -a "$name" "$target_theme_path"
+
+
+	util_error_echo "cd $OLDPWD"
+	cd "$OLDPWD"
+
+}
+
+grubrc_theme_deb_extrct_to_tmp () {
+
+
+	local name="$1"
+	local deb_url="$2"
+
+	if [ "none$name" = "none" ]; then
+		util_error_echo
+		util_error_echo "## Need name: "
+		util_error_echo
+		return 1
+	fi
+
+	if [ "none$deb_url" = "none" ]; then
+		util_error_echo
+		util_error_echo "## Need deb_url: "
+		util_error_echo
+		return 1
+	fi
+
+	local now="$(date +%Y%m%d_%s)"
+	local temp_dir_path="$THE_GRUBRC_REPO_TEMP_BASE_DIR_PATH/${THE_GRUBRC_REPO_TEMP_BASE_DIR_NAME}.${now}"
+
+	util_error_echo "mkdir -p $temp_dir_path"
+	mkdir -p "$temp_dir_path"
+
+	util_error_echo "cd $temp_dir_path"
+	cd "$temp_dir_path"
+
+
+	local deb_name="${name}.deb"
+
+	## download
+	util_error_echo "wget -c $deb_url"
+	wget -c "$deb_url" -O "$deb_name"
+
+	## extract
+	## https://github.com/samwhelp/note-about-deb/tree/gh-pages/_demo/deb/concept/start
+	ar x "$deb_name"
+
+	mkdir -p "$name"
+
+	tar -p -C "$name" -xf 'data.tar.xz'
+
+	#util_error_echo "cd $OLDPWD"
+	#cd "$OLDPWD"
+
+}
+
+##
+### Tail: Sys
+################################################################################
+
+
+################################################################################
+### Head: Util / Grub Theme
+##
+
+util_attr_set_value () {
+
+	local test="$4"
+	local file="$3"
+	local key="$1"
+	local val="$2"
+	#local pattern="s/^${key}=.*/${key}=\"${val}\"/g"
+	local pattern="s/^${key}.*/${key}=\"${val}\"/g"
+
+	#echo "$pattern"
+	#sed -i 's/^GRUB_THEME=.*/GRUB_THEME=demo/g' /tmp/grub
+
+	if [ "none$key" = "none" ]; then
+		return
+	fi
+
+	if [ "none$file" = "none" ]; then
+		return
+	fi
+
+	if ! [ -f "$file" ]; then
+		return
+	fi
+
+	if [ "is_$test" = "is_test" ]; then
+		sed "$pattern" "$file"
+		return
+	fi
+
+	sed -i "$pattern" "$file"
+
+}
+
+util_grub_theme_config_line_is_exist () {
+	local config_file_path="$1"
+
+	if ! [ -f "$config_file_path" ]; then
+		util_debug_echo "## Grub Config File Not Exist: $config_file_path"
+		return 1
+	fi
+
+	grep '^GRUB_THEME=' "$config_file_path" 2>&1 > /dev/null
+}
+
+util_grub_theme_config_line_count () {
+	local config_file_path="$1"
+
+	if ! [ -f "$config_file_path" ]; then
+		util_debug_echo "## Grub Config File Not Exist: $config_file_path"
+		return 1
+	fi
+
+	grep '^GRUB_THEME=' "$config_file_path" 2> /dev/null | wc -l
+}
+
+util_grub_theme_config_line_remove () {
+	local config_file_path="$1"
+
+	if ! [ -f "$config_file_path" ]; then
+		util_debug_echo "## Grub Config File Not Exist: $config_file_path"
+		return 1
+	fi
+
+	sed -i '/^GRUB_THEME=/d' "$config_file_path"
+}
+
+util_grub_theme_config_line_comment () {
+	local config_file_path="$1"
+
+	if ! [ -f "$config_file_path" ]; then
+		util_debug_echo "## Grub Config File Not Exist: $config_file_path"
+		return 1
+	fi
+
+	sed -i 's/^GRUB_THEME=/#GRUB_THEME=/g' "$config_file_path"
+}
+
+util_grub_theme_config_line_set_value () {
+	local theme_txt_path="$1"
+	local config_file_path="$2"
+
+	if ! [ -f "$config_file_path" ]; then
+		util_debug_echo "## Grub Config File Not Exist: $config_file_path"
+		return 1
+	fi
+
+	if [ "none$theme_txt_path" = 'none' ]; then
+		theme_txt_path='/boot/grub/themes/default'
+	fi
+
+	## https://www.cyberciti.biz/faq/unix-linux-replace-string-words-in-many-files/
+	#local value="${theme_txt_path/find/replace/}" ## replace only first find
+	#local value="${theme_txt_path//find/replace/}" ## replace all find
+	#local value="${theme_txt_path//\//\\\/}" ## escape only first /
+	local value="${theme_txt_path//\//\\\/}" ## escape all /
+	##value="${value//\"/\\\\\"}" ## escape all "
+
+	util_error_echo "## Set { GRUB_THEME=\"$theme_txt_path\" }"
+
+	sed -i "s/^GRUB_THEME=.*/GRUB_THEME=\"$value\"/g" "$config_file_path"
+}
+
+util_grub_theme_config_line_append () {
+	##echo >> '/tmp/grub'
+	local theme_txt_path="$1"
+	local config_file_path="$2"
+
+	util_error_echo "## Append { GRUB_THEME=\"$value\" }"
+
+	echo 'GRUB_THEME="'"$theme_txt_path"'"' >> "$config_file_path"
+}
+
+
+##
+### Tail: Util / Grub Theme
+################################################################################
+
+
+################################################################################
+### Head: Sys / Grub Theme
+##
+
+sys_grub_theme_config_file_backup_dir_prepare () {
+
+	local now="$(date +%Y%m%d_%s)"
+	local base_backup_dir_path="$THE_GRUBRC_MASTER_CONFIG_BASE_BACKUP_DIR_PATH"
+	local grub_backup_dir_path="$base_backup_dir_path/grub.bak/grub.bak.${now}"
+
+	util_error_echo "mkdir -p $grub_backup_dir_path"
+	mkdir -p "$grub_backup_dir_path"
+
+
+	## overwrite
+	THE_GRUBRC_MASTER_CONFIG_BACKUP_DIR_PATH="$grub_backup_dir_path"
+	THE_GRUBRC_MASTER_CONFIG_BACKUP_FILE_PATH="$THE_GRUBRC_MASTER_CONFIG_BACKUP_DIR_PATH/$THE_GRUBRC_MASTER_CONFIG_FILE_NAME.old"
+	THE_GRUBRC_MASTER_CONFIG_TEMP_FILE_PATH="$THE_GRUBRC_MASTER_CONFIG_BACKUP_DIR_PATH/$THE_GRUBRC_MASTER_CONFIG_FILE_NAME.new"
+
+
+}
+
+sys_grub_theme_config_file_backup () {
+	sys_grub_theme_config_file_backup_dir_prepare
+
+	util_error_echo "install -Dm644 $THE_GRUBRC_MASTER_CONFIG_FILE_PATH $THE_GRUBRC_MASTER_CONFIG_BACKUP_FILE_PATH"
+	install -Dm644 "$THE_GRUBRC_MASTER_CONFIG_FILE_PATH" "$THE_GRUBRC_MASTER_CONFIG_BACKUP_FILE_PATH"
+}
+
+sys_grub_theme_config_file_copy () {
+	sys_grub_theme_config_file_backup
+
+	util_error_echo "install -Dm644 $THE_GRUBRC_MASTER_CONFIG_FILE_PATH $THE_GRUBRC_MASTER_CONFIG_TEMP_FILE_PATH"
+	install -Dm644 "$THE_GRUBRC_MASTER_CONFIG_FILE_PATH" "$THE_GRUBRC_MASTER_CONFIG_TEMP_FILE_PATH"
+}
+
+sys_grub_theme_config_file_sync () {
+
+	util_error_echo "sudo install -Dm644 $THE_GRUBRC_MASTER_CONFIG_TEMP_FILE_PATH $THE_GRUBRC_MASTER_CONFIG_FILE_PATH"
+	sudo install -Dm644 "$THE_GRUBRC_MASTER_CONFIG_TEMP_FILE_PATH" "$THE_GRUBRC_MASTER_CONFIG_FILE_PATH"
+}
+
+sys_grub_theme_config_line_is_exist () {
+	util_grub_theme_config_line_is_exist "$THE_GRUBRC_MASTER_CONFIG_TEMP_FILE_PATH"
+}
+
+sys_grub_theme_config_line_count () {
+	util_grub_theme_config_line_count "$THE_GRUBRC_MASTER_CONFIG_TEMP_FILE_PATH"
+}
+
+sys_grub_theme_config_line_remove () {
+	util_grub_theme_config_line_remove "$THE_GRUBRC_MASTER_CONFIG_TEMP_FILE_PATH"
+}
+
+sys_grub_theme_config_line_comment () {
+	util_grub_theme_config_line_comment "$THE_GRUBRC_MASTER_CONFIG_TEMP_FILE_PATH"
+}
+
+sys_grub_theme_config_line_set_value () {
+	local theme_txt_path="$1"
+	util_grub_theme_config_line_set_value "$theme_txt_path" "$THE_GRUBRC_MASTER_CONFIG_TEMP_FILE_PATH"
+}
+
+sys_grub_theme_config_line_append () {
+	local theme_txt_path="$1"
+	util_grub_theme_config_line_append "$theme_txt_path" "$THE_GRUBRC_MASTER_CONFIG_TEMP_FILE_PATH"
+}
+
+sys_grub_theme_config_line_clear () {
+	sys_grub_theme_config_line_remove
+	#sys_grub_theme_config_line_comment
+}
+
+
+sys_grub_theme_config () {
+	local theme_txt_path="$1"
+
+	sys_grub_theme_config_file_copy
+
+	if sys_grub_theme_config_line_is_exist; then
+
+		if (( $(sys_grub_theme_config_line_count) > 1 )); then
+			sys_grub_theme_config_line_comment
+			sys_grub_theme_config_line_append "$theme_txt_path"
+		else
+			sys_grub_theme_config_line_set_value "$theme_txt_path"
+		fi
+
+	else
+		##sys_grub_theme_config_line_append '/usr/share/grub/themes/manjaro/theme.txt'
+		sys_grub_theme_config_line_append "$theme_txt_path"
+	fi
+
+	sys_grub_theme_config_file_sync
+
+}
+
+sys_grub_config_update () {
+
+	util_error_echo
+
+	if is_command_exist 'update-grub'; then
+		util_error_echo "sudo update-grub"
+		sudo update-grub
+		return
+	fi
+
+	util_error_echo "sudo grub-mkconfig -o /boot/grub/grub.cfg"
+	sudo grub-mkconfig -o /boot/grub/grub.cfg
+	return
+}
+
+
+
+sys_grub_theme_get_name_v1 () {
+
+	local theme_txt_path="$(sys_grub_theme_get)"
+	local name="$(dirname "$theme_txt_path")"
+	name="$(basename "$name")"
+	echo "$name"
+}
+
+sys_grub_theme_get_name_v2 () {
+
+	local theme_txt_path="$(sys_grub_theme_get)"
+
+	## https://zh.wikipedia.org/wiki/Dirname
+	local name="${theme_txt_path%/*}"
+	## https://zh.wikipedia.org/wiki/Basename
+	name="${name##*/}"
+	echo "$name"
+}
+
+sys_grub_theme_get_name () {
+	#sys_grub_theme_get_name_v1
+	sys_grub_theme_get_name_v2
+}
+
+sys_grub_theme_get () {
+	grep '^GRUB_THEME=' "$THE_GRUBRC_MASTER_CONFIG_FILE_PATH" | cut -d '=' -f 2 | cut -d '"' -f 2
+}
+
+
+sys_grub_theme_set () {
+
+	local theme_txt_path="$1"
+	sys_grub_theme_config "$theme_txt_path"
+
+	sys_grub_config_update
+}
+
+sys_grub_theme_preview () {
+
+	local theme_txt_path="$1"
+	local theme_dir_path="$(dirname "$theme_txt_path")"
+
+	#echo "$theme_dir_path"
+
+	if ! is_command_exist 'grub2-theme-preview'; then
+
+		util_error_echo '## Need: grub2-theme-preview'
+		util_error_echo '# * https://github.com/hartwork/grub2-theme-preview'
+		util_error_echo '# * https://aur.archlinux.org/packages/grub2-theme-preview/'
+		util_error_echo
+		util_error_echo '## Manjaro Install:'
+		util_error_echo '# $ pamac build grub2-theme-preview'
+		util_error_echo
+
+		return 1
+
+	fi
+
+
+	util_error_echo "grub2-theme-preview $theme_dir_path"
+	util_error_echo
+	grub2-theme-preview "$theme_dir_path"
+}
+
+
+##
+### Tail: Sys / Grub Theme
+################################################################################
+
+
+################################################################################
+### Head: Model fzf
+##
+
+mod_fzf () {
+	#echo "mod_fzf"
+	#echo "$@"
+
+	if ! is_command_exist 'fzf'; then
+
+		util_error_echo '## Need: fzf'
+		util_error_echo '# * https://github.com/junegunn/fzf'
+		util_error_echo
+		util_error_echo '## Manjaro Install:'
+		util_error_echo '# $ pamac install fzf'
+		util_error_echo
+		util_error_echo '## Ubuntu Install:'
+		util_error_echo '# $ sudo apt-get install fzf'
+		util_error_echo
+
+		return 1
+
+	fi
+
+
+
+	local selected="$(mod_grubrc_theme_list | fzf)"
+
+
+	util_error_echo
+	util_error_echo "## Selected:"
+	util_error_echo
+
+	if [ "none$selected" = "none" ]; then
+		util_error_echo "# ! None Selected !"
+		return 1
+	fi
+
+	util_error_echo "# [ $selected ]"
+	mod_grubrc_theme_set "$selected"
+
+
+}
+
+##
+### Tail: Model fzf
+################################################################################
+
+
+################################################################################
+### Head: Model mod_grubrc_theme_default
+##
+
+mod_grubrc_theme_default () {
+	mod_grubrc_theme_set 'default'
+}
+
+##
+### Tail: Model mod_grubrc_theme_default
+################################################################################
+
+
+################################################################################
+### Head: Model mod_grubrc_theme_list
+##
+
+mod_grubrc_theme_list () {
+	#echo "mod_grubrc_theme_list"
+	#echo "$@"
+
+	# grubrc-theme-ctrl list
+
+	local name=''
+	local dir_path=''
+
+	if ! [ -d "$THE_GRUBRC_THEMES_DIR_PATH" ]; then
+		util_error_echo "## Dir Not Exist: $THE_GRUBRC_THEMES_DIR_PATH"
+		return 0
+	fi
+
+	cd "$THE_GRUBRC_THEMES_DIR_PATH"
+
+	## for name in *; do
+	for name in $(ls ./ -1); do
+
+		dir_path="$THE_GRUBRC_THEMES_DIR_PATH/$name" ## ~/.config/grub/themes/demo
+
+		if is_not_grubrc_theme_dir "$dir_path"; then ## check ~/.config/grub/themes/demo/theme.toml
+			continue
+		fi
+
+		if [ "is_current" == "is_$name" ]; then ## check ~/.config/grub/themes/demo/theme.toml
+			continue
+		fi
+
+		echo "$name"
+	done
+
+	## $ man cd
+	cd "$OLDPWD"
+
+}
+
+##
+### Tail: Model mod_grubrc_theme_list
+################################################################################
+
+
+################################################################################
+### Head: Model mod_grubrc_theme_get
+##
+
+mod_grubrc_theme_get () {
+	#echo "mod_grubrc_theme_get"
+	#echo "$@"
+
+	# grubrc-theme-ctrl get
+	# /etc/grub/default
+
+	sys_grub_theme_get_name
+
+}
+
+##
+### Tail: Model mod_grubrc_theme_get
+################################################################################
+
+
+################################################################################
+### Head: Model mod_grubrc_theme_set
+##
+
+mod_grubrc_theme_set () {
+	#echo "mod_grubrc_theme_set"
+	#echo "$@"
+
+
+	## $ grubrc-theme-ctrl set demo
+
+	local name="$1"
+	local source_dir_path="$THE_GRUBRC_THEMES_DIR_PATH/$name"
+
+	if is_not_grubrc_theme_dir "$source_dir_path"; then ## check /boot/grub/themes/demo
+		util_error_echo
+		util_error_echo "## Not Valid Grub Theme Dir: $source_dir_path"
+		util_error_echo
+		util_error_echo '## Please Run:'
+		util_error_echo '	$ grubrc-theme-ctrl list'
+		util_error_echo '## to find valid grubrc_theme dir.'
+		util_error_echo
+		return 1
+	fi
+
+
+	util_error_echo
+	sys_grub_theme_set "$source_dir_path/theme.txt"
+
+}
+
+
+##
+### Tail: Model mod_grubrc_theme_set
+################################################################################
+
+
+################################################################################
+### Head: Model mod_grubrc_theme_preview
+##
+
+mod_grubrc_theme_preview () {
+	#echo "mod_grubrc_theme_preview"
+	#echo "$@"
+
+
+	## $ grubrc-theme-ctrl preview demo
+
+	local name="$1"
+	local source_dir_path="$THE_GRUBRC_THEMES_DIR_PATH/$name"
+
+	if is_not_grubrc_theme_dir "$source_dir_path"; then ## check /boot/grub/themes/demo
+		util_error_echo
+		util_error_echo "## Not Valid Grub Theme Dir: $source_dir_path"
+		util_error_echo
+		util_error_echo '## Please Run:'
+		util_error_echo '	$ grubrc-theme-ctrl list'
+		util_error_echo '## to find valid grubrc_theme dir.'
+		util_error_echo
+		return 1
+	fi
+
+
+
+
+	util_error_echo
+	sys_grub_theme_preview "$source_dir_path/theme.txt"
+
+}
+
+
+##
+### Tail: Model mod_grubrc_theme_preview
+################################################################################
+
+
+################################################################################
+### Head: Model preview_fzf
+##
+
+mod_preview_fzf () {
+	#echo "mod_preview_fzf"
+	#echo "$@"
+
+	if ! is_command_exist 'fzf'; then
+
+		util_error_echo '## Need: fzf'
+		util_error_echo '# * https://github.com/junegunn/fzf'
+		util_error_echo
+		util_error_echo '## Manjaro Install:'
+		util_error_echo '# $ pamac install fzf'
+		util_error_echo
+		util_error_echo '## Ubuntu Install:'
+		util_error_echo '# $ sudo apt-get install fzf'
+		util_error_echo
+
+		return 1
+
+	fi
+
+
+
+	local selected="$(mod_grubrc_theme_list | fzf)"
+
+
+	util_error_echo
+	util_error_echo "## Selected:"
+	util_error_echo
+
+	if [ "none$selected" = "none" ]; then
+		util_error_echo "# ! None Selected !"
+		return 1
+	fi
+
+	util_error_echo "# [ $selected ]"
+	mod_grubrc_theme_preview "$selected"
+
+
+}
+
+##
+### Tail: Model preview_fzf
+################################################################################
+
+
+################################################################################
+### Head: Model grubrc_theme_install
+##
+
+mod_grubrc_theme_install () {
+
+	## $ grubrc-theme-ctrl install poly_dark https://github.com/shvchk/poly-dark.git
+
+	local name="$1"
+	local repo_url="$2"
+
+	grubrc_theme_repo_clone "$name" "$repo_url"
+
+}
+
+##
+### Tail: Model grubrc_theme_install
+################################################################################
+
+
+################################################################################
+### Head: Model mod_grubrc_theme_remove
+##
+
+mod_grubrc_theme_remove () {
+
+	## $ grubrc-theme-ctrl remove poly_dark
+
+	local name="$1"
+	#echo $name
+
+	if [ "none$name" = 'none' ]; then
+		util_error_echo
+		util_error_echo "## Empty Theme Name:"
+		util_error_echo
+		util_error_echo "## Example:"
+		util_error_echo
+		util_error_echo "grubrc-theme-ctrl remove theme_name"
+		return 1
+	fi
+
+	util_error_echo "cd $THE_GRUBRC_THEMES_DIR_PATH"
+	cd "$THE_GRUBRC_THEMES_DIR_PATH" ## cd /boot/grub/themes
+
+	local dir_path="./$name"
+
+	if ! [ -d "$dir_path" ]; then ## check /boot/grub/themes/dracula
+		util_error_echo "## Dir not exists: $name"
+		return 1
+	fi
+
+
+	util_error_echo "sudo rm -rf $dir_path"
+	sudo rm -rf "$dir_path"
+
+	util_error_echo "cd $OLDPWD"
+	cd "$OLDPWD"
+
+}
+
+##
+### Tail: Model mod_grubrc_theme_remove
+################################################################################
+
+
+################################################################################
+### Head: Model mod_grubrc_theme_path_list
+##
+
+mod_grubrc_theme_path_list () {
+	#echo "mod_grubrc_theme_path_list"
+	#echo "$@"
+
+	# grubrc-theme-ctrl path_list
+
+	local name=''
+	local dir_path=''
+
+	if ! [ -d "$THE_GRUBRC_THEMES_DIR_PATH" ]; then
+		util_error_echo "## Dir Not Exist: $THE_GRUBRC_THEMES_DIR_PATH"
+		return 0
+	fi
+
+	cd "$THE_GRUBRC_THEMES_DIR_PATH"
+
+	## for name in *; do
+	for name in $(ls ./ -1); do
+
+		dir_path="$THE_GRUBRC_THEMES_DIR_PATH/$name" ## ~/.config/grub/themes/demo
+
+		if is_not_grubrc_theme_dir "$dir_path"; then ## check ~/.config/grub/themes/demo/theme.toml
+			continue
+		fi
+
+		if [ "is_current" == "is_$name" ]; then ## check ~/.config/grub/themes/demo/theme.toml
+			continue
+		fi
+
+		echo "$dir_path/$THE_GRUBRC_THEME_CONFIG_FILE_NAME"
+	done
+
+	## $ man cd
+	cd "$OLDPWD"
+
+}
+
+##
+### Tail: Model mod_grubrc_theme_path_list
+################################################################################
+
+
+################################################################################
+### Head: Model mod_grubrc_theme_path_get
+##
+
+mod_grubrc_theme_path_get () {
+	#echo "mod_grubrc_theme_path_get"
+	#echo "$@"
+
+	# grubrc-theme-ctrl path_get
+	# /etc/grub/default
+
+	sys_grub_theme_get
+
+}
+
+##
+### Tail: Model mod_grubrc_theme_path_get
+################################################################################
+
+
+################################################################################
+### Head: Model mod_grubrc_theme_path_set
+##
+
+mod_grubrc_theme_path_set () {
+	#echo "mod_grubrc_theme_path_set"
+	#echo "$@"
+
+
+	## $ grubrc-theme-ctrl path_set /boot/grub/themes/poly_dark/theme.txt
+
+
+	local target_file_path="$1"
+	local theme_txt_path="$(realpath -s "$target_file_path")"
+
+	if ! [ -f "$theme_txt_path" ] ; then ## check /boot/grub/themes/poly_dark/theme.txt
+		util_error_echo
+		util_error_echo "## Grub Theme Txt Not Exist: $theme_txt_path"
+		util_error_echo
+		util_error_echo '## Please Run:'
+		util_error_echo '	$ grubrc-theme-ctrl path_list'
+		util_error_echo '## to find valid grub theme txt.'
+		util_error_echo
+		return 1
+	fi
+
+
+	util_error_echo
+	sys_grub_theme_set "$theme_txt_path"
+
+}
+
+
+##
+### Tail: Model mod_grubrc_theme_path_set
+################################################################################
+
+
+################################################################################
+### Head: Model mod_grubrc_theme_path_preview
+##
+
+mod_grubrc_theme_path_preview () {
+	#echo "mod_grubrc_theme_path_preview"
+	#echo "$@"
+
+
+	## $ grubrc-theme-ctrl path_preview /boot/grub/themes/poly_dark/theme.txt
+
+
+	local target_file_path="$1"
+	local theme_txt_path="$(realpath -s "$target_file_path")"
+
+	if ! [ -f "$theme_txt_path" ] ; then ## check /boot/grub/themes/poly_dark/theme.txt
+		util_error_echo
+		util_error_echo "## Grub Theme Txt Not Exist: $theme_txt_path"
+		util_error_echo
+		util_error_echo '## Please Run:'
+		util_error_echo '	$ grubrc-theme-ctrl path_list'
+		util_error_echo '## to find valid grub theme txt.'
+		util_error_echo
+		return 1
+	fi
+
+
+	util_error_echo
+	sys_grub_theme_preview "$theme_txt_path"
+
+}
+
+
+##
+### Tail: Model mod_grubrc_theme_path_preview
+################################################################################
+
+
+################################################################################
+### Head: SubCmd
+##
+
+sub_run_help () {
+	main_usage "$@"
+}
+
+sub_run_version () {
+	main_version "$@"
+}
+
+sub_run_self_update () {
+	util_self_update "$@"
+}
+
+sub_run_self_actions () {
+	util_self_actions "$@"
+}
+
+
+
+sub_run_fzf () {
+	#echo "sub_run_fzf"
+	mod_fzf "$@"
+}
+
+
+sub_run_default () {
+	#echo "sub_run_default"
+	mod_grubrc_theme_default
+}
+
+
+sub_run_list () {
+	#echo "sub_run_list"
+	mod_grubrc_theme_list "$@"
+}
+
+
+sub_run_get () {
+	#echo "sub_run_get"
+	mod_grubrc_theme_get "$@"
+}
+
+
+sub_run_set () {
+	#echo "sub_run_set"
+	mod_grubrc_theme_set "$@"
+}
+
+
+sub_run_preview () {
+	#echo "sub_run_preview"
+	mod_grubrc_theme_preview "$@"
+}
+
+
+sub_run_preview_fzf () {
+	#echo "sub_run_preview_fzf"
+	mod_preview_fzf "$@"
+}
+
+
+sub_run_install () {
+	#echo "sub_run_install"
+	mod_grubrc_theme_install "$@"
+}
+
+
+sub_run_remove () {
+	#echo "sub_run_remove"
+	mod_grubrc_theme_remove "$@"
+}
+
+
+sub_run_path_list () {
+	#echo "sub_run_path_list"
+	mod_grubrc_theme_path_list "$@"
+}
+
+
+sub_run_path_get () {
+	#echo "sub_run_path_get"
+	mod_grubrc_theme_path_get "$@"
+}
+
+
+sub_run_path_set () {
+	#echo "sub_run_path_set"
+	mod_grubrc_theme_path_set "$@"
+}
+
+
+sub_run_path_preview () {
+	#echo "sub_run_path_preview"
+	mod_grubrc_theme_path_preview "$@"
+}
+
+##
+### Tail: SubCmd
+################################################################################
+
+
+################################################################################
+### Head: Main
+##
+
+main_usage () {
+	##local cmd_name="$0"
+	local cmd_name="$THE_CMD_FILE_NAME"
+
+cat << EOF
+Usage:
+	$ $cmd_name [action]
+
+Example:
+
+	## help
+
+		$ $cmd_name
+		$ $cmd_name help
+
+	## version
+
+		$ $cmd_name version
+
+	## self_update
+
+		$ $cmd_name self_update
+
+	## self_actions
+
+		$ $cmd_name self_actions
+
+	## fzf
+
+		$ $cmd_name fzf
+
+	## theme
+
+		$ $cmd_name default
+
+		$ $cmd_name list
+
+		$ $cmd_name get
+
+		$ $cmd_name set poly_dark
+
+		$ $cmd_name preview poly_dark
+
+		$ $cmd_name preview_fzf
+
+		$ $cmd_name install poly_dark https://github.com/shvchk/poly-dark.git
+
+		$ $cmd_name remove poly_dark
+
+		$ $cmd_name path_list
+
+		$ $cmd_name path_get
+
+		$ $cmd_name path_set /boot/grub/themes/poly_dark/theme.txt
+
+		$ $cmd_name path_preview /boot/grub/themes/poly_dark/theme.txt
+
+
+Debug:
+	$ export DEBUG_GRUBRC_THEME_CTRL=true
+
+EOF
+
+}
+
+main_check_args_size () {
+	if [ $1 -le 0 ]; then
+		shift
+		main_run_default_sub_cmd "$@"
+		exit 1
+	fi
+}
+
+main_run_default_sub_cmd () {
+	main_usage "$@"
+}
+
+main_run_sub_cmd () {
+
+	local sub_cmd="$1"
+
+	shift
+
+	local function_name="$(sub_cmd_find_function_name "$sub_cmd")"
+
+	## if ! command -v $function_name > /dev/null; then
+	if ! type -p $function_name > /dev/null; then
+		util_debug_echo "[Debug] sub_cmd_function_not_exist: sub_cmd=$sub_cmd; function_name=$function_name"
+
+		echo
+		main_run_default_sub_cmd "$@"
+		return 1
+	fi
+
+	"$function_name" "$@" ## run sub cmd function
+
+
+}
+
+## Start
+main_check_args_size $# "$@"
+
+main_run_sub_cmd "$@"
+
+##
+### Tail: Main
+################################################################################
