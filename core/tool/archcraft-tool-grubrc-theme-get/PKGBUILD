@@ -9,11 +9,11 @@
 ## * https://wiki.archlinux.org/title/Arch_package_guidelines
 ##
 
-pkgname=archcraft-modeling-i3wm
+pkgname=archcraft-tool-grubrc-theme-get
 pkgver=0.1
 pkgrel=1
-pkgdesc="Archcraft Adjustment / I3WM"
-url="https://github.com/samwhelp/archcraft-adjustment-package/tree/main/core/wm/i3wm/archcraft-modeling-i3wm"
+pkgdesc="Archcraft Adjustment / GRUB / Theme Get"
+url="https://github.com/samwhelp/archcraft-adjustment-package/tree/main/core/tool/archcraft-tool-grubrc-theme-get"
 arch=('any')
 license=('MIT')
 makedepends=()
@@ -23,9 +23,6 @@ provides=("${pkgname}")
 options=(!strip !emptydirs)
 
 prepare () {
-
-	return 0
-
 	cp -af ../asset/. "${srcdir}"
 }
 
@@ -47,29 +44,20 @@ package () {
 	#mkdir -p "$sys_etc_dir_path"
 	#mkdir -p "$sys_share_dir_path"
 
-	# /etc/skel/.config
-	install -dm755 "${pkgdir}/etc/skel/.config"
+	#install -dm755 "${pkgdir}/usr/bin"
 
-	##
-	## Main Config
-	##
 
-	cd "${pkgdir}/etc/skel/.config"
-
-	##
-	## default
-	##
-
-	## /etc/skel/.config/i3 -> ../.local/share/i3wmrc-profile/default
-	#ln -sf ../.local/share/i3wmrc-profile/default i3
 
 
 	##
-	## i3wm-with-tint
+	## Main Script
 	##
 
-	## /etc/skel/.config/i3 -> ../.local/share/i3wmrc-profile/i3wm-with-tint
-	ln -sf ../.local/share/i3wmrc-profile/i3wm-with-tint i3
+	## /usr/bin/grubrc-theme-get
+	#install -Dm755 "${srcdir}/usr/bin/grubrc-theme-get" "${pkgdir}/usr/bin/grubrc-theme-get"
 
+	#cp -af "${srcdir}/etc" "${pkgdir}"
+	#cp -af "${srcdir}/usr" "${pkgdir}"
+	cp -af "${srcdir}/." "${pkgdir}"
 
 }
