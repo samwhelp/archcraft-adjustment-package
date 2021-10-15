@@ -54,7 +54,7 @@ package () {
 	##
 
 	## /usr/bin/i3wmrc-ctrl
-	install -Dm755 "${srcdir}/usr/bin/i3wmrc-ctrl" "${pkgdir}/usr/bin/i3wmrc-ctrl"
+	#install -Dm755 "${srcdir}/usr/bin/i3wmrc-ctrl" "${pkgdir}/usr/bin/i3wmrc-ctrl"
 
 	#cp -af "${srcdir}/etc" "${pkgdir}"
 	#cp -af "${srcdir}/usr" "${pkgdir}"
