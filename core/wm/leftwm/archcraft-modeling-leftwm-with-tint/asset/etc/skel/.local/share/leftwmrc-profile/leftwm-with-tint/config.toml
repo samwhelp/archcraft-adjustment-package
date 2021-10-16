@@ -1,0 +1,945 @@
+################################################################################
+### Head: Note
+##
+
+## * https://github.com/leftwm/leftwm/wiki/Config
+## * ~/.config/leftwm/config.toml
+
+##
+### Tail: Note
+################################################################################
+
+
+################################################################################
+### Head: Attribute
+##
+
+modkey = "Mod4"
+mousekey = "Mod4"
+#workspaces = []
+tags = ["Term", "Edit", "Web", "File", "Misc"]
+#layouts = ["MainAndVertStack", "MainAndHorizontalStack", "MainAndDeck", "GridHorizontal", "EvenHorizontal", "EvenVertical", "Fibonacci", "CenterMain", "CenterMainBalanced", "Monocle", "RightWiderLeftStack", "LeftWiderRightStack"]
+layouts = ["LeftWiderRightStack", "Monocle", "MainAndDeck", "RightWiderLeftStack"]
+#scratchpad = []
+disable_current_tag_swap = false
+focus_behaviour = "ClickTo" # Can be Sloppy, ClickTo,  Driven, or Event
+focus_new_windows = true
+
+
+##
+### Tail: Attribute
+################################################################################
+
+
+################################################################################
+### Head: Scratchpad
+##
+
+## https://github.com/leftwm/leftwm/wiki/Config#scratchpads
+# Create a scratchpad for alacritty
+[[scratchpad]]
+name = "MainTerminal" # This is the name which is referenced when calling (case-sensitive)
+value = "xfce4-terminal" # The command to load the application if it isn't started
+
+
+## https://github.com/leftwm/leftwm/wiki/Config#togglescratchpad
+## Toggle Scratchpad xfce4-terminal
+## Alt + Shift + o
+[[keybind]]
+command = "ToggleScratchPad"
+value = "MainTerminal" # Name set for the scratchpad
+modifier = ["Mod1", "Shift"]
+key = "o"
+
+
+##
+### Tail: Attribute
+################################################################################
+
+
+################################################################################
+### Head: Workspaces
+##
+
+workspaces = []
+
+## 1366x768
+
+## [[workspaces]]
+## y = 0
+## x = 0
+## height = 768
+## width = 800
+
+## [[workspaces]]
+## y = 0
+## x = 801
+## height = 768
+## width = 566
+
+
+## FocusWorkspacePrevious
+## Alt + Ctrl + Left
+[[keybind]]
+command = "FocusWorkspacePrevious"
+modifier = ["Mod1", "Control"]
+key = "Left"
+
+## FocusWorkspaceNext
+## Alt + Ctrl + Right
+[[keybind]]
+command = "FocusWorkspaceNext"
+modifier = ["Mod1", "Control"]
+key = "Right"
+
+##
+### Tail: Workspaces
+################################################################################
+
+
+################################################################################
+### Head: Keybind / Note
+##
+
+##
+##  | Key | Means |
+##  | --- | --- |
+##  | Mod1 | Alt |
+##  | Mod4 | Super (Win) |
+##  | Shift | Shift |
+##  | Control | Ctrl |
+##
+
+##
+### Tail: Keybind / Note
+################################################################################
+
+
+################################################################################
+### Head: Keybind / System
+##
+
+## Reconfigure
+## Alt + Shift + c
+[[keybind]]
+command = "SoftReload"
+modifier = ["Mod1", "Shift"]
+key = "c"
+
+## Logout
+## Alt + Shift + x
+[[keybind]]
+command = "Execute"
+value = "loginctl kill-session $XDG_SESSION_ID"
+modifier = ["Mod1", "Shift"]
+key = "x"
+
+## Shutdown
+## Alt + Shift + z
+[[keybind]]
+command = "Execute"
+value = "systemctl poweroff"
+modifier = ["Mod1", "Shift"]
+key = "z"
+
+##
+### Tail: Keybind / System
+################################################################################
+
+
+################################################################################
+### Head: Keybind / Wallpaper
+##
+
+## Set Wallpaper Shuf
+## Alt + w
+[[keybind]]
+command = "Execute"
+value = "~/.config/leftwm/themes/current/bin/leftwm-wallpaper-ctrl shuf"
+modifier = ["Mod1"]
+key = "w"
+
+## Set Wallpaper Default
+## Alt + Ctrl + w
+[[keybind]]
+command = "Execute"
+value = "~/.config/leftwm/themes/current/bin/leftwm-wallpaper-ctrl default"
+modifier = ["Mod1", "Control"]
+key = "w"
+
+##
+### Tail: Keybind / Wallpaper
+################################################################################
+
+
+################################################################################
+### Head: Keybind / Launch / Terminal
+##
+
+## Launch sakura
+## Alt + Enter
+[[keybind]]
+command = "Execute"
+value = "sakura"
+modifier = ["Mod1"]
+key = "Return"
+
+## Launch sakura
+## Alt + Shift + a
+[[keybind]]
+command = "Execute"
+value = "sakura"
+modifier = ["Mod1", "Shift"]
+key = "a"
+
+## Focus sakura
+## Alt + Ctrl + a
+[[keybind]]
+command = "Execute"
+value = "~/.config/leftwm/themes/current/bin/leftwm-focus-ctrl the_sakura"
+modifier = ["Mod1", "Control"]
+key = "a"
+
+## Launch xfce4-terminal
+## Alt + Shift + t
+[[keybind]]
+command = "Execute"
+value = "xfce4-terminal"
+modifier = ["Mod1", "Shift"]
+key = "t"
+
+## Focus xfce4-terminal
+## Alt + Ctrl + t
+[[keybind]]
+command = "Execute"
+value = "~/.config/leftwm/themes/current/bin/leftwm-focus-ctrl the_xfce4_terminal"
+modifier = ["Mod1", "Control"]
+key = "t"
+
+##
+### Tail: Keybind / Launch / Terminal
+################################################################################
+
+
+################################################################################
+### Head: Keybind / Launch / Rofi
+##
+
+## Launch Rofi (rofi -show run)
+## Alt + Shift + r
+[[keybind]]
+command = "Execute"
+value = "rofi -show run"
+modifier = ["Mod1", "Shift"]
+key = "r"
+
+## Launch Rofi (rofi -show window -show-icons)
+## Alt + Shift + w
+[[keybind]]
+command = "Execute"
+value = "rofi -show window -show-icons"
+modifier = ["Mod1", "Shift"]
+key = "w"
+
+## Launch Rofi (rofi -show drun -show-icons)
+## Alt + Shift + d
+[[keybind]]
+command = "Execute"
+value = "rofi -show drun -show-icons"
+modifier = ["Mod1", "Shift"]
+key = "d"
+
+##
+### Tail: Keybind / Launch / Rofi
+################################################################################
+
+
+################################################################################
+### Head: Keybind / Launch / App
+##
+
+## Launch File Manager (pcmanfm-qt)
+## Alt + Shift + f
+[[keybind]]
+command = "Execute"
+value = "pcmanfm-qt"
+modifier = ["Mod1", "Shift"]
+key = "f"
+
+## Launch File Manager (thunar)
+## Alt + Shift + g
+[[keybind]]
+command = "Execute"
+value = "thunar"
+modifier = ["Mod1", "Shift"]
+key = "g"
+
+## Launch Text Editor (mousepad)
+## Alt + Shift + e
+[[keybind]]
+command = "Execute"
+value = "mousepad"
+modifier = ["Mod1", "Shift"]
+key = "e"
+
+## Launch Web Browser (firefox)
+## Alt + Shift + b
+[[keybind]]
+command = "Execute"
+value = "firefox"
+modifier = ["Mod1", "Shift"]
+key = "b"
+
+##
+### Tail: Keybind / Launch / App
+################################################################################
+
+
+################################################################################
+### Head: Keybind / Focus / App
+##
+
+## Focus File Manager (pcmanfm-qt)
+## Alt + Control + f
+[[keybind]]
+command = "Execute"
+value = "~/.config/leftwm/themes/current/bin/leftwm-focus-ctrl the_pcmanfm_qt"
+modifier = ["Mod1", "Control"]
+key = "f"
+
+## Focus File Manager (thunar)
+## Alt + Control + g
+[[keybind]]
+command = "Execute"
+value = "~/.config/leftwm/themes/current/bin/leftwm-focus-ctrl the_thunar"
+modifier = ["Mod1", "Control"]
+key = "g"
+
+## Focus Text Editor (atom)
+## Alt + Control + e
+[[keybind]]
+command = "Execute"
+value = "~/.config/leftwm/themes/current/bin/leftwm-focus-ctrl the_atom"
+modifier = ["Mod1", "Control"]
+key = "e"
+
+## Focus Text Editor (mousepad)
+## Alt + Control + r
+[[keybind]]
+command = "Execute"
+value = "~/.config/leftwm/themes/current/bin/leftwm-focus-ctrl the_mousepad"
+modifier = ["Mod1", "Control"]
+key = "r"
+
+## Focus Web Browser (firefox)
+## Alt + Control + b
+[[keybind]]
+command = "Execute"
+value = "~/.config/leftwm/themes/current/bin/leftwm-focus-ctrl the_firefox"
+modifier = ["Mod1", "Control"]
+key = "b"
+
+##
+### Tail: Keybind / Focus / App
+################################################################################
+
+
+################################################################################
+### Head: Keybind / Launch / Dmenu
+##
+
+## Launch Dmenu
+## Alt + Shift + i
+[[keybind]]
+command = "Execute"
+value = "dmenu_run"
+modifier = ["Mod1", "Shift"]
+key = "i"
+
+##
+### Tail: Keybind / Launch / Dmenu
+################################################################################
+
+
+################################################################################
+### Head: Keybind / Tag / Switch
+##
+
+## Switch to Perior Tag
+## Alt + z
+[[keybind]]
+command = "SwapTags"
+modifier = ["Mod1"]
+key = "z"
+
+## Switch to Previous Tag
+## Alt + a
+[[keybind]]
+command = "FocusPreviousTag"
+modifier = ["Mod1"]
+key = "a"
+
+## Switch to Next Tag
+## Alt + s
+[[keybind]]
+command = "FocusNextTag"
+modifier = ["Mod1"]
+key = "s"
+
+## Switch to Previous Tag
+## Alt + h
+[[keybind]]
+command = "FocusPreviousTag"
+modifier = ["Mod1"]
+key = "h"
+
+## Switch to Next Tag
+## Alt + l
+[[keybind]]
+command = "FocusNextTag"
+modifier = ["Mod1"]
+key = "l"
+
+## Switch to Previous Tag
+## Alt + [
+[[keybind]]
+command = "FocusPreviousTag"
+modifier = ["Mod1"]
+key = "bracketleft"
+
+## Switch to Next Tag
+## Alt + ]
+[[keybind]]
+command = "FocusNextTag"
+modifier = ["Mod1"]
+key = "bracketright"
+
+## Switch to Previous Tag
+## Alt + Left
+[[keybind]]
+command = "FocusPreviousTag"
+modifier = ["Mod1"]
+key = "Left"
+
+## Switch to Next Tag
+## Alt + Right
+[[keybind]]
+command = "FocusNextTag"
+modifier = ["Mod1"]
+key = "Right"
+
+
+##
+##  | Tag | Title |
+##  | --- | --- |
+##  | 1 | Term |
+##  | 2 | Edit |
+##  | 3 | Web |
+##  | 4 | File |
+##  | 5 | Misc |
+##
+
+## Switch to Tag 1 (Term)
+## Alt + 1
+[[keybind]]
+command = "GotoTag"
+value = "1"
+modifier = ["Mod1"]
+key = "1"
+
+## Switch to Tag 2 (Edit)
+## Alt + 2
+[[keybind]]
+command = "GotoTag"
+value = "2"
+modifier = ["Mod1"]
+key = "2"
+
+## Switch to Tag 3 (Web)
+## Alt + 3
+[[keybind]]
+command = "GotoTag"
+value = "3"
+modifier = ["Mod1"]
+key = "3"
+
+## Switch to Tag 4 (File)
+## Alt + 4
+[[keybind]]
+command = "GotoTag"
+value = "4"
+modifier = ["Mod1"]
+key = "4"
+
+## Switch to Tag 5 (Misc)
+## Alt + 5
+[[keybind]]
+command = "GotoTag"
+value = "5"
+modifier = ["Mod1"]
+key = "5"
+
+## Switch to Tag 6
+## Alt + 6
+##  [[keybind]]
+##  command = "GotoTag"
+##  value = "6"
+##  modifier = ["Mod1"]
+##  key = "6"
+
+## Switch to Tag 7
+## Alt + 7
+##  [[keybind]]
+##  command = "GotoTag"
+##  value = "7"
+##  modifier = ["Mod1"]
+##  key = "7"
+
+## Switch to Tag 8
+## Alt + 8
+##  [[keybind]]
+##  command = "GotoTag"
+##  value = "8"
+##  modifier = ["Mod1"]
+##  key = "8"
+
+## Switch to Tag 9
+## Alt + 9
+##  [[keybind]]
+##  command = "GotoTag"
+##  value = "9"
+##  modifier = ["Mod1"]
+##  key = "9"
+
+
+##
+### Tail: Keybind / Tag / Switch
+################################################################################
+
+
+################################################################################
+### Head: Keybind / Window / MoveToTag
+##
+
+## Move Focused Window to Tag 1 (Term)
+## Win + 1
+[[keybind]]
+command = "MoveToTag"
+value = "1"
+modifier = ["Mod4"]
+key = "1"
+
+## Move Focused Window to Tag 2 (Edit)
+## Win + 2
+[[keybind]]
+command = "MoveToTag"
+value = "2"
+modifier = ["Mod4"]
+key = "2"
+
+## Move Focused Window to Tag 3 (Web)
+## Win + 3
+[[keybind]]
+command = "MoveToTag"
+value = "3"
+modifier = ["Mod4"]
+key = "3"
+
+## Move Focused Window to Tag 4 (File)
+## Win + 4
+[[keybind]]
+command = "MoveToTag"
+value = "4"
+modifier = ["Mod4"]
+key = "4"
+
+## Move Focused Window to Tag 5 (Misc)
+## Win + 5
+[[keybind]]
+command = "MoveToTag"
+value = "5"
+modifier = ["Mod4"]
+key = "5"
+
+## Move Focused Window to Tag 6
+## Win + 6
+##  [[keybind]]
+##  command = "MoveToTag"
+##  value = "6"
+##  modifier = ["Mod4"]
+##  key = "6"
+
+## Move Focused Window to Tag 7
+## Win + 7
+##  [[keybind]]
+##  command = "MoveToTag"
+##  value = "7"
+##  modifier = ["Mod4"]
+##  key = "7"
+
+## Move Focused Window to Tag 8
+## Win + 8
+##  [[keybind]]
+##  command = "MoveToTag"
+##  value = "8"
+##  modifier = ["Mod4"]
+##  key = "8"
+
+## Move Focused Window to Tag 9
+## Win + 9
+##  [[keybind]]
+##  command = "MoveToTag"
+##  value = "9"
+##  modifier = ["Mod4"]
+##  key = "9"
+
+##
+### Tail: Keybind / Window / MoveToTag
+################################################################################
+
+
+################################################################################
+### Head: Keybind / Window / Close
+##
+
+## Window Close
+## Win + q
+[[keybind]]
+command = "CloseWindow"
+modifier = ["Mod4"]
+key = "q"
+
+## Window Close
+## Alt + F4
+#  [[keybind]]
+#  command = "CloseWindow"
+#  modifier = ["Mod1"]
+#  key = "F4"
+
+##
+### Tail: Keybind / Window / Close
+################################################################################
+
+
+################################################################################
+### Head: Keybind / Window / FullScreen
+##
+
+## Window FullScreen
+## Win + f
+[[keybind]]
+command = "ToggleFullScreen"
+modifier = ["Mod4"]
+key = "f"
+
+
+##
+### Tail: Keybind / Window / FullScreen
+################################################################################
+
+
+################################################################################
+### Head: Keybind / Window / Swap
+##
+
+## Swap Focused Window To Top (moves to the top of the stack)
+## Win + Enter
+[[keybind]]
+command = "MoveWindowTop"
+modifier = ["Mod4"]
+key = "Return"
+
+## Swap Focused Window To Top (moves to the top of the stack)
+## Win + b
+[[keybind]]
+command = "MoveWindowTop"
+modifier = ["Mod4"]
+key = "m"
+
+## Swap Focused Window To Up
+## Win + `
+[[keybind]]
+command = "MoveWindowUp"
+modifier = ["Mod4"]
+key = "grave"
+
+## Swap Focused Window To Down
+## Win + Tab
+[[keybind]]
+command = "MoveWindowDown"
+modifier = ["Mod4"]
+key = "Tab"
+
+## Swap Focused Window To Up
+## Win + k
+[[keybind]]
+command = "MoveWindowUp"
+modifier = ["Mod4"]
+key = "k"
+
+## Swap Focused Window To Down
+## Win + j
+[[keybind]]
+command = "MoveWindowDown"
+modifier = ["Mod4"]
+key = "j"
+
+## Swap Focused Window To Up
+## Win + Up
+[[keybind]]
+command = "MoveWindowUp"
+modifier = ["Mod4"]
+key = "Up"
+
+## Swap Focused Window To Down
+## Win + Down
+[[keybind]]
+command = "MoveWindowDown"
+modifier = ["Mod4"]
+key = "Down"
+
+##
+### Tail: Keybind / Window / Swap
+################################################################################
+
+
+################################################################################
+### Head: Keybind / Window / Focus
+##
+
+## Focus to Previous Window
+## Alt + a
+[[keybind]]
+command = "FocusWindowUp"
+modifier = ["Mod4"]
+key = "a"
+
+## Focus to Next Window
+## Alt + s
+[[keybind]]
+command = "FocusWindowDown"
+modifier = ["Mod4"]
+key = "s"
+
+## Focus to Previous Window
+## Alt + h
+[[keybind]]
+command = "FocusWindowUp"
+modifier = ["Mod4"]
+key = "h"
+
+## Focus to Next Window
+## Alt + l
+[[keybind]]
+command = "FocusWindowDown"
+modifier = ["Mod4"]
+key = "l"
+
+## Focus to Previous Window
+## Alt + Left
+[[keybind]]
+command = "FocusWindowUp"
+modifier = ["Mod4"]
+key = "Left"
+
+## Focus to Next Window
+## Alt + Right
+[[keybind]]
+command = "FocusWindowDown"
+modifier = ["Mod4"]
+key = "Right"
+
+##
+### Tail: Keybind / Window / Focus
+################################################################################
+
+
+################################################################################
+### Head: Keybind / Window / FloatingToTile
+##
+
+## Window Floating To Tile
+## Win + v
+[[keybind]]
+command = "FloatingToTile"
+modifier = ["Mod4"]
+key = "n"
+
+## Window Floating To Tile
+## Win + Shift + t
+[[keybind]]
+command = "FloatingToTile"
+modifier = ["Mod4", "Shift"]
+key = "t"
+
+##
+### Tail: Keybind / Window / FloatingToTile
+################################################################################
+
+
+################################################################################
+### Head: Keybind / Layout
+##
+
+## Switch To Previous Layout
+## Alt + `
+[[keybind]]
+command = "PreviousLayout"
+modifier = ["Mod1"]
+key = "grave"
+
+## Switch To Next Layout
+## Alt + Tab
+[[keybind]]
+command = "NextLayout"
+modifier = ["Mod1"]
+key = "Tab"
+
+## Switch To Previous Layout
+## Alt + k
+[[keybind]]
+command = "PreviousLayout"
+modifier = ["Mod1"]
+key = "k"
+
+## Switch To Next Layout
+## Alt + j
+[[keybind]]
+command = "NextLayout"
+modifier = ["Mod1"]
+key = "j"
+
+## Switch To Previous Layout
+## Alt + Up
+[[keybind]]
+command = "PreviousLayout"
+modifier = ["Mod1"]
+key = "Up"
+
+## Switch To Next Layout
+## Alt + Down
+[[keybind]]
+command = "NextLayout"
+modifier = ["Mod1"]
+key = "Down"
+
+##
+### Tail: Keybind / Layout
+################################################################################
+
+
+################################################################################
+### Head: Keybind / Layout / Resize
+##
+
+## Increase Main Width
+## Alt + Ctrl + Up
+[[keybind]]
+command = "IncreaseMainWidth"
+value = "5"
+modifier = ["Mod1", "Control"]
+key = "Up"
+
+## Decrease Main Width
+## Alt + Ctrl + Down
+[[keybind]]
+command = "DecreaseMainWidth"
+value = "5"
+modifier = ["Mod1", "Control"]
+key = "Down"
+
+##
+### Tail: Keybind / Layout / Resize
+################################################################################
+
+
+################################################################################
+### Head: Keybind / Sound
+##
+
+## VolumeControl
+## Alt + Shift + v
+[[keybind]]
+command = "Execute"
+value = "mate-volume-control" ## [mate-volume-control, pavucontrol, pavucontrol-qt]
+modifier = ["Mod1", "Shift"]
+key = "v"
+
+## VolumeToggleMute
+## Alt + m
+[[keybind]]
+command = "Execute"
+value = "amixer -q -D pulse sset Master toggle"
+modifier = ["Mod1"]
+key = "m"
+
+## VolumeDecrease
+## Alt + Shift + ,  (<)
+[[keybind]]
+command = "Execute"
+value = "amixer -q -D pulse sset Master 5%- unmute"
+modifier = ["Mod1", "Shift"]
+key = "comma"
+
+## VolumeIncrease
+## Alt + Shift + .  (>)
+[[keybind]]
+command = "Execute"
+value = "amixer -q -D pulse sset Master 5%+ unmute"
+modifier = ["Mod1", "Shift"]
+key = "period"
+
+## VolumeDecreaseSlowly
+## Alt + Ctrl + ,  (<)
+[[keybind]]
+command = "Execute"
+value = "amixer -q -D pulse sset Master 1%- unmute"
+modifier = ["Mod1", "Control"]
+key = "comma"
+
+## VolumeIncreaseSlowly
+## Alt + Ctrl + .  (>)
+[[keybind]]
+command = "Execute"
+value = "amixer -q -D pulse sset Master 1%+ unmute"
+modifier = ["Mod1", "Control"]
+key = "period"
+
+## XF86Audio Key ##
+
+## VolumeToggleMute
+## XF86AudioMute
+[[keybind]]
+command = "Execute"
+value = "amixer -q -D pulse sset Master toggle"
+modifier = []
+key = "XF86AudioMute"
+
+## VolumeDecrease
+## XF86AudioLowerVolume
+[[keybind]]
+command = "Execute"
+value = "amixer -q -D pulse sset Master 5%- unmute"
+modifier = []
+key = "XF86AudioLowerVolume"
+
+## VolumeIncrease
+## XF86AudioRaiseVolume
+[[keybind]]
+command = "Execute"
+value = "amixer -q -D pulse sset Master 5%+ unmute"
+modifier = []
+key = "XF86AudioRaiseVolume"
+
+
+##
+## collision occurs on bash emacs mode
+## * `Alt + ,`
+## * `Alt + .`
+## * http://manpages.ubuntu.com/manpages/bionic/en/man3/readline.3readline.html#default%20key%20bindings
+## * http://manpages.ubuntu.com/manpages/bionic/en/man1/bash.1.html#readline
+##
+
+##
+### Tail: Keybind / Sound
+################################################################################

@@ -1,0 +1,83 @@
+#!/usr/bin/env bash
+
+
+################################################################################
+### Head: Note
+##
+
+## * https://github.com/samwhelp/skel-project-plan/blob/gh-pages/demo/sh/project/bin/install.sh
+
+##
+### Tail: Note
+################################################################################
+
+
+################################################################################
+### Head: Init
+##
+
+THE_BASE_DIR_PATH="$(cd -- "$(dirname -- "$0")" ; pwd)"
+THE_BASE_DIR_PATH="$THE_BASE_DIR_PATH/ext"
+##THE_BASE_DIR_PATH="$HOME/.config/leftwm/themes/current/ext"
+source "$THE_BASE_DIR_PATH/init.sh"
+source "$THE_SYS_EXT_DIR_PATH/init.sh"
+
+##
+### Tail: Init
+################################################################################
+
+
+################################################################################
+### Head: Down
+##
+
+mod_down () {
+	echo "Down" > /tmp/log.txt
+	#sys_set_wallpaper_on_down
+	sys_leftwm_fire_event_unloadtheme
+}
+
+sys_set_wallpaper_on_down () {
+
+	if ! is_command_exist 'feh'; then
+		util_error_echo 'Needed: feh'
+		return 0
+	fi
+
+	local wallpaper_file_path="$THE_MAIN_LEFTWM_WALLPAPER_ON_DOWN_FILE_PATH"
+
+	if ! [ -f "$wallpaper_file_path" ]; then
+		wallpaper_file_path="$(sys_wallpaper_find_default_file_path)"
+	fi
+
+	#util_stop_all 'feh'
+
+	#exec feh --bg-scale "$wallpaper_file_path" &
+	feh --bg-fill "$wallpaper_file_path" &
+
+}
+
+sys_leftwm_fire_event_unloadtheme () {
+	echo "UnloadTheme" > $XDG_RUNTIME_DIR/leftwm/commands.pipe
+}
+
+
+
+##
+### Tail: Down
+################################################################################
+
+
+################################################################################
+### Head: Main
+##
+
+__main__ () {
+	mod_down
+}
+
+__main__
+
+##
+### Tail: Main
+################################################################################
