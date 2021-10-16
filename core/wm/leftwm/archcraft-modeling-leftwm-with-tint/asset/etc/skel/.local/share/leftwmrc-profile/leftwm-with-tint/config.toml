@@ -639,6 +639,42 @@ key = "f"
 
 
 ################################################################################
+### Head: Keybind / Layout / Maximize
+##
+
+## Window Maximize (SetLayout Monocle)
+## Win + f
+[[keybind]]
+command = "SetLayout"
+value = "Monocle"
+modifier = ["Mod4"]
+key = "w"
+
+
+##
+### Tail: Keybind / Layout / Maximize
+################################################################################
+
+
+################################################################################
+### Head: Keybind / Layout / LeftWiderRightStack
+##
+
+## Window Maximize (SetLayout LeftWiderRightStack)
+## Win + e
+[[keybind]]
+command = "SetLayout"
+value = "LeftWiderRightStack"
+modifier = ["Mod4"]
+key = "e"
+
+
+##
+### Tail: Keybind / Layout / LeftWiderRightStack
+################################################################################
+
+
+################################################################################
 ### Head: Keybind / Window / Swap
 ##
 
@@ -650,11 +686,18 @@ modifier = ["Mod4"]
 key = "Return"
 
 ## Swap Focused Window To Top (moves to the top of the stack)
-## Win + b
+## Win + m
 [[keybind]]
 command = "MoveWindowTop"
 modifier = ["Mod4"]
 key = "m"
+
+## Swap Focused Window To Top (moves to the top of the stack)
+## Win + m
+[[keybind]]
+command = "MoveWindowTop"
+modifier = ["Mod4"]
+key = "r"
 
 ## Swap Focused Window To Up
 ## Win + `
@@ -759,18 +802,27 @@ key = "Right"
 ##
 
 ## Window Floating To Tile
-## Win + v
+## Win + n
 [[keybind]]
 command = "FloatingToTile"
 modifier = ["Mod4"]
 key = "n"
 
 ## Window Floating To Tile
-## Win + Shift + t
+## Win + v
 [[keybind]]
 command = "FloatingToTile"
-modifier = ["Mod4", "Shift"]
-key = "t"
+modifier = ["Mod4"]
+key = "v"
+
+
+## Window Floating To Tile
+## Win + Shift + t
+#[[keybind]]
+#command = "FloatingToTile"
+#modifier = ["Mod4", "Shift"]
+#key = "t"
+
 
 ##
 ### Tail: Keybind / Window / FloatingToTile
