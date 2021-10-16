@@ -19,7 +19,8 @@ util_error_echo () {
 
 opset_wallpaper_feh_main () {
 
-	local agent='feh --bg-scale'
+	#local agent='feh --bg-scale'
+	local agent='feh --bg-fill'
 	local target_path="$1"
 	local file_path
 	local file_name
