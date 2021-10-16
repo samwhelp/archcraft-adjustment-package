@@ -9,11 +9,11 @@
 ## * https://wiki.archlinux.org/title/Arch_package_guidelines
 ##
 
-pkgname=archcraft-modeling-sakura
+pkgname=archcraft-modeling-mpv
 pkgver=0.1
 pkgrel=1
-pkgdesc="Archcraft Adjustment / Sakura"
-url="https://github.com/samwhelp/archcraft-adjustment-package/tree/main/core/tool/archcraft-modeling-sakura"
+pkgdesc="Archcraft Adjustment / Mpv"
+url="https://github.com/samwhelp/archcraft-adjustment-package/tree/main/core/tool/archcraft-modeling-mpv"
 arch=('any')
 license=('MIT')
 makedepends=()
@@ -52,11 +52,11 @@ package () {
 	## Main Config
 	##
 
-	## /etc/skel/.config/sakura/sakura.conf
-	#install -Dm644 "${srcdir}/etc/skel/.config/sakura/sakura.conf" "${pkgdir}/etc/skel/.config/sakura/sakura.conf"
+	## /etc/skel/.config/mpv/mpv.conf
+	#install -Dm644 "${srcdir}/etc/skel/.config/mpv/mpv.conf" "${pkgdir}/etc/skel/.config/mpv/mpv.conf"
 
 	#cp -af "${srcdir}/etc" "${pkgdir}"
 	cp -af "${srcdir}/." "${pkgdir}"
-	
+
 
 }

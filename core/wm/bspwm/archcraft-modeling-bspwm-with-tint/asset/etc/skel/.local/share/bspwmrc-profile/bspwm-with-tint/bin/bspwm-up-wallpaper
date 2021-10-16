@@ -47,7 +47,8 @@ sys_feh_wallpaper_default () {
 
 	#util_stop_all 'feh'
 
-	feh --bg-scale "$wallpaper_file_path" &
+	#exec feh --bg-scale "$wallpaper_file_path" &
+	exec feh --bg-fill "$wallpaper_file_path" &
 
 }
 
