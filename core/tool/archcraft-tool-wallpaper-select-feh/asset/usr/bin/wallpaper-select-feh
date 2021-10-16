@@ -5,8 +5,12 @@
 ### Head: Url
 ##
 
-# * https://github.com/samwhelp/skel-project-plan/blob/gh-pages/demo/sh/standalone/bin/demo-ctrl
-# * https://github.com/samwhelp/note-about-fzf/tree/gh-pages/_demo/project/wallpaper-select/wallpaper-select-feh
+##
+## ## Link
+##
+## * https://github.com/samwhelp/skel-project-plan/blob/gh-pages/demo/sh/standalone/bin/demo-ctrl
+## * https://github.com/samwhelp/note-about-fzf/tree/gh-pages/_demo/project/wallpaper-select/wallpaper-select-feh
+##
 
 ##
 ### Tail: Url
@@ -117,7 +121,7 @@ base_var_init () {
 	THE_UEBERZUG_CTRL="/tmp/ueberzug-ctrl"
 
 	## feh
-	THE_FEH_BG_OPTION_LIST="center fill max scale tile"
+	THE_FEH_BG_OPTION_LIST="fill scale max center tile"
 
 	## wallpaper
 	THE_WALLPAPER_DEFAULT_DIR_PATH="/usr/share/backgrounds"
@@ -571,7 +575,8 @@ sys_feh_find_bg_option () {
 		fi
 	done
 
-	echo '--bg-scale'
+	#echo '--bg-scale'
+	echo '--bg-fill'
 }
 
 
@@ -1305,11 +1310,17 @@ mod_wallpaper_select_set () {
 
 	option="$(sys_feh_find_bg_option $option)"
 
+	##
+	## feh --bg-fill "/usr/share/backgrounds/xfce/palm-wave.jpg"
 	## feh --bg-scale "/usr/share/backgrounds/xfce/palm-wave.jpg"
+	## feh --bg-max "/usr/share/backgrounds/xfce/palm-wave.jpg"
+	## feh --bg-center "/usr/share/backgrounds/xfce/palm-wave.jpg"
+	## feh --bg-tile "/usr/share/backgrounds/xfce/palm-wave.jpg"
+	##
 
 	util_error_echo "## mod_wallpaper_select_set"
-	util_error_echo "feh $option $target"
-	feh "$option" "$target"
+	util_error_echo "exec feh $option $target"
+	exec feh "$option" "$target"
 
 }
 
@@ -1543,7 +1554,11 @@ Example:
 		$ $cmd_name list ~/Pictures/Wallpaper/
 
 		$ $cmd_name set "/usr/share/backgrounds/xfce/palm-wave.jpg"
+		$ $cmd_name set "/usr/share/backgrounds/xfce/palm-wave.jpg" fill
 		$ $cmd_name set "/usr/share/backgrounds/xfce/palm-wave.jpg" scale
+		$ $cmd_name set "/usr/share/backgrounds/xfce/palm-wave.jpg" max
+		$ $cmd_name set "/usr/share/backgrounds/xfce/palm-wave.jpg" center
+		$ $cmd_name set "/usr/share/backgrounds/xfce/palm-wave.jpg" tile
 
 		$ $cmd_name default
 
