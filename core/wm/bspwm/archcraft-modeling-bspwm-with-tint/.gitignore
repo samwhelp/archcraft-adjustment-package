@@ -1,4 +1,4 @@
 *.zst
-pkg
-src
-package
+pkg/*
+src/*
+package/*
