@@ -1,5 +1,5 @@
 *.zst
-pkg
-src
-package
+pkg/*
+src/*
+package/*
 gruvbox-dark-icons-gtk
