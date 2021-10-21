@@ -1,8 +1,18 @@
 # archcraft-adjustment-package
 
+## Subject
 
-* [archcraft-adjustment-package](https://github.com/samwhelp/archcraft-adjustment-package)
-* [archcraft-adjustment-repository](https://samwhelp.github.io/archcraft-adjustment-repository/) ([GitHub](https://github.com/samwhelp/archcraft-adjustment-repository))
+* [Project](#project)
+* [Package](#package)
+* [Link](#link)
+
+## Project
+
+| Project | Note |
+| --- | --- |
+| [package](https://github.com/samwhelp/archcraft-adjustment-package) | PKGBUILD and Source |
+| [repository](https://github.com/samwhelp/archcraft-adjustment-repository) | Packages |
+| [documentation](https://github.com/samwhelp/archcraft-adjustment-documentation) | Document |
 
 
 ## Package
