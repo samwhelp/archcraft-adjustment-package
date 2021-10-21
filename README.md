@@ -29,7 +29,7 @@
 | [herbstluftwm-with-tint](https://github.com/samwhelp/archcraft-adjustment-package/tree/main/core/wm/herbstluftwm/archcraft-modeling-herbstluftwm-with-tint/asset/etc/skel/.local/share/herbstluftwmrc-profile/herbstluftwm-with-tint) | [herbstluftwmrc-ctrl](https://github.com/samwhelp/archcraft-adjustment-package/tree/main/core/wm/herbstluftwm/archcraft-tool-herbstluftwmrc-ctrl) |
 | [bspwm-with-tint](https://github.com/samwhelp/archcraft-adjustment-package/tree/main/core/wm/bspwm/archcraft-modeling-bspwm-with-tint/asset/etc/skel/.local/share/bspwmrc-profile/bspwm-with-tint) | [bspwmrc-ctrl](https://github.com/samwhelp/archcraft-adjustment-package/tree/main/core/wm/bspwm/archcraft-tool-bspwmrc-ctrl) |
 | [i3wm-with-tint](https://github.com/samwhelp/archcraft-adjustment-package/tree/main/core/wm/i3wm/archcraft-modeling-i3wm-with-tint/asset/etc/skel/.local/share/i3wmrc-profile/i3wm-with-tint) | [i3wmrc-ctrl](https://github.com/samwhelp/archcraft-adjustment-package/tree/main/core/wm/i3wm/archcraft-tool-i3wmrc-ctrl) |
-| [leftwm-with-tint](https://github.com/samwhelp/archcraft-adjustment-package/tree/main/core/wm/leftwm/archcraft-modeling-leftwm-with-tint) | [leftwmrc-ctrl](https://github.com/samwhelp/archcraft-adjustment-package/tree/main/core/wm/leftwm/archcraft-tool-leftwmrc-ctrl) |
+| [leftwm-with-tint](https://github.com/samwhelp/archcraft-adjustment-package/tree/main/core/wm/leftwm/archcraft-modeling-leftwm-with-tint/asset/etc/skel/.local/share/leftwmrc-profile/leftwm-with-tint) | [leftwmrc-ctrl](https://github.com/samwhelp/archcraft-adjustment-package/tree/main/core/wm/leftwm/archcraft-tool-leftwmrc-ctrl) |
 
 | Leftwm Theme Ctrl |
 | --- |

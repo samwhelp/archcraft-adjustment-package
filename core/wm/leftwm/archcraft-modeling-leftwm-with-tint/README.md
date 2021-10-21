@@ -9,7 +9,7 @@
 
 ## Main Config
 
-* [leftwm-with-tint](https://github.com/samwhelp/archcraft-adjustment-package/tree/main/core/wm/leftwm/archcraft-modeling-leftwm-with-tint)
+* [leftwm-with-tint](https://github.com/samwhelp/archcraft-adjustment-package/tree/main/core/wm/leftwm/archcraft-modeling-leftwm-with-tint/asset/etc/skel/.local/share/leftwmrc-profile/leftwm-with-tint)
 
 
 ## Reference
