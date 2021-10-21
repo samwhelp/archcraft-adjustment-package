@@ -2,6 +2,16 @@
 # archcraft-modeling-leftwm-with-tint
 
 
+## Source Project
+
+* [note-about-leftwm](https://github.com/samwhelp/note-about-leftwm/tree/gh-pages/_demo/config/main)
+
+
+## Main Config
+
+* [leftwm-with-tint](https://github.com/samwhelp/archcraft-adjustment-package/tree/main/core/wm/leftwm/archcraft-modeling-leftwm-with-tint)
+
+
 ## Reference
 
 * https://wiki.archlinux.org/title/Creating_packages

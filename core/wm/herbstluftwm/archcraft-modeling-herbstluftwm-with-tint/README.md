@@ -2,14 +2,14 @@
 # archcraft-modeling-herbstluftwm-with-tint
 
 
-## Project
+## Source Project
 
-* [herbstluftwm-config-main](https://github.com/samwhelp/note-about-herbstluftwm/tree/gh-pages/_demo/config/herbstluftwm-config/main/config/herbstluftwm)
+* [note-about-herbstluftwm](https://github.com/samwhelp/note-about-herbstluftwm/tree/gh-pages/_demo/config/herbstluftwm-config/main)
 
 
-## Package
+## Main Config
 
-* [archcraft-modeling-herbstluftwm-with-tintlpaper-feh](https://github.com/samwhelp/archcraft-adjustment-package/tree/main/core/wm/herbstluftwm/archcraft-modeling-herbstluftwm-with-tint)
+* [herbstluftwm-with-tint](https://github.com/samwhelp/archcraft-adjustment-package/tree/main/core/wm/herbstluftwm/archcraft-modeling-herbstluftwm-with-tint/asset/etc/skel/.local/share/herbstluftwmrc-profile/herbstluftwm-with-tint)
 
 
 ## Reference

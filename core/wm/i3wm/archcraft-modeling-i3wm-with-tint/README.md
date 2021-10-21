@@ -2,6 +2,16 @@
 # archcraft-modeling-i3wm-with-tint
 
 
+## Source Project
+
+* [note-about-i3wm](https://github.com/samwhelp/note-about-i3wm/tree/gh-pages/_demo/config/i3wm-config/main)
+
+
+## Main Config
+
+* [i3wm-with-tint](https://github.com/samwhelp/archcraft-adjustment-package/tree/main/core/wm/i3wm/archcraft-modeling-i3wm-with-tint/asset/etc/skel/.local/share/i3wmrc-profile/i3wm-with-tint)
+
+
 ## Reference
 
 * https://wiki.archlinux.org/title/Creating_packages
