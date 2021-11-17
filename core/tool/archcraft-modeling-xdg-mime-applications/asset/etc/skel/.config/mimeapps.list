@@ -20,8 +20,8 @@ audio/mp3=audacious.desktop;mediainfo-gui.desktop;xftt.desktop;mpv.desktop;smpla
 audio/ogg=audacious.desktop;mediainfo-gui.desktop;xftt.desktop;mpv.desktop;smplayer.desktop;vlc.desktop;
 audio/x-mpegurl=mpv.desktop;org.xfce.mousepad.desktop;xftt.desktop;smplayer.desktop;vlc.desktop;audacious.desktop;
 audio/x-scpls=mpv.desktop;org.xfce.mousepad.desktop;xftt.desktop;smplayer.desktop;vlc.desktop;audacious.desktop;
-application/zip=xarchiver.desktop;xftt.desktop;
-application/vnd.rar=xarchiver.desktop;xftt.desktop;
+application/zip=engrampa.desktop;lxqt-archiver.desktop;xftt.desktop;
+application/vnd.rar=engrampa.desktop;lxqt-archiver.desktop;xftt.desktop;
 
 [Default Applications]
 image/png=viewnior.desktop;
@@ -44,5 +44,5 @@ audio/mp3=audacious.desktop;
 audio/ogg=audacious.desktop;
 audio/x-mpegurl=mpv.desktop;
 audio/x-scpls=mpv.desktop;
-application/zip=xarchiver.desktop;
-application/vnd.rar=xarchiver.desktop;
+application/zip=engrampa.desktop;
+application/vnd.rar=engrampa.desktop;

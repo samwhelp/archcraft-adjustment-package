@@ -71,7 +71,7 @@ xftt_main () {
 	util_error_echo
 	util_error_echo "## Command:"
 	util_error_echo
-	util_error_echo "exec xfce4-terminal --tab --command=\"$editor $file_path\" --title=\"$file_path\" --working-directory=\"$work_dir_path\" --default-working-directory=\"$work_dir_path\" &"
+	util_error_echo "exec xfce4-terminal --tab --title=\"$work_dir_path\" --working-directory=\"$work_dir_path\" --default-working-directory=\"$work_dir_path\" &"
 	util_error_echo
 
 	##xfce4-terminal --tab --command="$editor $file_path" --title="$file_path" --working-directory="$work_dir_path" --default-working-directory="$work_dir_path"
