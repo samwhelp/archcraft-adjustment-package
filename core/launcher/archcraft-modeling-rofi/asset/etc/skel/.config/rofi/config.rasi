@@ -7,7 +7,7 @@ configuration {
   disable-history:    false;
   modi: "window,run,drun,combi";
   combi-modi: "window,drun";
-  theme: "glue_pro_blue.rasi";
+
   kb-accept-entry: "Control+j,Control+m,Return,KP_Enter,Alt+z";
   kb-row-up: "Up,Control+p,ISO_Left_Tab,Alt+a";
   kb-row-down: "Down,Control+n,Alt+s";
@@ -23,3 +23,4 @@ configuration {
     sorting-method: "name";
   }
 }
+@theme "glue_pro_blue.rasi"
