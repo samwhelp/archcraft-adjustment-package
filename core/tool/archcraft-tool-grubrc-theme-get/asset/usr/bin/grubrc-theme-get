@@ -955,7 +955,10 @@ fallout
 dracula
 virtual_future
 deepin
+pentract
 big_sur
+monterey
+atomic
 EOF
 )"
 
@@ -992,7 +995,10 @@ mod_all_install () {
 	mod_theme_dracula_install
 	mod_theme_virtual_future_install
 	mod_theme_deepin_install
+	mod_theme_pentract_install
 	mod_theme_big_sur_install
+	mod_theme_monterey_install
+	mod_theme_atomic_install
 
 }
 
@@ -1009,7 +1015,10 @@ mod_all_install () {
 
 mod_theme_poly_dark_install () {
 
+	##
+	## https://www.gnome-look.org/p/1230780/
 	## https://github.com/shvchk/poly-dark
+	##
 
 	local name='poly_dark'
 	local repo_url='https://github.com/shvchk/poly-dark.git'
@@ -1039,7 +1048,10 @@ mod_theme_poly_dark_install () {
 
 mod_theme_poly_light_install () {
 
+	##
+	## https://www.gnome-look.org/p/1176413/
 	## https://github.com/shvchk/poly-light
+	##
 
 	local name='poly_light'
 	local repo_url='https://github.com/shvchk/poly-light.git'
@@ -1069,7 +1081,10 @@ mod_theme_poly_light_install () {
 
 mod_theme_fallout_install () {
 
+	##
+	## https://www.gnome-look.org/p/1230882/
 	## https://github.com/shvchk/fallout-grub-theme
+	##
 
 	local name='fallout'
 	local repo_url='https://github.com/shvchk/fallout-grub-theme.git'
@@ -1390,6 +1405,68 @@ mod_theme_main_install_pickup_background () {
 
 
 ################################################################################
+### Head: Model theme_pentract
+##
+
+mod_theme_pentract_install () {
+
+	##
+	## https://www.gnome-look.org/p/1661288
+	## https://github.com/sarancodes/pentract-grub-theme
+	## https://github.com/sarancodes/pentract-grub-theme/tree/main/pentract
+	##
+
+	local name='pentract'
+	local repo_url='https://github.com/sarancodes/pentract-grub-theme.git'
+
+
+	if [ "none$name" = "none" ]; then
+		util_error_echo
+		util_error_echo "## Need name: "
+		util_error_echo
+		return 1
+	fi
+
+
+	local target_theme_path="$THE_GRUBRC_THEMES_DIR_PATH/$name"
+
+	if [ -d "$target_theme_path" ]; then
+		util_error_echo "## Theme is Exist: $target_theme_path"
+		util_error_echo "## Please Remove First:"
+		util_error_echo "grubrc-theme-ctrl remove $name"
+		return 1
+	fi
+
+	util_error_echo "sudo mkdir -p $THE_GRUBRC_THEMES_DIR_PATH"
+	sudo mkdir -p "$THE_GRUBRC_THEMES_DIR_PATH"
+
+
+	util_error_echo
+	grubrc_theme_repo_clone_to_tmp "$name" "$repo_url"
+	util_error_echo
+
+
+	util_error_echo "sudo cp -a $name/pentract $target_theme_path"
+	sudo cp -a "$name/pentract" "$target_theme_path"
+
+	util_error_echo
+	util_error_echo "cd $OLDPWD"
+	cd "$OLDPWD"
+
+	util_error_echo
+	util_error_echo "## Please Run to Change:"
+	util_error_echo
+	util_error_echo "grubrc-theme-ctrl set $name"
+	util_error_echo
+
+}
+
+##
+### Tail: Model theme_pentract
+################################################################################
+
+
+################################################################################
 ### Head: Model theme_big_sur
 ##
 
@@ -1448,6 +1525,130 @@ mod_theme_big_sur_install () {
 
 ##
 ### Tail: Model theme_big_sur
+################################################################################
+
+
+################################################################################
+### Head: Model theme_monterey
+##
+
+mod_theme_monterey_install () {
+
+	##
+	## https://www.gnome-look.org/p/1577873/
+	## https://github.com/sandesh236/monterey-grub-theme
+	## https://github.com/sandesh236/monterey-grub-theme/tree/main/monterey-grub-theme
+	##
+
+	local name='monterey'
+	local repo_url='https://github.com/sandesh236/monterey-grub-theme.git'
+
+
+	if [ "none$name" = "none" ]; then
+		util_error_echo
+		util_error_echo "## Need name: "
+		util_error_echo
+		return 1
+	fi
+
+
+	local target_theme_path="$THE_GRUBRC_THEMES_DIR_PATH/$name"
+
+	if [ -d "$target_theme_path" ]; then
+		util_error_echo "## Theme is Exist: $target_theme_path"
+		util_error_echo "## Please Remove First:"
+		util_error_echo "grubrc-theme-ctrl remove $name"
+		return 1
+	fi
+
+	util_error_echo "sudo mkdir -p $THE_GRUBRC_THEMES_DIR_PATH"
+	sudo mkdir -p "$THE_GRUBRC_THEMES_DIR_PATH"
+
+
+	util_error_echo
+	grubrc_theme_repo_clone_to_tmp "$name" "$repo_url"
+	util_error_echo
+
+
+	util_error_echo "sudo cp -a $name/monterey-grub-theme $target_theme_path"
+	sudo cp -a "$name/monterey-grub-theme" "$target_theme_path"
+
+	util_error_echo
+	util_error_echo "cd $OLDPWD"
+	cd "$OLDPWD"
+
+	util_error_echo
+	util_error_echo "## Please Run to Change:"
+	util_error_echo
+	util_error_echo "grubrc-theme-ctrl set $name"
+	util_error_echo
+
+}
+
+##
+### Tail: Model theme_monterey
+################################################################################
+
+
+################################################################################
+### Head: Model theme_atomic
+##
+
+mod_theme_atomic_install () {
+
+	##
+	## https://www.gnome-look.org/p/1443844/
+	## https://github.com/lfelipe1501/Atomic-GRUB2-Theme
+	## https://github.com/lfelipe1501/Atomic-GRUB2-Theme/tree/master/Atomic
+	##
+
+	local name='atomic'
+	local repo_url='https://github.com/lfelipe1501/Atomic-GRUB2-Theme.git'
+
+
+	if [ "none$name" = "none" ]; then
+		util_error_echo
+		util_error_echo "## Need name: "
+		util_error_echo
+		return 1
+	fi
+
+
+	local target_theme_path="$THE_GRUBRC_THEMES_DIR_PATH/$name"
+
+	if [ -d "$target_theme_path" ]; then
+		util_error_echo "## Theme is Exist: $target_theme_path"
+		util_error_echo "## Please Remove First:"
+		util_error_echo "grubrc-theme-ctrl remove $name"
+		return 1
+	fi
+
+	util_error_echo "sudo mkdir -p $THE_GRUBRC_THEMES_DIR_PATH"
+	sudo mkdir -p "$THE_GRUBRC_THEMES_DIR_PATH"
+
+
+	util_error_echo
+	grubrc_theme_repo_clone_to_tmp "$name" "$repo_url"
+	util_error_echo
+
+
+	util_error_echo "sudo cp -a $name/Atomic $target_theme_path"
+	sudo cp -a "$name/Atomic" "$target_theme_path"
+
+	util_error_echo
+	util_error_echo "cd $OLDPWD"
+	cd "$OLDPWD"
+
+	util_error_echo
+	util_error_echo "## Please Run to Change:"
+	util_error_echo
+	util_error_echo "grubrc-theme-ctrl set $name"
+	util_error_echo
+
+}
+
+##
+### Tail: Model theme_atomic
 ################################################################################
 
 
@@ -1527,9 +1728,27 @@ sub_run_main () {
 }
 
 
+sub_run_pentract () {
+	#echo "sub_run_pentract_rounded"
+	mod_theme_pentract_install "$@"
+}
+
+
 sub_run_big_sur () {
 	#echo "sub_run_big_sur_rounded"
 	mod_theme_big_sur_install "$@"
+}
+
+
+sub_run_monterey () {
+	#echo "sub_run_monterey_rounded"
+	mod_theme_monterey_install "$@"
+}
+
+
+sub_run_atomic () {
+	#echo "sub_run_atomic_rounded"
+	mod_theme_atomic_install "$@"
 }
 
 ##
@@ -1590,7 +1809,13 @@ Example:
 
 		$ $cmd_name main
 
+		$ $cmd_name pentract
+
 		$ $cmd_name big_sur
+
+		$ $cmd_name monterey
+
+		$ $cmd_name atomic
 
 
 Debug:
