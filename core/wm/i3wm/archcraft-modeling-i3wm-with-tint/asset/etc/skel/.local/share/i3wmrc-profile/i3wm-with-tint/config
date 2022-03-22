@@ -862,22 +862,35 @@ bindsym Mod1+Right workspace next
 
 ## Switch to Stacking
 ## Win + `
-bindsym Mod4+grave layout stacking
+#bindsym Mod4+grave layout stacking
 
 
 ## Switch to Tabbed
 ## Win + Tab
-bindsym Mod4+Tab layout tabbed
+#bindsym Mod4+Tab layout tabbed
 
 
+## Layout toggle tabbed stacking
 ## Alt + `
-bindsym Mod1+grave layout toggle all
+bindsym Mod1+grave layout toggle tabbed stacking
 
-
-## Switch to toggle split
+## Layout toggle split
 ## Alt + Tab
 bindsym Mod1+Tab layout toggle split
 
+
+## Switch to floating
+## Win + `
+bindsym Mod4+grave floating toggle
+
+## Layout Cycle
+## Win + Tab
+bindsym Mod4+Tab layout toggle all
+
+
+## Layout toggle max
+## Win + w
+bindsym Mod4+w layout toggle tabbed split
 
 ##
 ### Tail: Keybind / Layout / SwitchTo / Specific
