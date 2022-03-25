@@ -44,10 +44,11 @@ alt + shift + x
 
 ## Reconfigure
 # make sxhkd reload its configuration files:
-alt + Escape
+alt + shift + c
 	pkill -USR1 -x sxhkd
 
-alt + shift + c
+#alt + Escape
+alt + ctrl + c
 	bspc wm -r
 
 ##
@@ -322,6 +323,10 @@ super + shift + m
 super + f
 	bspc node -t '~fullscreen'
 
+## win + `
+super + grave
+	bspc node -t '~floating'
+
 super + n
 	bspc node -t '~floating'
 
@@ -434,6 +439,8 @@ alt + grave
 alt + Tab
 	bspc desktop -l next
 
+super + Tab
+	bspc desktop -l next
 
 ## alt + ;
 alt + semicolon

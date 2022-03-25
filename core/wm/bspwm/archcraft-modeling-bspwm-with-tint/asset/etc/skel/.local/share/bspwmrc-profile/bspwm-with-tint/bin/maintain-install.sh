@@ -48,7 +48,7 @@ mod_install () {
 
 mod_install_bin_up () {
 
-	echo "install -Dm755 $THE_PLAN_DIR_PATH/sxhkdrc $HOME/.config/bspwm/sxhkdrc"
+	echo "install -Dm644 $THE_PLAN_DIR_PATH/sxhkdrc $HOME/.config/bspwm/sxhkdrc"
 	install -Dm644 "$THE_PLAN_DIR_PATH/sxhkdrc" "$HOME/.config/bspwm/sxhkdrc"
 
 	echo "install -Dm755 $THE_PLAN_DIR_PATH/bspwmrc $HOME/.config/bspwm/bspwmrc"
