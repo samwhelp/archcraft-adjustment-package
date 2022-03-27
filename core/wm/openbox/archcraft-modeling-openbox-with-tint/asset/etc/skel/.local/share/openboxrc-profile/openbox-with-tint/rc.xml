@@ -2,6 +2,7 @@
 <openbox_config xmlns="http://openbox.org/3.4/rc" xmlns:xi="http://www.w3.org/2001/XInclude">
 
 
+
 <resistance>
 	<strength>10</strength>
 	<screen_edge_strength>20</screen_edge_strength>
@@ -207,6 +208,7 @@
 //-->
 
 
+
 <!-- for top_bottom_panel //-->
 <margins>
 	<top>48</top>
@@ -234,15 +236,6 @@
 //-->
 
 <!--
-<margins>
-	<top>8</top>
-	<bottom>48</bottom>
-	<left>8</left>
-	<right>8</right>
-</margins>
-//-->
-
-<!-- default
 <margins>
 	<top>10</top>
 	<bottom>10</bottom>
@@ -315,6 +308,35 @@
 	</keybind>
 
 
+	<!-- ## Restart //-->
+	<keybind key="A-S-z">
+		<action name="Execute">
+			<startupnotify>
+				<enabled>true</enabled>
+				<name>Exit</name>
+			</startupnotify>
+			<command>obsession-logout</command>
+		</action>
+	</keybind>
+
+
+
+	<!-- ## Logout //-->
+	<keybind key="A-S-x">
+		<action name="Exit" />
+	</keybind>
+
+	<keybind key="C-A-Delete">
+		<action name="Exit" />
+	</keybind>
+
+
+	<!-- ## Reconfigure //-->
+	<keybind key="A-S-c">
+		<action name="Reconfigure" />
+	</keybind>
+
+
 	<!-- ## Launch obconf //-->
 	<keybind key="A-S-s">
 		<action name="Execute">
@@ -337,6 +359,13 @@
 			<command>xfce4-appearance-settings</command>
 		</action>
 	</keybind>
+
+
+	<keybind key="W-d">
+		<action name="ToggleShowDesktop"/>
+	</keybind>
+
+
 
 
 
@@ -366,19 +395,12 @@
 			<menu>client-list-combined-menu</menu>
 		</action>
 	</keybind>
-
+	
 	<keybind key="Alt-F3">
 		<action name="ShowMenu">
 			<menu>client-list-combined-menu</menu>
 		</action>
-	</keybind>
-
-
-
-	<keybind key="W-d">
-		<action name="ToggleShowDesktop"/>
-	</keybind>
-
+	</keybind>	
 
 
 
@@ -857,7 +879,7 @@ h l
 			</finalactions>
 		</action>
 	</keybind>
-
+	
 	<keybind key="W-S-Tab">
 		<action name="PreviousWindow">
 			<finalactions>
@@ -878,7 +900,7 @@ h l
 				<action name="Unshade"/>
 			</finalactions>
 		</action>
-	</keybind>
+	</keybind>	
 
 
 
@@ -1008,7 +1030,6 @@ h l
 		<action name="Close"/>
 	</keybind>
 
-<!--
 	<keybind key="A-F4">
 		<action name="Close"/>
 	</keybind>
@@ -1016,7 +1037,7 @@ h l
 	<keybind key="A-S-q">
 		<action name="Close"/>
 	</keybind>
-//-->
+
 
 
 	<keybind key="W-x">
@@ -1041,6 +1062,7 @@ h l
 		</action>
 	</keybind>
 //-->
+
 
 	<keybind key="F11">
 		<action name="ToggleFullscreen"/>
@@ -1676,47 +1698,6 @@ h l
 
 
 
-
-	<keybind key="A-C-a">
-		<action name="Execute">
-			<command>openbox-focus-ctrl the_sakura</command>
-		</action>
-	</keybind>
-
-
-	<keybind key="A-C-t">
-		<action name="Execute">
-			<command>openbox-focus-ctrl the_xfce4_terminal</command>
-		</action>
-	</keybind>
-
-
-	<keybind key="A-C-e">
-		<action name="Execute">
-			<command>openbox-focus-ctrl the_atom</command>
-		</action>
-	</keybind>
-
-	<keybind key="A-C-f">
-		<action name="Execute">
-			<command>openbox-focus-ctrl the_pcmanfm_qt</command>
-		</action>
-	</keybind>
-
-	<keybind key="A-C-g">
-		<action name="Execute">
-			<command>openbox-focus-ctrl the_thunar</command>
-		</action>
-	</keybind>
-
-	<keybind key="A-C-b">
-		<action name="Execute">
-			<command>openbox-focus-ctrl the_firefox</command>
-		</action>
-	</keybind>
-
-
-
 	<keybind key="Alt-F2">
 		<action name="Execute">
 			<startupnotify>
@@ -1769,6 +1750,7 @@ h l
 			<command>sakura -m</command>
 		</action>
 	</keybind>
+
 	<keybind key="A-S-a">
 		<action name="Execute">
 			<startupnotify>
@@ -1778,6 +1760,7 @@ h l
 			<command>sakura -m</command>
 		</action>
 	</keybind>
+
 
 	<!-- ## Terminal-Quake //-->
 	<keybind key="A-S-y">
@@ -1790,6 +1773,7 @@ h l
 		</action>
 	</keybind>
 
+
 	<!-- ## Terminal //-->
 	<keybind key="A-S-t">
 		<action name="Execute">
@@ -1797,9 +1781,20 @@ h l
 				<enabled>true</enabled>
 				<name>Terminal</name>
 			</startupnotify>
-			<command>xfce4-terminal --maximize</command>
+			<command>xterm</command>
 		</action>
 	</keybind>
+
+	<keybind key="A-C-t">
+		<action name="Execute">
+			<startupnotify>
+				<enabled>true</enabled>
+				<name>Terminal</name>
+			</startupnotify>
+			<command>urxvt</command>
+		</action>
+	</keybind>
+
 
 	<!-- ## File Manager //-->
 	<keybind key="A-S-f">
@@ -1845,6 +1840,46 @@ h l
 			<command>mousepad</command>
 		</action>
 	</keybind>
+
+
+
+<keybind key="A-C-a">
+	<action name="Execute">
+		<command>openbox-focus-ctrl the_sakura</command>
+	</action>
+</keybind>
+
+
+<keybind key="A-C-t">
+	<action name="Execute">
+		<command>openbox-focus-ctrl the_xfce4_terminal</command>
+	</action>
+</keybind>
+
+
+<keybind key="A-C-e">
+	<action name="Execute">
+		<command>openbox-focus-ctrl the_atom</command>
+	</action>
+</keybind>
+
+<keybind key="A-C-f">
+	<action name="Execute">
+		<command>openbox-focus-ctrl the_pcmanfm_qt</command>
+	</action>
+</keybind>
+
+<keybind key="A-C-g">
+	<action name="Execute">
+		<command>openbox-focus-ctrl the_thunar</command>
+	</action>
+</keybind>
+
+<keybind key="A-C-b">
+	<action name="Execute">
+		<command>openbox-focus-ctrl the_firefox</command>
+	</action>
+</keybind>
 
 
 
@@ -1915,6 +1950,7 @@ h l
 
 
 
+
 	<!-- Take a screenshot of the current window with scrot when Alt+Print are pressed -->
 	<keybind key="A-Print">
 		<action name="Execute">
@@ -1968,7 +2004,54 @@ h l
 
 
 
+
 	<context name="Frame">
+
+<!--
+
+## clicksnap
+
+### Link
+
+* https://git.maboxlinux.org/napcok/clicksnap
+* https://github.com/napcok/clicksnap
+* Openbox Wiki / [Help:Bindings](http://openbox.org/wiki/Help:Bindings#Mouse_bindings)
+
+### Requirements
+
+* wmctrl
+* xdotool
+* xwininfo
+
+### Install
+
+``` sh
+wget -c 'https://git.maboxlinux.org/napcok/clicksnap/raw/branch/master/clicksnap'
+chmod 755 clicksnap
+
+sudo cp clicksnap /usr/local/bin/clicksnap
+```
+
+## Mousebind
+
+| Setting                                      | Mousebind                  |
+| `<mousebind action="Press" button="S-Left">` | `Shift + Mouse Left Click` |
+| `<mousebind action="Press" button="C-Left">` | `Ctrl + Mouse Left Click`  |
+| `<mousebind action="Press" button="A-Left">` | `Alt + Mouse Left Click`   |
+| `<mousebind action="Press" button="W-Left">` | `Win + Mouse Left Click`   |
+
+* Openbox Wiki / Help:Bindings / [1.1.1.1 Modifiers](http://openbox.org/wiki/Help:Bindings#Modifiers)
+
+
+//-->
+
+		<mousebind action="Press" button="A-Left">
+			<action name="UnmaximizeFull"/>
+			<action name="Execute">
+				<command>clicksnap</command>
+			</action>
+		</mousebind>
+
 
 		<mousebind button="W-Left" action="Press">
 			<action name="Focus"/>
@@ -2417,6 +2500,7 @@ h l
 
 	</context>
 
+
 </mouse>
 
 
@@ -2591,26 +2675,7 @@ h l
 	</application>
 
 <!--
-	<application class="Mousepad" type="normal">
-		<desktop>2</desktop>
-		<focus>yes</focus>
-	</application>
-//-->
-
-<!--
-	<application class="Geany" type="normal">
-		<desktop>2</desktop>
-		<focus>yes</focus>
-	</application>
-//-->
-
 	<application class="Gedit" type="normal">
-		<desktop>2</desktop>
-		<focus>yes</focus>
-	</application>
-
-<!--
-	<application class="Leafpad" type="normal">
 		<desktop>2</desktop>
 		<focus>yes</focus>
 	</application>
@@ -2703,4 +2768,6 @@ h l
 </applications>
 
 
+
 </openbox_config>
+
