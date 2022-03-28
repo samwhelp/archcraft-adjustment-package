@@ -374,10 +374,15 @@ main_keybind_window_fullscreen () {
 
 main_keybind_window_floating () {
 
-	hc keybind Mod4-n floating toggle
+	## all window floating
+	hc keybind Mod4-Shift-n floating toggle
 
-	hc keybind Mod4-Shift-n set_attr clients.focus.floating toggle
+	hc keybind Mod4-grave floating toggle
 
+	## focusing window floating
+	hc keybind Mod4-n set_attr clients.focus.floating toggle
+
+	hc keybind Mod4-Escape set_attr clients.focus.floating toggle
 }
 
 ##
