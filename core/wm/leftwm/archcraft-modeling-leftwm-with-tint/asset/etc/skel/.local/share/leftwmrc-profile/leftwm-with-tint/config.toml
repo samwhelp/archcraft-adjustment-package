@@ -192,27 +192,27 @@ value = "sakura"
 modifier = ["Mod1", "Shift"]
 key = "a"
 
-## Focus sakura
+## Launch xfce4-terminal
 ## Alt + Ctrl + a
 [[keybind]]
 command = "Execute"
-value = "~/.config/leftwm/themes/current/bin/leftwm-focus-ctrl the_sakura"
+value = "xfce4-terminal"
 modifier = ["Mod1", "Control"]
 key = "a"
 
-## Launch xfce4-terminal
+## Launch xterm
 ## Alt + Shift + t
 [[keybind]]
 command = "Execute"
-value = "xfce4-terminal"
+value = "xterm"
 modifier = ["Mod1", "Shift"]
 key = "t"
 
-## Focus xfce4-terminal
+## Launch urxvt
 ## Alt + Ctrl + t
 [[keybind]]
 command = "Execute"
-value = "~/.config/leftwm/themes/current/bin/leftwm-focus-ctrl the_xfce4_terminal"
+value = "urxvt"
 modifier = ["Mod1", "Control"]
 key = "t"
 
@@ -292,55 +292,6 @@ key = "b"
 
 ##
 ### Tail: Keybind / Launch / App
-################################################################################
-
-
-################################################################################
-### Head: Keybind / Focus / App
-##
-
-## Focus File Manager (pcmanfm-qt)
-## Alt + Control + f
-[[keybind]]
-command = "Execute"
-value = "~/.config/leftwm/themes/current/bin/leftwm-focus-ctrl the_pcmanfm_qt"
-modifier = ["Mod1", "Control"]
-key = "f"
-
-## Focus File Manager (thunar)
-## Alt + Control + g
-[[keybind]]
-command = "Execute"
-value = "~/.config/leftwm/themes/current/bin/leftwm-focus-ctrl the_thunar"
-modifier = ["Mod1", "Control"]
-key = "g"
-
-## Focus Text Editor (atom)
-## Alt + Control + e
-[[keybind]]
-command = "Execute"
-value = "~/.config/leftwm/themes/current/bin/leftwm-focus-ctrl the_atom"
-modifier = ["Mod1", "Control"]
-key = "e"
-
-## Focus Text Editor (mousepad)
-## Alt + Control + r
-[[keybind]]
-command = "Execute"
-value = "~/.config/leftwm/themes/current/bin/leftwm-focus-ctrl the_mousepad"
-modifier = ["Mod1", "Control"]
-key = "r"
-
-## Focus Web Browser (firefox)
-## Alt + Control + b
-[[keybind]]
-command = "Execute"
-value = "~/.config/leftwm/themes/current/bin/leftwm-focus-ctrl the_firefox"
-modifier = ["Mod1", "Control"]
-key = "b"
-
-##
-### Tail: Keybind / Focus / App
 ################################################################################
 
 
@@ -800,6 +751,13 @@ key = "Right"
 ################################################################################
 ### Head: Keybind / Window / FloatingToTile
 ##
+
+## Window Floating To Tile
+## Win + Esc
+[[keybind]]
+command = "FloatingToTile"
+modifier = ["Mod4"]
+key = "Escape"
 
 ## Window Floating To Tile
 ## Win + n
