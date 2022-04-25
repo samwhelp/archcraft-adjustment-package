@@ -155,18 +155,18 @@
 		<name>desktop 4</name>
 		//-->
 
-		<name>Term</name>
+		<name>File</name>
 		<name>Edit</name>
 		<name>Web</name>
-		<name>File</name>
+		<name>Term</name>
 		<name>Misc</name>
 		<name>Free</name>
 
 		<!--
-		<name>Term (1)</name>
+		<name>File (1)</name>
 		<name>Edit (2)</name>
 		<name>Web (3)</name>
-		<name>File (4)</name>
+		<name>Term (4)</name>
 		<name>Misc (5)</name>
 		<name>Free (6)</name>
 		//-->
@@ -2612,17 +2612,38 @@ sudo cp clicksnap /usr/local/bin/clicksnap
 
 
 
-	<application class="Gnome-terminal" type="normal">
+
+	<application class="pcmanfm-qt" type="normal">
 		<desktop>1</desktop>
 		<focus>yes</focus>
 	</application>
 
-	<application class="Mate-terminal" type="normal">
+	<application class="Pcmanfm" type="normal">
 		<desktop>1</desktop>
 		<focus>yes</focus>
 	</application>
 
-	<application class="Terminator" type="normal">
+	<application class="Spacefm" type="normal">
+		<desktop>1</desktop>
+		<focus>yes</focus>
+	</application>
+
+	<application class="Nautilus" type="normal">
+		<desktop>1</desktop>
+		<focus>yes</focus>
+	</application>
+
+	<application class="Thunar" type="normal">
+		<desktop>1</desktop>
+		<focus>yes</focus>
+	</application>
+
+	<application class="dolphin" type="normal">
+		<desktop>1</desktop>
+		<focus>yes</focus>
+	</application>
+
+	<application class="Filezilla" type="normal">
 		<desktop>1</desktop>
 		<focus>yes</focus>
 	</application>
@@ -2644,12 +2665,10 @@ sudo cp clicksnap /usr/local/bin/clicksnap
 		<focus>yes</focus>
 	</application>
 
-<!--
 	<application class="Gedit" type="normal">
 		<desktop>2</desktop>
 		<focus>yes</focus>
 	</application>
-//-->
 
 	<application class="kate" type="normal">
 		<desktop>2</desktop>
@@ -2670,6 +2689,7 @@ sudo cp clicksnap /usr/local/bin/clicksnap
 		<desktop>2</desktop>
 		<focus>yes</focus>
 	</application>
+
 
 
 	<application class="Firefox" type="normal" role="browser">
@@ -2693,40 +2713,22 @@ sudo cp clicksnap /usr/local/bin/clicksnap
 	</application>
 
 
-	<application class="pcmanfm-qt" type="normal">
+
+	<application class="Gnome-terminal" type="normal">
 		<desktop>4</desktop>
 		<focus>yes</focus>
 	</application>
 
-	<application class="Pcmanfm" type="normal">
+	<application class="Mate-terminal" type="normal">
 		<desktop>4</desktop>
 		<focus>yes</focus>
 	</application>
 
-	<application class="Spacefm" type="normal">
+	<application class="Terminator" type="normal">
 		<desktop>4</desktop>
 		<focus>yes</focus>
 	</application>
 
-	<application class="Nautilus" type="normal">
-		<desktop>4</desktop>
-		<focus>yes</focus>
-	</application>
-
-	<application class="Thunar" type="normal">
-		<desktop>4</desktop>
-		<focus>yes</focus>
-	</application>
-
-	<application class="dolphin" type="normal">
-		<desktop>4</desktop>
-		<focus>yes</focus>
-	</application>
-
-	<application class="Filezilla" type="normal">
-		<desktop>4</desktop>
-		<focus>yes</focus>
-	</application>
 
 
 	<application class="Xephyr" type="normal">
