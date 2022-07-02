@@ -1,5 +1,5 @@
 
-# archcraft-modeling-gtk-rc
+# archcraft-modeling-gtkrc-gruvbox-dark
 
 
 ## Reference

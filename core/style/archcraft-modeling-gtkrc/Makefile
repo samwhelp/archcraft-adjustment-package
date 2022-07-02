@@ -53,7 +53,7 @@ reinstall:
 
 
 uninstall:
-	sudo pacman -R archcraft-modeling-gtk-rc-gruvbox-dark
+	sudo pacman -R archcraft-modeling-gtkrc
 .PHONY: uninstall
 
 clean:
@@ -65,5 +65,5 @@ clean:
 
 
 list:
-	pacman -Ql archcraft-modeling-gtk-rc-gruvbox-dark -q
+	pacman -Ql archcraft-modeling-gtkrc -q
 .PHONY: list

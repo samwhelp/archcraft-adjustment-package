@@ -9,11 +9,11 @@
 ## * https://wiki.archlinux.org/title/Arch_package_guidelines
 ##
 
-pkgname=archcraft-modeling-gtk-rc-gruvbox-dark
+pkgname=archcraft-modeling-gtkrc
 pkgver=0.1
 pkgrel=1
 pkgdesc="Archcraft Adjustment Gtk Rc"
-url="https://github.com/samwhelp/archcraft-adjustment-package/tree/main/core/style/archcraft-modeling-gtk-rc-gruvbox-dark"
+url="https://github.com/samwhelp/archcraft-adjustment-package/tree/main/core/style/archcraft-modeling-gtkrc"
 arch=('any')
 license=('MIT')
 makedepends=()
@@ -23,6 +23,9 @@ provides=("${pkgname}")
 options=(!strip !emptydirs)
 
 prepare () {
+
+	return 0
+
 	cp -af ../asset/. "${srcdir}"
 }
 
@@ -44,24 +47,26 @@ package () {
 	#mkdir -p "$sys_etc_dir_path"
 	#mkdir -p "$sys_share_dir_path"
 
+
 	#install -dm755 "${pkgdir}/etc/skel"
 
+	# /etc/skel/.config/gtk-3.0
+	install -dm755 "${pkgdir}/etc/skel/.config/gtk-3.0"
 
 	##
 	## Main Config
 	##
 
-	cp "${srcdir}/etc" "${pkgdir}/" -a
+	##
+	## gruvbox-dark
+	##
 
-	return 0
+	cd "${pkgdir}/etc/skel"
+	## /etc/skel/.gtkrc-2.0 -> ../.local/share/gtkrc-profile/gruvbox-dark/skel/.gtkrc-2.0
+	ln -sf ./.local/share/gtkrc-profile/gruvbox-dark/skel/.gtkrc-2.0 .gtkrc-2.0
 
-	## /etc/skel/.gtkrc-2.0
-	#install -Dm644 "${srcdir}/etc/skel/.gtkrc-2.0" "${pkgdir}/etc/skel/.gtkrc-2.0"
-
-	## /etc/skel/.config/gtk-3.0/settings.ini
-	#install -Dm644 "${srcdir}/etc/skel/.config/gtk-3.0/settings.ini" "${pkgdir}/etc/skel/.config/gtk-3.0/settings.ini"
-
-
-
+	cd "${pkgdir}/etc/skel/.config/gtk-3.0"
+	## /etc/skel/.config/gtk-3.0/settings.ini -> ../.local/share/gtkrc-profile/gruvbox-dark/skel/.config/gtk-3.0/settings.ini
+	ln -sf ../../.local/share/gtkrc-profile/gruvbox-dark/skel/.config/gtk-3.0/settings.ini settings.ini
 
 }
