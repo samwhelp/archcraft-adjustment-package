@@ -1,5 +1,5 @@
 
-# archcraft-modeling-qt5ct-rc-gruvbox-dark
+# archcraft-modeling-qt5ctrc-gruvbox-dark
 
 
 ## Reference

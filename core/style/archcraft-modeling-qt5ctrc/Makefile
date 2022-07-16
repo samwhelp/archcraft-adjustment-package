@@ -53,7 +53,7 @@ reinstall:
 
 
 uninstall:
-	sudo pacman -R archcraft-modeling-qt5ct-rc-gruvbox-dark
+	sudo pacman -R archcraft-modeling-qt5ctrc
 .PHONY: uninstall
 
 clean:
@@ -65,5 +65,5 @@ clean:
 
 
 list:
-	pacman -Ql archcraft-modeling-qt5ct-rc-gruvbox-dark -q
+	pacman -Ql archcraft-modeling-qt5ctrc -q
 .PHONY: list

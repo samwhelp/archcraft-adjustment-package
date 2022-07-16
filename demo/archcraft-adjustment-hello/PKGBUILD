@@ -19,22 +19,18 @@ conflicts=()
 provides=("${pkgname}")
 options=(!strip !emptydirs)
 
+
 prepare () {
+
 	cp -af ../asset/. "${srcdir}"
+
 }
 
 
 package () {
 
-	## Path
-	local sys_bin_dir_path="${pkgdir}/usr/bin"
-	local sys_share_dir_path="${pkgdir}/usr/share/${pkgname}"
-
-	## prepare share dir
-	mkdir -p "$sys_share_dir_path"
-
 	## install main script
 	## /usr/bin/archcraft-adjustment-hello
-	install -Dm755 "${srcdir}/bin/${pkgname}" "${sys_bin_dir_path}/${pkgname}"
+	install -Dm755 "${srcdir}/usr/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
 }
