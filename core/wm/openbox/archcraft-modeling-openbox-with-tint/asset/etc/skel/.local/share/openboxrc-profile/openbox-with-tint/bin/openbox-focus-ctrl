@@ -69,7 +69,8 @@ mod_raise_or_run () {
 	util_error_echo '## Step:2'
 
 	if is_command_exist "$2"; then
-		exec "$2" &
+		exec $2 &
+		#exec "$2" &
 		return 0
 	fi
 
